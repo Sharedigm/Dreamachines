@@ -33,6 +33,10 @@ By installing the appropriate apps, you can use the Sharedigm platform for a wid
 - Communicate in a secure and private way.
 - Create your own personalized and customized platform.
 
+## Live Demo
+
+You can create an account and explore the features and benefits of the platform at [www.sharedigm.com](https://www.sharedigm.com).
+
 ## Sharedigm Architecture
 
 The sharedigm system consists of two main components: (1) The Sharedigm operating system and (2) The Sharedigm apps.
@@ -48,8 +52,6 @@ The Sharedigm app store is a repository of apps that can be installed on the Sha
 [https://github.com/Sharedigm/SharedigmAppStore](https://github.com/Sharedigm/SharedigmAppStore)
 
 ## Who is Sharedigm For?
-
-Sharedigm is for almost everyone!
 
 ### 1. For Users
 
