@@ -120,7 +120,11 @@ class File extends Item
 
 		// access control
 		//
-		'permissions'
+		'permissions',
+
+		// sharing
+		//
+		'owner'
 	];
 
 	/**

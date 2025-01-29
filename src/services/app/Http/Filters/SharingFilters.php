@@ -38,8 +38,8 @@ class SharingFilters
 
 		// parse parameters
 		//
-		if ($request->has('shared_by')) {
-			$userId = trim($request->input('shared_by'), '"');
+		if ($request->has('shared-by')) {
+			$userId = trim($request->input('shared-by'), '"');
 
 			// filter collection
 			//
@@ -66,8 +66,8 @@ class SharingFilters
 
 		// parse parameters
 		//
-		if ($request->has('min_shares')) {
-			$minShares = intval($request->input('min_shares'));
+		if ($request->has('min-shares')) {
+			$minShares = intval($request->input('min-shares'));
 
 			// filter collection
 			//
@@ -114,8 +114,8 @@ class SharingFilters
 
 		// parse parameters
 		//
-		if ($request->has('max_shares')) {
-			$maxShares = intval($request->input('max_shares'));
+		if ($request->has('max-shares')) {
+			$maxShares = intval($request->input('max-shares'));
 
 			// filter collection
 			//
@@ -142,8 +142,8 @@ class SharingFilters
 
 		// parse parameters
 		//
-		if ($request->has('min_links')) {
-			$minLinks = intval($request->input('min_links'));
+		if ($request->has('min-links')) {
+			$minLinks = intval($request->input('min-links'));
 
 			// filter collection
 			//
@@ -190,8 +190,8 @@ class SharingFilters
 
 		// parse parameters
 		//
-		if ($request->has('max_links')) {
-			$maxLinks = intval($request->input('max_links'));
+		if ($request->has('max-links')) {
+			$maxLinks = intval($request->input('max-links'));
 
 			// filter collection
 			//

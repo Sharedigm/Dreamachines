@@ -162,6 +162,10 @@ class ImageFile extends File
 		//
 		'permissions',
 
+		// sharing
+		//
+		'owner',
+
 		// metadata
 		//
 		'resolution',

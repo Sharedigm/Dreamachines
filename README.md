@@ -2,140 +2,69 @@
 	<img src="images/logos/logo.svg" width="200">
 </p>
 
-# Sharedigm OS
+# Sharedigm
 
-Sharedigm OS is an open source, cloud based operating system.  It can be used to build cloud based community platforms for a wide variety of applications.
+Sharedigm is a web platform that allows uploading, managing, and sharing of data.  It combines file sharing and management with a social network and a variety of apps.  It provides an extensive set of tools for viewing, editing, and sharing data in an intuitive desktop-like user interface experience.
 
-<p align="center" style="text-align:center">
-	<img src="images/screen-shots/welcome.png" width="900" />
-	<div align="center">Welcome</div>
-</p>
+![Screen Shot](images/screen-shots/welcome.png)
+Welcome Screen
 
-<p align="center" style="text-align:center">
-	<img src="images/screen-shots/desktop.png" width="900" />
-	<div align="center">Desktop</div>
-</p>
+![Screen Shot](images/screen-shots/desktop.png)
+Desktop
 
 ## Features
 
 The Sharedigm OS can be used as a cloud operating system to manage and share your files or to build cloud based platforms for a wide variety of purposes. 
 
-- It's self-hostable.
-- Manage your files.
-- View your files from any connected device (mobile, tablet, or desktop).
-- Share files and folders by link.
-- Install other apps to add a wide variety of capabilities.
-- Apply themes to customize the look and feel.
+- Hostable it yourself!
+- Enjoy the easy and intuitive user interface.
+- View photos and videos.
+- Listen to audio and podcasts.
+- Run a variety of apps.
+- Engage in public discussions or private chats.
 
 ## Benefits
 
 By installing the appropriate apps, you can use the Sharedigm platform for a wide variety of purposes:
 
 - Regain control over your own data.
-- View and share photos or images.
-- Manage and play your music and audio.
-- Store and play your videos and movies.
-- Back up and share your source code.
-- Engage is discussions through discussion topics.
-- Communicate through private direct messaging.
-- Generate images using AI.
+- Share your files, images, music, and ideas.
+- Keep in touch with friends, family and colleagues.
+- Communicate in a secure and private way.
+- Create your own personalized and customized platform.
 
-## Demo
+## Sharedigm Architecture
 
-If you'd like to try the platform before installing and running your own instance, you can create an account and explore the platform at: 
-[www.sharedigm.com](https://www.sharedigm.com)
+The sharedigm system consists of two main components: (1) The Sharedigm operating system and (2) The Sharedigm apps.
 
-## Examples
+### 1. Sharedigm OS
 
-Below are some examples of web platforms that have been built on top of the Sharedigm OS.  Use Sharedigm OS to build your own web platform!
+The Sharedigm operating system can be used to run Sharedigm apps but also can be used as a platform for your own app development.
+[https://github.com/Sharedigm/SharedigmOS](https://github.com/Sharedigm/SharedigmOS)
 
-<p>
-	<a href="https://dreamachines.ai">
-		<img src="images/logos/platforms/dreamachines.png" width="80">
-		<b>Dreamachines.ai</b>
-	</a>
-	<p>Dreamachines is a platform for creating and sharing AI generated images.</p>
-</p>
+### 2. Sharedigm Apps
 
-<p>
-	<a href="https://opticexplorer.com">
-		<img src="images/logos/platforms/opticexplorer.png" width="80">
-		<b>OpticExplorer.com</b>
-	</a>
-	<p>OpticExplorer is a platform for designing and analyzing optical systems.</p>
-</p>
+The Sharedigm app store is a repository of apps that can be installed on the Sharedigm OS.  It includes an installer and uninstaller to make it easy to install apps and tailor the platform to your specific purposes.
+[https://github.com/Sharedigm/SharedigmAppStore](https://github.com/Sharedigm/SharedigmAppStore)
 
-<p>
-	<a href="https://easybucket.org">
-		<img src="images/logos/platforms/easybucket.png" width="80">
-		<b>EasyBucket.org</b>
-	</a>
-	<p>EasyBucket is a platform for easily managing and sharing your S3 bucket data.</p>
-</p>
+## Who is Sharedigm For?
 
-<p>
-	<a href="https://rocketkitty.org">
-		<img src="images/logos/platforms/rocketkitty.png" width="80">
-		<b>RocketKitty.org</b>
-	</a>
-	<p>RocketKitty is an entire collection of self-hostable platforms for a variety of purposes including:
-		<ul>
-			<li><a href="https://www.chatkitty.org">ChatKitty</a> - Share discussions and direct messages. </li>
-			<li><a href="https://www.mapkitty.org">MapKitty</a> - Share your geolocated data. </li>
-			<li><a href="https://www.datakitty.org">DataKitty</a> - Share your data and your conversations. </li>
-			<li><a href="https://www.photokitty.org">PhotoKitty</a> - Share your photos and images. </li>
-			<li><a href="https://www.sourcekitty.org">SourceKitty</a> - Manage and share your source code. </li>
-			<li><a href="https://www.filekitty.org">FileKitty</a> - Manage and share your data. </li>
-			<li><a href="https://www.s3kitty.org">S3Kitty</a> - Manage and share your S3 bucket data. </li>
-			<li><a href="https://www.dreamkitty.org">DreamKitty</a> - Create and share AI generated images. </li>
-			<li><a href="https://www.musickitty.org">MusicKitty</a> - Manage and play your music and audio. </li>
-		</ul>
-	</p>
-</p>
+Sharedigm is for almost everyone!
 
-## Apps
+### 1. For Users
 
-By default, Sharedigm OS comes with a limited set of apps pre-installed (shown below).  Many more apps are available for download from the [Sharedigm App Store](https://github.com/Sharedigm/SharedigmAppStore).  These applications are provided in source code form and may be easily installed and uninstalled to your Sharedigm OS instance throuugh a smpe installer mechanism.
+If you are a software user with some web hosting skills, then you can use Sharedigm to deploy your own platform to manage your own data.
 
-<p>
-	<a href="https://github.com/Sharedigm/SharedigmAppStore/tree/main/apps/app-launcher">
-		<img src="images/logos/apps/app-launcher.svg" width="80">
-		<b>App Launcher</b>
-	</a>
-	<p>The App Launcher app is used to launch (start / run) other applications.</p>
-</p>
+- Manage your files, photos, music, code, your digital life. 
+- Communicate with friends family and colleagues with discussion topics and private messages
+- Play music, view photos, and watch videos
+- Customize the look and feel of the platform to match your own personal brand with no coding required.
 
-<p>
-	<a href="https://github.com/Sharedigm/SharedigmAppStore/tree/main/apps/file-browser">
-		<img src="images/logos/apps/file-browser.svg" width="80">
-		<b>File Browser</b>
-	</a>
-	<p>The File Browser app lets you view, arrange, open, and manage your files.</p>
-</p>
+### 2. For Developers
+If you are a developer, then you can use the Sharedigm OS to build new platforms.  Build cloud applications the smart, efficient way, rather than in the broken, disjointed, and archaic way that characterizes modern web development.  The platform can be easily customized with no coding required. Build cloud platforms like you build desktop applications by building on top of a true OS instead of re-inventing the wheel.
 
-<p>
-	<a href="https://github.com/Sharedigm/SharedigmAppStore/tree/main/apps/help-viewer">
-		<img src="images/logos/apps/help-viewer.svg" width="80">
-		<b>Help Viewer</b>
-	</a>
-	<p>The Help Viewer app lets you browse the online help pages.</p>
-</p>
-
-<p>
-	<a href="https://github.com/Sharedigm/SharedigmAppStore/tree/main/apps/settings-browser">
-		<img src="images/logos/apps/settings-browser.svg" width="80">
-		<b>Settings Browser</b>
-	</a>
-	<p>The Settings Browser app lets you browse system settings and app preferences. </p>
-</p>
-
-<p>
-	<a href="https://github.com/Sharedigm/SharedigmAppStore/tree/main/apps/settings-manager">
-		<img src="images/logos/apps/settings-manager.svg" width="80">
-		<b>Settings Manager</b>
-	</a>
-	<p>The Settings Manager app lets you view and modify system settings and app preferences. </p>
-</p>
+- Build your own platform by customizing the set of installed apps, configuration, branding, and theme to match your own needs.
+- If you have coding skills, you can create new apps for the platform to suit your specific needs. 
 
 ## Documentation
 
@@ -149,7 +78,7 @@ Please follow the instructions in [https://www.sharedigm.com/#installation](http
 <!-- LICENSE -->
 ## License
 
-Distributed under the permissive MIT License which allows urestricted use of the software. The platform is distributed using the open core model where the core operating system is unrestricted but apps built on top of the platform may have other terms associated with them.  See [LICENSE](LICENSE) for more information.
+Distributed under the Sustainable Use License which allows urestricted use of the software but does not allow you to commercialize it. See [LICENSE.md](LICENSE.md) for more information.
 
 <!-- CONTACT -->
 ## Contact

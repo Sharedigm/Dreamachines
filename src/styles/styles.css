@@ -3009,6 +3009,894 @@ body.binary .pages .item .desktop.preview.icon > img {
 \******************************************************************************/
 /******************************************************************************\
 |                                                                              |
+|                               _app-launcher.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.app-launcher.app {
+  overflow: auto;
+}
+.app-launcher.app .body {
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+}
+.app-launcher.app .body .contents {
+  display: flex;
+}
+.app-launcher.app .body .contents .main-carousel {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+.app-launcher.app .body .contents .main-carousel .carousel-cell {
+  width: 100%;
+  height: 100%;
+}
+.app-launcher.app .body .contents .main-carousel .carousel-cell .items {
+  display: flex;
+  text-align: center;
+}
+.app-launcher.app .body .contents .main-carousel .flickity-page-dots {
+  bottom: 10px;
+}
+
+.full-screen .app-launcher.app .body .contents {
+  display: flex;
+}
+.full-screen .app-launcher.app .body .contents .main-carousel {
+  position: relative;
+  margin: auto;
+  display: flex;
+  width: 66%;
+  max-height: 66%;
+  transform: scale(1.25);
+}
+.full-screen .app-launcher.app .body .contents .main-carousel .carousel-cell {
+  display: flex;
+}
+.full-screen .app-launcher.app .body .contents .main-carousel .carousel-cell .items {
+  display: flex;
+}
+.full-screen .app-launcher.app .body .contents .main-carousel .carousel-cell .items .icon-grid {
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+
+@media (min-height: 360px) and (min-width: 480px) {
+  .app-launcher.app .body .contents .main-carousel {
+    width: 90%;
+  }
+  .app-launcher.app .body .icon-grid {
+    padding-right: 0;
+    min-height: 0;
+    margin: auto;
+  }
+  .app-launcher.app .body .flickity-page-dots {
+    bottom: 0;
+  }
+}
+body[device=phone] .app-launcher.app .header-bar, body[device=tablet] .app-launcher.app .header-bar {
+  display: none;
+}
+body[device=phone] .app-launcher.app .body .main-carousel, body[device=tablet] .app-launcher.app .body .main-carousel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+body[device=phone] .app-launcher.app .body .main-carousel .icon-grid, body[device=tablet] .app-launcher.app .body .main-carousel .icon-grid {
+  padding: 10px 0 !important;
+  padding-bottom: 25px !important;
+  text-align: center;
+}
+body[device=phone] .full-screen .app-launcher.app .body .contents .main-carousel, body[device=tablet] .full-screen .app-launcher.app .body .contents .main-carousel {
+  width: 75%;
+}
+@media (max-width: 360px) {
+  body[device=phone] .app-launcher.app .body .icon-grid .item, body[device=tablet] .app-launcher.app .body .icon-grid .item {
+    width: 75px;
+  }
+  body[device=phone] .app-launcher.app .body .icon-grid .item .icon, body[device=tablet] .app-launcher.app .body .icon-grid .item .icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media (min-width: 360px) and (max-width: 480px) {
+  body[device=phone] .app-launcher.app .body .icon-grid .item, body[device=tablet] .app-launcher.app .body .icon-grid .item {
+    width: 90px;
+  }
+}
+@media (min-width: 480px) and (max-width: 768px) {
+  body[device=phone] .app-launcher.app .body .icon-grid .item, body[device=tablet] .app-launcher.app .body .icon-grid .item {
+    width: 100px;
+  }
+}
+
+body[device=tablet] .app-launcher.app .body .main-carousel .icon-grid {
+  padding: 25px !important;
+}
+
+body[device=phone][os=ios] .app-launcher.app .body .icon-grid .item > .row:first-child .icon > i {
+  font-size: 35px;
+}
+
+body[device=tablet] .app-launcher.app .body .icon-grid .item {
+  width: 125px;
+  margin: 15px 0;
+}
+body[device=tablet] .app-launcher.app .body .icon-grid .item > .row:first-child .icon {
+  width: 60px;
+  height: 60px;
+}
+body[device=tablet] .app-launcher.app .body .icon-grid .item > .row:first-child .icon i {
+  font-size: 45px;
+}
+body[device=tablet] .app-launcher.app .body .icon-grid .item > .row:first-child .icon .spinner {
+  border-width: 30px;
+  border-top-width: 30px;
+  width: 30px;
+  height: 60px;
+  margin-left: -30px;
+  margin-top: -30px;
+}
+@media (orientation: landscape) {
+  body[device=tablet] .app-launcher.app .body .icon-grid .item {
+    margin: 15px 0;
+  }
+}
+body[device=tablet].round-icons .app-launcher.app .body .icon-grid .item > .row:first-child .icon {
+  border-radius: 40px;
+}
+body[device=tablet].rounded-cons .app-launcher.app .body .icon-grid .item > .row:first-child .icon {
+  border-radius: 20px;
+}
+
+body[device=tablet][os=ios] .app-launcher.app .body .icon-grid .item > .row:first-child .icon {
+  width: 60px;
+  height: 60px;
+}
+body[device=tablet][os=ios] .app-launcher.app .body .icon-grid .item > .row:first-child .icon i {
+  font-size: 50px;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                               _audio-player.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.audio-player.app .header-bar .play-bar .toolbar .elapsed-time, .audio-player.app .header-bar .play-bar .toolbar .track-length {
+  min-width: 50px;
+}
+.audio-player.app .header-bar .play-bar .toolbar .elapsed-time {
+  padding-left: 5px;
+}
+.audio-player.app .header-bar .play-bar .toolbar .repeat {
+  margin-left: 10px;
+}
+.audio-player.app .header-bar .play-bar .toolbar .track-length {
+  text-align: center;
+}
+.audio-player.app .body .contents .mainbar .items {
+  overflow: auto;
+}
+.audio-player.app .body .contents .audio-analyser {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.audio-player.app .body .contents .audio-analyser label {
+  color: white;
+  position: absolute;
+  text-shadow: none;
+  left: 10px;
+  top: 5px;
+}
+.audio-player.app .body .contents .audio-analyser canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.audio-player.app .body .contents .audio-analyser.dark canvas {
+  background: #0a0a11;
+}
+.audio-player.app .footer-bar {
+  display: flex;
+  text-align: center;
+}
+.audio-player.app .footer-bar .nav-bar {
+  flex-grow: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+body[device=desktop] .audio-player.app .header-bar .track-bar .toolbar input[type=range] {
+  width: 100px;
+}
+body[device=desktop] .audio-player.app .header-bar .volume-bar .current input[type=range] {
+  width: 75px;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                                _calculator.scss                              |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.calculator.app .body {
+  flex-grow: 1;
+  margin: auto;
+  margin-top: 0;
+  overflow: visible;
+}
+.calculator.app .body .lcd.display {
+  display: block;
+  height: 40px;
+  margin: 10px;
+  padding: 2px 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.calculator.app .body .lcd.display .digits {
+  font-size: 25px;
+  line-height: 36px;
+  text-align: right;
+}
+.calculator.app .body .lcd.display .indicator {
+  position: absolute;
+  font-size: 10px;
+}
+.calculator.app .body .lcd.display mem-mode {
+  margin-top: 0;
+}
+.calculator.app .body .lcd.display .trig-mode, .calculator.app .body .lcd.display .base-mode {
+  margin-top: 10px;
+}
+.calculator.app .body .lcd.display .hyp-mode {
+  margin-top: 20px;
+}
+.calculator.app .body .keyboard {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  flex-direction: column;
+}
+.calculator.app .body .keyboard .keys {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 5px;
+}
+.calculator.app .body .keyboard .keys .row {
+  width: 100%;
+  margin: 0;
+}
+.calculator.app .body .keyboard .keys .row button {
+  width: 20%;
+  height: 25px;
+  margin: 5px;
+}
+.calculator.app .body .keyboard .keys .row button:first-child {
+  margin-left: 0;
+}
+.calculator.app .body .keyboard .keys .row button:last-child {
+  margin-right: 0;
+}
+.calculator.app .body .keyboard .keys .row button.digit, .calculator.app .body .keyboard .keys .row button.btn-primary {
+  font-size: 20px;
+  padding: 0;
+}
+.calculator.app.basic .display .indicator {
+  display: none;
+}
+.calculator.app.basic .keyboard .scientific, .calculator.app.basic .keyboard .programmer {
+  display: none;
+}
+.calculator.app.scientific .display .base-mode {
+  display: none;
+}
+.calculator.app.scientific .keyboard .programmer {
+  display: none;
+}
+.calculator.app.programmer .display .trig-mode, .calculator.app.programmer .display .hyp-mode, .calculator.app.programmer .display .mem-mode {
+  display: none;
+}
+.calculator.app.programmer .keyboard .scientific {
+  display: none;
+}
+
+body[device=phone] .calculator.app .body .keyboard .row button, body[device=tablet] .calculator.app .body .keyboard .row button {
+  width: 60px;
+}
+@media screen and (orientation: landscape) {
+  body[device=phone] .calculator.app.basic .body .lcd.display, body[device=tablet] .calculator.app.basic .body .lcd.display {
+    margin: 10px auto;
+  }
+}
+@media screen and (orientation: portrait) {
+  body[device=phone] .calculator.app.basic .body .keyboard, body[device=tablet] .calculator.app.basic .body .keyboard {
+    padding: 0;
+  }
+  body[device=phone] .calculator.app.basic .body .keyboard .keys, body[device=tablet] .calculator.app.basic .body .keyboard .keys {
+    padding: 0;
+  }
+  body[device=phone] .calculator.app.basic .body .keyboard .keys .row, body[device=tablet] .calculator.app.basic .body .keyboard .keys .row {
+    margin-bottom: 10px;
+  }
+  body[device=phone] .calculator.app.basic .body .keyboard .keys .row button, body[device=tablet] .calculator.app.basic .body .keyboard .keys .row button {
+    padding: 0;
+    font-size: 1.5em;
+    width: 60px;
+    height: 60px;
+  }
+  body[device=phone] .calculator.app.basic .body .keyboard .keys .row button.btn-primary, body[device=tablet] .calculator.app.basic .body .keyboard .keys .row button.btn-primary {
+    font-size: 2em;
+  }
+  body[device=phone] .calculator.app.basic .body .keyboard .keys .row button.digit, body[device=tablet] .calculator.app.basic .body .keyboard .keys .row button.digit {
+    font-size: 2em;
+  }
+}
+@media screen and (orientation: portrait) {
+  body[device=phone] .calculator.app .keyboard .keys .row button, body[device=tablet] .calculator.app .keyboard .keys .row button {
+    margin: 8px 5px;
+  }
+}
+@media screen and (orientation: landscape) {
+  body[device=phone] .calculator.app .keyboard .keys .row button, body[device=tablet] .calculator.app .keyboard .keys .row button {
+    margin: 7px 3px;
+  }
+}
+@media screen and (orientation: landscape) {
+  body[device=phone] .calculator.app .body, body[device=tablet] .calculator.app .body {
+    width: auto !important;
+    height: auto !important;
+  }
+  body[device=phone] .calculator.app .body .keyboard, body[device=tablet] .calculator.app .body .keyboard {
+    flex-direction: row;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  body[device=phone].round .calculator.app .body .keyboard .keys .row button, body[device=tablet].round .calculator.app .body .keyboard .keys .row button {
+    border-radius: 30px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 480px) {
+  .calculator.app.basic .keyboard button {
+    margin: 10px;
+  }
+}
+body[device=tablet] .calculator.app .body {
+  transform: scale(1.5);
+}
+
+/******************************************************************************\
+|                                                                              |
+|                               _calendar.scss                                 |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.calendar.app .mainbar {
+  display: flex;
+}
+.calendar.app .mainbar > .month, .calendar.app .mainbar > .day {
+  width: 100%;
+  height: auto !important;
+  max-height: 100%;
+  overflow: auto !important;
+  padding: 10px;
+  margin: auto;
+}
+.calendar.app .mainbar > .month .heading, .calendar.app .mainbar > .day .heading {
+  text-align: center;
+}
+.calendar.app .mainbar > .month .heading h1, .calendar.app .mainbar > .day .heading h1 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  border: none;
+}
+.calendar.app .mainbar > .month .heading h1 .month, .calendar.app .mainbar > .month .heading h1 .day, .calendar.app .mainbar > .day .heading h1 .month, .calendar.app .mainbar > .day .heading h1 .day {
+  font-weight: bold;
+}
+.calendar.app .mainbar > .month table, .calendar.app .mainbar > .day table {
+  width: 100%;
+}
+.calendar.app .mainbar > .month table th, .calendar.app .mainbar > .day table th {
+  padding: 5px 0;
+}
+.calendar.app .mainbar > .month table th, .calendar.app .mainbar > .month table td, .calendar.app .mainbar > .day table th, .calendar.app .mainbar > .day table td {
+  vertical-align: middle;
+  pointer-events: auto;
+}
+.calendar.app .mainbar > .month table th i, .calendar.app .mainbar > .month table td i, .calendar.app .mainbar > .day table th i, .calendar.app .mainbar > .day table td i {
+  margin-right: 5px;
+}
+.calendar.app .mainbar > .month table th .hour, .calendar.app .mainbar > .month table th .date, .calendar.app .mainbar > .month table td .hour, .calendar.app .mainbar > .month table td .date, .calendar.app .mainbar > .day table th .hour, .calendar.app .mainbar > .day table th .date, .calendar.app .mainbar > .day table td .hour, .calendar.app .mainbar > .day table td .date {
+  margin: auto;
+  white-space: nowrap;
+  pointer-events: none;
+  cursor: auto;
+}
+.calendar.app .mainbar > .month table th .hour, .calendar.app .mainbar > .month table td .hour, .calendar.app .mainbar > .day table th .hour, .calendar.app .mainbar > .day table td .hour {
+  width: 3em;
+}
+.calendar.app .mainbar > .month table th .date, .calendar.app .mainbar > .month table td .date, .calendar.app .mainbar > .day table th .date, .calendar.app .mainbar > .day table td .date {
+  width: 2em;
+}
+.calendar.app .mainbar > .month table td, .calendar.app .mainbar > .day table td {
+  position: relative;
+  padding: 0;
+  position: relative;
+}
+.calendar.app .mainbar > .month table td > span, .calendar.app .mainbar > .day table td > span {
+  position: absolute;
+  padding: 2px 5px;
+}
+.calendar.app .mainbar > .month table td .badge, .calendar.app .mainbar > .day table td .badge {
+  position: absolute;
+  bottom: 5px;
+  right: 2px;
+  z-index: 1;
+}
+.calendar.app .mainbar > .month table td .badge i, .calendar.app .mainbar > .day table td .badge i {
+  margin-right: 3px;
+}
+.calendar.app .mainbar > .month table td.selected, .calendar.app .mainbar > .day table td.selected {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: -2px;
+  z-index: 1;
+}
+.calendar.app .mainbar > .month tbody td {
+  width: 14% !important;
+  padding-bottom: 10% !important;
+}
+.calendar.app .mainbar > .day tbody td {
+  width: 16% !important;
+  padding-bottom: 13% !important;
+}
+
+.desktop.app > .body > .calendar.app .mainbar h1.heading {
+  color: white;
+}
+
+.events p {
+  white-space: pre-wrap;
+}
+
+@media (max-width: 480px) {
+  .calendar.app .mainbar > .month table thead tr th, .calendar.app .mainbar > .day table thead tr th {
+    font-size: inherit;
+  }
+}
+/******************************************************************************\
+|                                                                              |
+|                                  _clock.scss                                 |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.clock.app .body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+}
+.clock.app .body .face {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  margin: auto;
+}
+.clock.app .body .face .pie {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+}
+.clock.app .body .face .digital.display {
+  position: absolute;
+  display: flex;
+  width: 190px;
+  height: 190px;
+  margin: 5px;
+  padding: 10px;
+  border-width: 0;
+  border-radius: 95px;
+}
+.clock.app .body .face .digital.display .digits {
+  margin: auto;
+  padding: 10px 0;
+}
+.clock.app .body .face .digital.display .digits .hours, .clock.app .body .face .digital.display .digits .minutes, .clock.app .body .face .digital.display .digits .colons, .clock.app .body .face .digital.display .digits .am-pm, .clock.app .body .face .digital.display .digits .dow, .clock.app .body .face .digital.display .digits .seconds {
+  display: inline-block;
+  font-size: 60px;
+  line-height: 55px;
+}
+.clock.app .body .face .digital.display .digits .colons {
+  display: inline-block;
+  font-size: 90px;
+  vertical-align: super;
+  line-height: 0;
+}
+.clock.app .body .face .analog.display {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  margin: 5px;
+  padding: 5px;
+  border-width: 0;
+  border-radius: 95px;
+}
+.clock.app .body .face .analog.display svg {
+  margin-left: -10px;
+  margin-top: -10px;
+}
+.clock.app .body .face .analog.display svg #center {
+  stroke-width: 2px;
+}
+.clock.app .body .face .analog.display svg #hands #hourhand {
+  stroke-width: 5px;
+}
+.clock.app .body .face .analog.display svg #hands #minutehand {
+  stroke-width: 5px;
+}
+.clock.app .body .face .analog.display svg #hands #secondhand {
+  stroke-width: 2px;
+}
+.clock.app .body .buttons {
+  margin-top: 10px;
+}
+.clock.app.analog .digital.display {
+  display: none;
+}
+.clock.app.digital .analog.display {
+  display: none;
+}
+
+body:not(.binary) .clock.app .pie {
+  background: #a0a0c6;
+}
+body:not(.binary) .clock.app .analog.display svg {
+  filter: drop-shadow(4px 4px 2px rgba(0, 0, 0, 0.5));
+  overflow: visible;
+}
+
+body[device=tablet] .clock.app .body {
+  transform: scale(2);
+}
+
+[os=windows] .clock.app .body .face .digital.lcd.display {
+  padding: 0;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                               _code-editor.scss                              |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.code-editor.app .body > .contents .sidebar .badges {
+  display: none;
+}
+.code-editor.app .body > .contents .mainbar {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.code-editor.app .body > .contents .mainbar .tabbed-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.code-editor.app .body > .contents .mainbar .tabbed-content #tabs {
+  flex-shrink: 0;
+}
+.code-editor.app .body > .contents .mainbar .tabbed-content .tab-content {
+  position: relative;
+  flex-grow: 1;
+}
+.code-editor.app .body > .contents .mainbar .tabbed-content .tab-content .tab-pane {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+}
+.code-editor.app .body > .contents .mainbar .tabbed-content .tab-content .tab-pane .ace_gutter {
+  z-index: 0;
+}
+.code-editor.app .body > .contents .mainbar .tabbed-content .tab-content .tab-pane pre.ace_editor {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 10px;
+  border-radius: 0;
+}
+.code-editor.app .body > .contents .mainbar .tabbed-content .tab-content .tab-pane pre.ace_editor .ace_scrollbar {
+  z-index: unset;
+}
+.code-editor.app .body > .contents .mainbar .tabbed-content .tab-content .tab-pane .ace_scroller.ace_scroll-left {
+  box-shadow: none;
+}
+.code-editor.app .body > .contents pre[class*=language-] {
+  margin: 0;
+}
+
+.code-editor .body > .contents .mainbar .code pre .ace_gutter {
+  background-color: white;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-color: unset;
+}
+.code-editor .body > .contents .mainbar .code pre .ace_scroller.ace_scroll-left {
+  box-shadow: none;
+}
+
+.cursor-info.info-bar:not(:empty) {
+  width: 150px;
+}
+
+body.binary pre.ace_editor {
+  background: white;
+}
+body.binary.dark pre.ace_editor {
+  background: black;
+}
+
+body:not(.binary) pre.ace_editor {
+  background: none;
+}
+
+.full-screen .code {
+  background: white;
+}
+
+.dark .full-screen .code {
+  background: black;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                              _communicator.scss                              |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.communicator.app .body > .contents .sidebar .topics.panel .items .subscribed.badge {
+  display: none;
+}
+.communicator.app .body > .contents .mainbar .tab-pane {
+  overflow: auto;
+}
+.communicator.app .body > .contents .mainbar .tab-pane > .topic {
+  padding: 10px;
+  min-height: 100%;
+}
+.communicator.app .body > .contents .mainbar .tab-pane > .post {
+  margin: 10px;
+}
+.communicator.app .body > .contents .mainbar .tab-pane > .post.selected {
+  margin: 9px;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                              _contact-editor.scss                            |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.contact-editor.app .body > .contents .mainbar .tab-pane > div {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info {
+  padding: 10px;
+}
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info .form-group {
+  margin-top: 0;
+}
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info .organization.panel,
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info .info.panel {
+  margin-top: 10px;
+}
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info .organization.panel > form,
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info .info.panel > form {
+  padding: 0;
+}
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info .organization.panel > form .items,
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info .info.panel > form .items {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info .organization.panel .map-marker,
+.contact-editor.app .body > .contents .mainbar .tab-pane > div > .contact-info .info.panel .map-marker {
+  display: inline-block;
+  text-align: right;
+  pointer-events: auto;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                              _decibel-meter.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.decibel-meter.app .body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+}
+.decibel-meter.app .body .face {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  margin: auto;
+}
+.decibel-meter.app .body .face .digital.display {
+  position: absolute;
+  display: flex;
+  width: 200px;
+  height: 200px;
+  margin: 0;
+  padding: 10px;
+  border-width: 5px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #8080b3;
+}
+.decibel-meter.app .body .face .digital.display .decibel.digits {
+  margin: auto;
+  padding: 10px 0;
+}
+.decibel-meter.app .body .face .digital.display .decibel.digits .value {
+  display: inline-block;
+  font-size: 60px;
+  line-height: 55px;
+}
+.decibel-meter.app .body .face .digital.display .max.digits {
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: 0;
+}
+.decibel-meter.app .body .face .digital.display .max.digits .value {
+  font-size: 200%;
+}
+.decibel-meter.app .body .face svg {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  overflow: visible;
+}
+.decibel-meter.app .body .face svg .wedge {
+  stroke-width: 2;
+  stroke-linecap: round;
+  overflow: visible;
+}
+.decibel-meter.app .body .face .digital.display.led + svg .wedge:not(.active) {
+  filter: url(#dark);
+}
+.decibel-meter.app .body .face .digital.display.led + svg .wedge.active path {
+  filter: url("#glowing");
+}
+.decibel-meter.app .body .face .digital.display.lcd + svg .wedge:not(.active) {
+  fill: #a0a0c6;
+  stroke: #a0a0c6;
+}
+.decibel-meter.app .body .face .digital.display.lcd + svg .wedge.active path {
+  fill: black;
+  stroke: black;
+  filter: drop-shadow(0 0 10px black);
+}
+
+body[device=tablet] .timer.app .body {
+  transform: scale(2);
+}
+
+[os=windows] .timer.app .body .face .digital.lcd.display {
+  padding: 0;
+}
+
+/******************************************************************************\
+|                                                                              |
 |                                _selection.scss                               |
 |                                                                              |
 |******************************************************************************|
@@ -3205,7 +4093,7 @@ body[device=desktop] #desktop.show-trash-in-corner .desktop.app > .body > .app .
 
 /******************************************************************************\
 |                                                                              |
-|                               _app-launcher.scss                             |
+|                              _chat-browser.scss                              |
 |                                                                              |
 |******************************************************************************|
 |                                                                              |
@@ -3219,153 +4107,22 @@ body[device=desktop] #desktop.show-trash-in-corner .desktop.app > .body > .app .
 |******************************************************************************|
 |        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
 \******************************************************************************/
-.app-launcher.app {
-  overflow: auto;
-}
-.app-launcher.app .body {
-  width: 100%;
-  height: 100%;
-  font-weight: bold;
-}
-.app-launcher.app .body .contents {
-  display: flex;
-}
-.app-launcher.app .body .contents .main-carousel {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-}
-.app-launcher.app .body .contents .main-carousel .carousel-cell {
-  width: 100%;
-  height: 100%;
-}
-.app-launcher.app .body .contents .main-carousel .carousel-cell .items {
-  display: flex;
-  text-align: center;
-}
-.app-launcher.app .body .contents .main-carousel .flickity-page-dots {
-  bottom: 10px;
-}
-
-.full-screen .app-launcher.app .body .contents {
-  display: flex;
-}
-.full-screen .app-launcher.app .body .contents .main-carousel {
-  position: relative;
-  margin: auto;
-  display: flex;
-  width: 66%;
-  max-height: 66%;
-  transform: scale(1.25);
-}
-.full-screen .app-launcher.app .body .contents .main-carousel .carousel-cell {
-  display: flex;
-}
-.full-screen .app-launcher.app .body .contents .main-carousel .carousel-cell .items {
-  display: flex;
-}
-.full-screen .app-launcher.app .body .contents .main-carousel .carousel-cell .items .icon-grid {
-  position: relative;
-  margin: auto;
-  text-align: center;
-}
-
-@media (min-height: 360px) and (min-width: 480px) {
-  .app-launcher.app .body .contents .main-carousel {
-    width: 90%;
-  }
-  .app-launcher.app .body .icon-grid {
-    padding-right: 0;
-    min-height: 0;
-    margin: auto;
-  }
-  .app-launcher.app .body .flickity-page-dots {
-    bottom: 0;
-  }
-}
-body[device=phone] .app-launcher.app .header-bar, body[device=tablet] .app-launcher.app .header-bar {
-  display: none;
-}
-body[device=phone] .app-launcher.app .body .main-carousel, body[device=tablet] .app-launcher.app .body .main-carousel {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-body[device=phone] .app-launcher.app .body .main-carousel .icon-grid, body[device=tablet] .app-launcher.app .body .main-carousel .icon-grid {
-  padding: 10px 0 !important;
-  padding-bottom: 25px !important;
-  text-align: center;
-}
-body[device=phone] .full-screen .app-launcher.app .body .contents .main-carousel, body[device=tablet] .full-screen .app-launcher.app .body .contents .main-carousel {
-  width: 75%;
-}
-@media (max-width: 360px) {
-  body[device=phone] .app-launcher.app .body .icon-grid .item, body[device=tablet] .app-launcher.app .body .icon-grid .item {
-    width: 75px;
-  }
-  body[device=phone] .app-launcher.app .body .icon-grid .item .icon, body[device=tablet] .app-launcher.app .body .icon-grid .item .icon {
-    width: 60px;
-    height: 60px;
-  }
-}
-@media (min-width: 360px) and (max-width: 480px) {
-  body[device=phone] .app-launcher.app .body .icon-grid .item, body[device=tablet] .app-launcher.app .body .icon-grid .item {
-    width: 90px;
-  }
-}
-@media (min-width: 480px) and (max-width: 768px) {
-  body[device=phone] .app-launcher.app .body .icon-grid .item, body[device=tablet] .app-launcher.app .body .icon-grid .item {
-    width: 100px;
-  }
-}
-
-body[device=tablet] .app-launcher.app .body .main-carousel .icon-grid {
-  padding: 25px !important;
-}
-
-body[device=phone][os=ios] .app-launcher.app .body .icon-grid .item > .row:first-child .icon > i {
-  font-size: 35px;
-}
-
-body[device=tablet] .app-launcher.app .body .icon-grid .item {
-  width: 125px;
-  margin: 15px 0;
-}
-body[device=tablet] .app-launcher.app .body .icon-grid .item > .row:first-child .icon {
-  width: 60px;
-  height: 60px;
-}
-body[device=tablet] .app-launcher.app .body .icon-grid .item > .row:first-child .icon i {
-  font-size: 45px;
-}
-body[device=tablet] .app-launcher.app .body .icon-grid .item > .row:first-child .icon .spinner {
-  border-width: 30px;
-  border-top-width: 30px;
-  width: 30px;
-  height: 60px;
-  margin-left: -30px;
-  margin-top: -30px;
-}
-@media (orientation: landscape) {
-  body[device=tablet] .app-launcher.app .body .icon-grid .item {
-    margin: 15px 0;
-  }
-}
-body[device=tablet].round-icons .app-launcher.app .body .icon-grid .item > .row:first-child .icon {
-  border-radius: 40px;
-}
-body[device=tablet].rounded-cons .app-launcher.app .body .icon-grid .item > .row:first-child .icon {
-  border-radius: 20px;
-}
-
-body[device=tablet][os=ios] .app-launcher.app .body .icon-grid .item > .row:first-child .icon {
-  width: 60px;
-  height: 60px;
-}
-body[device=tablet][os=ios] .app-launcher.app .body .icon-grid .item > .row:first-child .icon i {
-  font-size: 50px;
-}
-
+/******************************************************************************\
+|                                                                              |
+|                              _chat-viewer.scss                               |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
 /******************************************************************************\
 |                                                                              |
 |                              _file-browser.scss                              |
@@ -3596,6 +4353,702 @@ body[device=desktop] .help-viewer.app .footer-bar > div:last-child {
 
 /******************************************************************************\
 |                                                                              |
+|                              _text-colors.scss                               |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+/******************************************************************************\
+|                                                                              |
+|                               _image-viewer.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.image-viewer.app .body > .contents .sidebar .image-info.panel > .info {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 300px;
+}
+.image-viewer.app .body > .contents .mainbar {
+  position: relative;
+}
+.image-viewer.app .body > .contents .mainbar .image {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.image-viewer.app .body > .contents .mainbar .image > img:not(.loading) {
+  margin: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+}
+.image-viewer.app .body > .contents .mainbar .image > img:not(.loading)[width="100%"][height="100%"] {
+  object-fit: contain;
+}
+.image-viewer.app .body > .contents .mainbar .image .caption {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  padding: 10px;
+  width: 100%;
+}
+.image-viewer.app .body > .contents .mainbar .image .caption .text {
+  background: black;
+  font-size: 125%;
+  padding: 5px 10px;
+  margin: auto;
+  border-radius: 1em;
+  border: 2px solid white;
+  color: white;
+}
+.image-viewer.app .body > .contents .mainbar .image.hide-caption .caption {
+  display: none;
+}
+.image-viewer.app .body > .contents .mainbar .annotation.fineprint {
+  display: inline-block;
+  position: absolute;
+  color: #272740;
+  background: white;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+.image-viewer.app .body > .contents .mainbar .image:fullscreen {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: black;
+}
+.image-viewer.app .body > .contents .mainbar .image:fullscreen .caption {
+  position: fixed;
+}
+.image-viewer.app .body > .contents .mainbar .image:-webkit-full-screen {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: black;
+}
+.image-viewer.app .body > .contents .mainbar .image:-webkit-full-screen .caption {
+  position: fixed;
+}
+.image-viewer.app .body > .contents .mainbar .image:-moz-full-screen {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: black;
+}
+.image-viewer.app .body > .contents .mainbar .image:-moz-full-screen .caption {
+  position: fixed;
+}
+.image-viewer.app .body > .contents .mainbar .image:-ms-fullscreen {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: black;
+}
+.image-viewer.app .body > .contents .mainbar .image:-ms-fullscreen .caption {
+  position: fixed;
+}
+.image-viewer.app .footer-bar .file-info {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.resolution.items .item .preview {
+  background-color: #6060a0;
+  display: flex;
+  pointer-events: auto;
+}
+.resolution.items .item .preview .aspect-ratio {
+  color: #c0c0d9;
+  margin: auto;
+}
+.resolution.items .item.selected .preview {
+  border-width: 1px;
+  border-style: solid;
+}
+
+/*
+.colored {
+	.image-viewer.app {
+		.body > .contents {
+			.sidebar {
+				.panels {
+					background: $very-very-very-dark-grey;
+				}
+			}
+		}
+	}
+}
+*/
+@media (max-width: 480px) {
+  .image-viewer.app .header-bar .zoom-bar .input input[type=range] {
+    display: none;
+  }
+  .image-viewer.app .body > .contents .mainbar .image {
+    overflow: auto;
+  }
+}
+body[device=desktop] .image-viewer.app .mainbar .image {
+  overflow: hidden;
+}
+
+body[device=phone] .image-viewer.app .mainbar .image, body[device=tablet] .image-viewer.app .mainbar .image {
+  overflow: auto;
+}
+
+[browser=safari] .image-viewer.app .image img.pixelated {
+  transform: none !important;
+  filter: none !important;
+}
+
+@-moz-document url-prefix() {
+  .image-viewer.app .image img.pixelated {
+    image-rendering: optimizeSpeed;
+  }
+}
+/******************************************************************************\
+|                                                                              |
+|                                _map-viewer.scss                              |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.map-viewer.app .sidebar .panel:not(:first-child) .geolocation.badge, .map-viewer.app .sidebar .panel:not(:first-child) .geoposition.badge {
+  display: none;
+}
+.map-viewer.app .mainbar .geolocation.badge, .map-viewer.app .mainbar .geoposition.badge {
+  display: none;
+}
+.map-viewer.app .crosshairs {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  width: 25px;
+  height: 25px;
+  margin-left: -12px;
+  margin-top: -12px;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.5);
+  /*
+  &::after {
+  	display: inline-block;
+  	width: 25px;
+  	height: 25px;
+  	content: "+";
+  	font-family: "Font Awesome";
+  	font-size: 25px;
+  	line-height: 25px;
+  	color: black;
+  	text-align: center;
+  	box-shadow: none;
+  }
+  */
+}
+.map-viewer.app .crosshairs img {
+  width: 25px;
+  height: 25px;
+}
+
+.info-bar .latitude, .info-bar .longitude {
+  width: 60px;
+}
+
+.round .map-viewer.app .crosshairs {
+  border-radius: 12px;
+}
+
+.rounded .map-viewer.app .crosshairs {
+  border-radius: 5px;
+}
+
+body[device=phone] .info-bar .latitude, body[device=phone] .info-bar .longitude, body[device=tablet] .info-bar .latitude, body[device=tablet] .info-bar .longitude {
+  width: 50px;
+}
+
+[browser=firefox] .map-viewer.app .crosshairs::after {
+  line-height: 25px;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                               _post-viewer.scss                              |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.post-viewer.app .body > .contents .sidebar .topics.panel {
+  overflow: hidden;
+}
+.post-viewer.app .body > .contents .sidebar .topics.panel .items .subscribed.badge {
+  display: none;
+}
+.post-viewer.app .body > .contents .mainbar > div {
+  position: relative;
+  padding: 10px;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                          _notification-center.scss                           |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.notification-center.app .header-bar .search-bar {
+  min-width: 0 !important;
+  width: 100% !important;
+}
+.notification-center.app .body > .contents {
+  overflow: hidden;
+  height: 100%;
+}
+.notification-center.app .body > .contents .content {
+  height: 100%;
+  overflow: auto;
+  background: none;
+}
+
+.connection-requests, .notifications {
+  /*
+  .form-group:first-child .form-label {
+  	visibility: hidden;
+  	height: 0;
+  }
+  */
+}
+.connection-requests .form-group:first-child .form-label, .notifications .form-group:first-child .form-label {
+  font-size: 0;
+}
+.connection-requests .form-group .form-control-static, .notifications .form-group .form-control-static {
+  width: 75%;
+  white-space: normal;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                                _pdf-viewer.scss                              |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.pdf-viewer.app .header-bar .zoom-bar input[type=range] {
+  margin-right: 5px;
+}
+.pdf-viewer.app .body > .contents {
+  /*
+  .sidebar {
+  	.panels {
+  		background: black;
+
+  		.pages.panel {
+  			padding: 0;
+  			background: none !important;
+  			border-color: transparent !important;
+
+  			label {
+  				display: none;
+  			}
+
+  			.tile-grid {
+  				background: none;
+  				text-align: center;
+  			}
+  		}
+  	}
+  }
+  */
+}
+
+@media (min-width: 480px) {
+  .pdf-viewer.app .footer-bar > div:first-child,
+  .pdf-viewer.app .footer-bar > div:last-child {
+    width: 25%;
+  }
+}
+@media (max-width: 480px) {
+  .pdf-viewer.app .header-bar .zoom-bar .input input[type=range] {
+    display: none;
+  }
+}
+/******************************************************************************\
+|                                                                              |
+|                            _profile-browser.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+/******************************************************************************\
+|                                                                              |
+|                             _profile-viewer.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.profile-viewer.app .body > .contents .mainbar .user-panels, .profile-viewer.app .body-region > .contents .mainbar .user-panels {
+  position: relative;
+  padding: 10px;
+  overflow: auto;
+}
+
+@media (min-width: 480px) {
+  .profile-viewer.app .body > .contents .mainbar td.sender, .profile-viewer.app .body > .contents .mainbar td.recipient {
+    width: 33%;
+  }
+}
+/******************************************************************************\
+|                                                                              |
+|                            _project-browser.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+/******************************************************************************\
+|                                                                              |
+|                             _project-viewer.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.project-viewer.app .body > .contents .mainbar .project {
+  height: 100%;
+  overflow: auto;
+}
+.project-viewer.app .body > .contents .mainbar .task {
+  padding: 10px;
+  overflow: auto;
+  max-height: 100%;
+  /*
+  h3 {
+  	font-weight: bold;
+  }
+  */
+}
+.project-viewer.app .body > .contents .mainbar .task .task-title .icon {
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+}
+.project-viewer.app .body > .contents .mainbar .task .task-title .icon i {
+  font-size: 40px;
+  display: unset;
+  margin: auto;
+}
+.project-viewer.app .body > .contents .mainbar .task .title.form-group {
+  margin: 0;
+}
+.project-viewer.app .body > .contents .mainbar .task .title.form-group .controls .form-control-static {
+  margin-bottom: 10px;
+}
+.project-viewer.app .body > .contents .mainbar .task .panel + .panel {
+  margin-top: 10px;
+}
+.project-viewer.app .body > .contents .mainbar .task .buttons {
+  float: right;
+  margin-top: -5px;
+}
+
+.project-viewer.app .body > .contents .mainbar .task .task-info .task-title {
+  width: 100%;
+  text-align: center;
+}
+.project-viewer.app .body > .contents .mainbar .task .task-info .task-title .control-label, .project-viewer.app .body > .contents .mainbar .task .task-info .task-title .task-icon {
+  width: 100%;
+  text-align: center;
+  padding: 0;
+}
+.project-viewer.app .body > .contents .mainbar .task .task-info .task-title .controls {
+  width: 100%;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                              _search-viewer.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.search-viewer.app .form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.search-viewer.app .search-bar {
+  display: block;
+  padding: 0;
+}
+.search-viewer.app .search-bar .input {
+  display: block;
+  position: relative;
+  text-align: left;
+  padding: 0;
+}
+.search-viewer.app .search-bar .input [contenteditable=true] {
+  font-family: inherit;
+  font-weight: normal;
+  font-size: inherit;
+  outline: none;
+  flex-grow: 1;
+  line-height: 25px;
+  padding: 10px;
+  float: left;
+  min-width: calc(100% - 75px);
+}
+.search-viewer.app .search-bar .input [contenteditable=true] * {
+  font-family: inherit !important;
+  font-weight: normal !important;
+  font-size: inherit !important;
+}
+.search-viewer.app .search-bar .input [contenteditable=true]:empty:before {
+  content: var(--search-placeholder);
+  color: #a0a0c6;
+}
+.search-viewer.app .search-bar .input [contenteditable=true]:empty + .buttons .submit {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.search-viewer.app .search-bar .input [contenteditable=true]:empty + .buttons .clear {
+  display: none;
+}
+.search-viewer.app .search-bar .input .buttons {
+  margin: 10px;
+  padding: 0;
+}
+.search-viewer.app .search-bar.text {
+  --search-placeholder: "Enter search terms.";
+}
+.search-viewer.app .search-bar.name {
+  --search-placeholder: "Firstname Lastname.";
+}
+.search-viewer.app .search-bar.url {
+  --search-placeholder: "Enter a URL.";
+}
+.search-viewer.app .well {
+  line-height: 25px;
+  max-height: 300px;
+  overflow: auto;
+  margin-bottom: 0;
+}
+.search-viewer.app .well .buttons {
+  display: flex;
+  height: 25px;
+  margin-left: auto;
+  float: right;
+}
+.search-viewer.app .search-panel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.search-viewer.app .search-panel .panel {
+  display: inline-block;
+  text-align: center;
+  width: 75%;
+  padding: 20px;
+  margin: auto;
+  color: #a0a0c6;
+}
+.search-viewer.app .search-panel .panel .icon i {
+  font-size: 300%;
+  color: #8080b3;
+  margin-bottom: 10px;
+}
+.search-viewer.app .search-panel .panel input[type=file] {
+  margin-bottom: 10px;
+}
+
+.search-results .well {
+  margin-bottom: 10px !important;
+}
+.search-results .options {
+  display: block;
+}
+.search-results .options > div {
+  display: inline-block;
+  margin: 0 5px;
+  margin-bottom: 15px;
+}
+.search-results .items > .item-list {
+  padding: 0;
+}
+.search-results .score {
+  background: none !important;
+}
+.search-results .score .rating {
+  display: inline-flex;
+  /*
+  .bar {
+  	display: inline-block;
+  	width: 5px;
+  	height: 10px;
+  	margin: 2px 1px;
+  }
+  */
+}
+.search-results .score .rating i.fa.fa-star {
+  font-size: 10px !important;
+  margin: 2px 1px !important;
+}
+.search-results .well {
+  line-height: 25px;
+}
+.search-results .well .buttons {
+  display: flex;
+  height: 25px;
+  margin-left: auto;
+  float: right;
+}
+.search-results .tab-content + .buttons {
+  margin-top: 20px;
+}
+.search-results .credits {
+  margin-top: 10px;
+}
+
+.page .search-results .items {
+  border-width: 1px;
+  border-style: solid;
+  overflow: hidden;
+}
+
+.page .search-results .well .buttons {
+  display: none;
+}
+
+.app .search-results {
+  padding-bottom: 10px;
+}
+.app .search-results .tab-content + .buttons {
+  display: none;
+}
+
+.round .search-bar .input {
+  border-radius: 15px;
+}
+.round .search-bar .input::-webkit-scrollbar-track {
+  border-radius: 15px;
+}
+
+.rounded .search-bar .input {
+  border-radius: 5px;
+}
+.rounded .search-bar .input::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+.page .search-results .owner {
+  display: none !important;
+}
+
+/******************************************************************************\
+|                                                                              |
 |                           _settings-browser.scss                             |
 |                                                                              |
 |******************************************************************************|
@@ -3763,6 +5216,562 @@ body[device=phone] .settings-manager.app .desktop.preview .app-preview.calendar 
 }
 body[device=phone] .settings-manager.app .desktop.preview .app-preview.audio_player {
   background-image: url("../images/settings/transparent/mobile/mobile-audio.png");
+}
+
+/******************************************************************************\
+|                                                                              |
+|                                _terminal.scss                                |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.terminal.app .body .contents {
+  color: #00ff00;
+  background-color: black;
+  padding: 10px;
+}
+.terminal.app .body .contents .command-line {
+  font-family: "Monaco", sans-serif;
+  display: flex;
+  white-space: pre-wrap;
+}
+.terminal.app .body .contents .command-line .prompt:before {
+  content: "> ";
+}
+.terminal.app .body .contents .command-line .cursor {
+  color: darkgrey;
+}
+.terminal.app .body .contents .command-line .cursor:after {
+  content: "▊";
+}
+
+/******************************************************************************\
+|                                                                              |
+|                               _text-editor.scss                              |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.text-editor.app .body textarea {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  padding: 10px;
+  resize: none;
+  background: none;
+}
+.text-editor.app .body textarea:not(.highlighted) {
+  outline: none;
+}
+.text-editor.app .footer-bar #message-bar {
+  flex-grow: 1;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                            _theme-manager.scss                               |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.theme-manager.app .mainbar > .content {
+  padding: 10px;
+  height: 100%;
+  overflow: auto;
+}
+.theme-manager.app .mainbar > .content .desktop.preview {
+  display: inline-block;
+  width: 200px;
+  height: 133px;
+  border-color: black;
+}
+.theme-manager.app .mainbar > .content .desktop.preview .launcher-preview {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.theme-manager.app .mainbar > .content .controls-preview .controls {
+  width: 75%;
+  margin: 25px auto;
+  text-align: center;
+}
+.theme-manager.app .mainbar > .content .controls-preview .controls .menu-bar {
+  width: 200px;
+  height: 50px;
+}
+.theme-manager.app .mainbar > .content .controls-preview .controls .menu-bar .nav-menus {
+  float: left;
+}
+.theme-manager.app .mainbar > .content .controls-preview .controls .menu-bar .nav-menus .dropdown {
+  display: block;
+}
+.theme-manager.app .mainbar > .content .desktop-app > .controls,
+.theme-manager.app .mainbar > .content .background-image > .controls {
+  text-align: center;
+}
+
+body[device=desktop] .theme-manager.app .desktop.preview {
+  width: 200px;
+  height: 133px;
+}
+body[device=desktop] .theme-manager.app .desktop.preview .launcher-preview.taskbar {
+  background-image: url("../images/settings/transparent/desktop/desktop-task-bar.png");
+}
+body[device=desktop] .theme-manager.app .desktop.preview .launcher-preview.dock {
+  background-image: url("../images/settings/transparent/desktop/desktop-dock-bar.png");
+}
+body[device=desktop] .theme-manager.app .desktop.preview .launcher-preview.menu {
+  background-image: url("../images/settings/transparent/desktop/desktop-run-menu.png");
+}
+
+body[device=tablet] .theme-manager.app .desktop.preview {
+  width: 200px;
+  height: 266px;
+}
+body[device=tablet] .theme-manager.app .desktop.preview .launcher-preview.taskbar {
+  background-image: url("../images/settings/transparent/tablet/tablet-task-bar.png");
+}
+body[device=tablet] .theme-manager.app .desktop.preview .launcher-preview.dock {
+  background-image: url("../images/settings/transparent/tablet/tablet-dock-bar.png");
+}
+body[device=tablet] .theme-manager.app .desktop.preview .launcher-preview.menu {
+  background-image: url("../images/settings/transparent/tablet/tablet-run-menu.png");
+}
+
+body[device=phone] .theme-manager.app .desktop.preview {
+  width: 133px;
+  height: 236px;
+}
+body[device=phone] .theme-manager.app .desktop.preview .launcher-preview.taskbar {
+  background-image: url("../images/settings/transparent/mobile/mobile-task-bar.png");
+}
+body[device=phone] .theme-manager.app .desktop.preview .launcher-preview.dock {
+  background-image: url("../images/settings/transparent/mobile/mobile-dock-bar.png");
+}
+body[device=phone] .theme-manager.app .desktop.preview .launcher-preview.menu {
+  background-image: url("../images/settings/transparent/mobile/mobile-run-menu.png");
+}
+
+/******************************************************************************\
+|                                                                              |
+|                             _theme-picker.scss                               |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.theme-picker.app .body {
+  width: 100%;
+  height: 100%;
+}
+.theme-picker.app .body .contents {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.theme-picker.app .body .contents label {
+  display: block;
+  text-align: center;
+}
+.theme-picker.app .body .contents .items {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  min-height: 0;
+  overflow: auto;
+}
+.theme-picker.app .body .contents .items .icon-grid {
+  margin: auto;
+  min-height: auto;
+}
+.theme-picker.app .body .contents .items .card-grid {
+  width: 100%;
+}
+.theme-picker.app .body .contents .well {
+  flex-shrink: 0;
+  text-align: center;
+  margin: 0;
+  margin-top: 10px;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                                  _timer.scss                                 |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.timer.app .body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+}
+.timer.app .body .face {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  margin: auto;
+}
+.timer.app .body .face .pie {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+}
+.timer.app .body .face .digital.display {
+  position: absolute;
+  display: flex;
+  width: 190px;
+  height: 190px;
+  margin: 5px;
+  padding: 10px;
+  border-width: 0;
+  border-radius: 50%;
+}
+.timer.app .body .face .digital.display .digits {
+  margin: auto;
+  padding: 10px 0;
+}
+.timer.app .body .face .digital.display .digits .hours, .timer.app .body .face .digital.display .digits .minutes, .timer.app .body .face .digital.display .digits .seconds, .timer.app .body .face .digital.display .digits .hundredths, .timer.app .body .face .digital.display .digits .colons {
+  display: inline-block;
+  font-size: 60px;
+  line-height: 55px;
+}
+.timer.app .body .face .digital.display .digits .colons {
+  display: inline-block;
+  font-size: 90px;
+  vertical-align: super;
+  line-height: 0;
+}
+
+body[device=tablet] .timer.app .body {
+  transform: scale(2);
+}
+
+[os=windows] .timer.app .body .face .digital.display {
+  padding: 0;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                              _topic-browser.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+/******************************************************************************\
+|                                                                              |
+|                               _topic-viewer.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.topic-viewer.app .body > .contents .sidebar .topics.panel .items .subscribed.badge {
+  display: none;
+}
+.topic-viewer.app .body > .contents .mainbar .tab-pane {
+  overflow: auto;
+}
+.topic-viewer.app .body > .contents .mainbar .tab-pane > .topic {
+  padding: 10px;
+  min-height: 100%;
+}
+.topic-viewer.app .body > .contents .mainbar .tab-pane > .post {
+  margin: 10px;
+}
+.topic-viewer.app .body > .contents .mainbar .tab-pane > .post.selected {
+  margin: 9px;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                               _tune-editor.scss                              |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.tune-editor.app .header-bar .track-bar .toolbar .elapsed-time {
+  min-width: 50px;
+  line-height: 28px;
+  padding-left: 5px;
+}
+.tune-editor.app .header-bar .track-bar .toolbar .repeat {
+  margin-left: 10px;
+}
+.tune-editor.app .header-bar .track-bar .toolbar .track-length {
+  min-width: 50px;
+  line-height: 28px;
+  text-align: center;
+}
+.tune-editor.app .header-bar .track-bar .toolbar input[type=range] {
+  display: inline-block;
+  height: 28px;
+}
+.tune-editor.app .body > .contents > .sidebar .badges {
+  display: none;
+}
+.tune-editor.app .body > .contents > .mainbar {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content #tabs {
+  flex-shrink: 0;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content .tab-content {
+  position: relative;
+  flex-grow: 1;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content .tab-content::after {
+  content: "";
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content .tab-content .tab-pane {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content .tab-content .tab-pane .split-view {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content .tab-content .tab-pane .split-view .mainbar {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content .tab-content .tab-pane .split-view .mainbar .cursor {
+  background-color: grey;
+  opacity: 0.5;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content .tab-content .tab-pane .split-view .sidebar {
+  overflow: hidden;
+  border: none;
+}
+.tune-editor.app .body > .contents > .mainbar .tabbed-content .tab-content .tab-pane .split-view .sidebar textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  padding: 10px;
+  outline: none;
+  overflow: auto;
+  border: none;
+  border-radius: 0;
+}
+.tune-editor.app .abcjs-note_selected {
+  fill: grey !important;
+}
+
+body:not(.dark) .full-screen .tune-editor.app .mainbar {
+  background: white;
+}
+
+.light.colored .tune-editor.app .abcjs-note_selected {
+  fill: grey !important;
+}
+
+.dark.colored .tune-editor.app svg path, .dark.colored .tune-editor.app svg text {
+  fill: white;
+}
+
+/******************************************************************************\
+|                                                                              |
+|                               _video-player.scss                             |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.video-player.app .header-bar .clip-bar .toolbar .elapsed-time {
+  min-width: 50px;
+  padding-left: 5px;
+}
+.video-player.app .header-bar .clip-bar .toolbar .repeat {
+  margin-left: 10px;
+}
+.video-player.app .header-bar .clip-bar .toolbar .clip-duration {
+  min-width: 50px;
+  text-align: center;
+}
+.video-player.app .header-bar .clip-bar .toolbar input[type=range] {
+  display: inline-block;
+}
+.video-player.app .body > .contents .mainbar .video {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.video-player.app .body > .contents .mainbar .video video:not(.loading) {
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.video-player.app .footer-bar {
+  display: flex;
+  text-align: center;
+}
+.video-player.app .footer-bar .nav-bar {
+  flex-grow: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+.video-player.app .footer-bar .file-info {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@media (min-width: 480px) {
+  .video-player.app .header-bar .clip-bar input[type=range] {
+    width: 100px;
+  }
+  .video-player.app .header-bar .volume-bar input[type=range] {
+    width: 75px;
+  }
+}
+/******************************************************************************\
+|                                                                              |
+|                               _web-browser.scss                              |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.web-browser.app {
+  height: 100%;
+  overflow: hidden;
+}
+.web-browser.app .body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.web-browser.app .body .sidebar .favicon {
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+}
+.web-browser.app .body .contents {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.web-browser.app .body .contents .web {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
 }
 
 /******************************************************************************\
@@ -3986,22 +5995,6 @@ body.brown {
   --secondary-color: hsl(30, 30%, 50%);
 }
 
-/******************************************************************************\
-|                                                                              |
-|                              _text-colors.scss                               |
-|                                                                              |
-|******************************************************************************|
-|                                                                              |
-|        This defines various CSS styles used in this application.             |
-|                                                                              |
-|        Author(s): Abe Megahed                                                |
-|                                                                              |
-|        This file is subject to the terms and conditions defined in           |
-|        'LICENSE.txt', which is part of this source code distribution.        |
-|                                                                              |
-|******************************************************************************|
-|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
-\******************************************************************************/
 /******************************************************************************\
 |                                                                              |
 |                                  _index.scss                                 |

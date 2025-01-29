@@ -19,6 +19,169 @@ SET NAMES utf8mb4;
 /*!40101 SET @OLD_SQL_MODE='NO_AUTO_VALUE_ON_ZERO', SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+# Dump of table chat_attachments
+# ------------------------------------------------------------
+
+CREATE TABLE `chat_attachments` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `message_id` char(36) NOT NULL,
+  `path` varchar(1024) NOT NULL DEFAULT '',
+  `copy` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `message_id` (`message_id`),
+  CONSTRAINT `chat_attachments_ibfk_1` FOREIGN KEY (`message_id`) REFERENCES `chat_messages` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table chat_invitations
+# ------------------------------------------------------------
+
+CREATE TABLE `chat_invitations` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `chat_id` char(36) NOT NULL,
+  `sender_id` char(36) NOT NULL,
+  `recipient_id` char(36) NOT NULL,
+  `message` varchar(1024) DEFAULT NULL,
+  `accepted_at` timestamp NULL DEFAULT NULL,
+  `declined_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `chat_id` (`chat_id`),
+  KEY `sender_id` (`sender_id`),
+  KEY `recipient_id` (`recipient_id`),
+  CONSTRAINT `chat_invitations_ibfk_1` FOREIGN KEY (`chat_id`) REFERENCES `chats` (`id`),
+  CONSTRAINT `chat_invitations_ibfk_2` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `chat_invitations_ibfk_3` FOREIGN KEY (`recipient_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table chat_memberships
+# ------------------------------------------------------------
+
+CREATE TABLE `chat_memberships` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `chat_id` char(36) NOT NULL,
+  `member_id` char(36) NOT NULL,
+  `invitation_id` char(36) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `chat_id` (`chat_id`),
+  KEY `member_id` (`member_id`),
+  KEY `invitation_id` (`invitation_id`),
+  CONSTRAINT `chat_memberships_ibfk_1` FOREIGN KEY (`chat_id`) REFERENCES `chats` (`id`),
+  CONSTRAINT `chat_memberships_ibfk_2` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table chat_messages
+# ------------------------------------------------------------
+
+CREATE TABLE `chat_messages` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `chat_id` char(36) NOT NULL,
+  `user_id` char(36) NOT NULL,
+  `check_in_id` char(36) DEFAULT NULL,
+  `message` varchar(1024) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `chat_id` (`chat_id`),
+  CONSTRAINT `chat_messages_ibfk_1` FOREIGN KEY (`chat_id`) REFERENCES `chats` (`id`),
+  CONSTRAINT `chat_messages_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table chats
+# ------------------------------------------------------------
+
+CREATE TABLE `chats` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `user_id` char(36) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `chats_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table check_ins
+# ------------------------------------------------------------
+
+CREATE TABLE `check_ins` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `user_id` char(36) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `description` varchar(1024) DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `zoom_level` float DEFAULT NULL,
+  `checked_out_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `check_ins_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table comment_attachments
+# ------------------------------------------------------------
+
+CREATE TABLE `comment_attachments` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `comment_id` char(36) NOT NULL,
+  `path` varchar(1024) NOT NULL DEFAULT '',
+  `copy` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `comment_id` (`comment_id`),
+  CONSTRAINT `comment_attachments_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table comments
+# ------------------------------------------------------------
+
+CREATE TABLE `comments` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `post_id` char(36) NOT NULL,
+  `user_id` char(36) NOT NULL,
+  `message` varchar(4096) DEFAULT NULL,
+  `accepted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `post_id` (`post_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
+  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 # Dump of table connection_requests
 # ------------------------------------------------------------
 
@@ -173,6 +336,26 @@ CREATE TABLE `item_places` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+
+# Dump of table likes
+# ------------------------------------------------------------
+
+CREATE TABLE `likes` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `item_id` char(36) NOT NULL,
+  `item_type` varchar(255) NOT NULL,
+  `user_id` char(36) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 # Dump of table links
 # ------------------------------------------------------------
 
@@ -265,6 +448,104 @@ CREATE TABLE `places` (
 
 
 
+# Dump of table post_attachments
+# ------------------------------------------------------------
+
+CREATE TABLE `post_attachments` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `post_id` char(36) NOT NULL,
+  `path` varchar(1024) NOT NULL DEFAULT '',
+  `copy` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `post_id` (`post_id`),
+  CONSTRAINT `post_attachments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table posts
+# ------------------------------------------------------------
+
+CREATE TABLE `posts` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `user_id` char(36) NOT NULL,
+  `topic_id` char(36) DEFAULT NULL,
+  `check_in_id` char(36) DEFAULT NULL,
+  `message` varchar(4096) DEFAULT NULL,
+  `public` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `topic_id` (`topic_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`),
+  CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table projects
+# ------------------------------------------------------------
+
+CREATE TABLE `projects` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `user_id` char(36) NOT NULL,
+  `name` varchar(256) DEFAULT NULL,
+  `description` varchar(1024) DEFAULT NULL,
+  `icon_path` varchar(1024) DEFAULT NULL,
+  `keywords` varchar(1024) DEFAULT NULL,
+  `public` tinyint(1) DEFAULT NULL,
+  `private` tinyint(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table replies
+# ------------------------------------------------------------
+
+CREATE TABLE `replies` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `user_id` char(36) NOT NULL,
+  `item_id` char(36) NOT NULL,
+  `item_type` varchar(255) NOT NULL,
+  `message` varchar(4096) DEFAULT NULL,
+  `accepted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `replies_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table reply_attachments
+# ------------------------------------------------------------
+
+CREATE TABLE `reply_attachments` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `reply_id` char(36) NOT NULL,
+  `path` varchar(1024) NOT NULL DEFAULT '',
+  `copy` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reply_id` (`reply_id`),
+  CONSTRAINT `reply_attachments_ibfk_1` FOREIGN KEY (`reply_id`) REFERENCES `replies` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 # Dump of table sessions
 # ------------------------------------------------------------
 
@@ -323,6 +604,99 @@ CREATE TABLE `shares` (
   CONSTRAINT `shares_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `shares_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table task_attachments
+# ------------------------------------------------------------
+
+CREATE TABLE `task_attachments` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `task_id` char(36) NOT NULL,
+  `path` varchar(1024) NOT NULL DEFAULT '',
+  `copy` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `task_id` (`task_id`),
+  CONSTRAINT `task_attachments_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table tasks
+# ------------------------------------------------------------
+
+CREATE TABLE `tasks` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `user_id` char(36) NOT NULL,
+  `project_id` char(36) DEFAULT NULL,
+  `kind` varchar(16) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `description` varchar(1024) DEFAULT NULL,
+  `keywords` varchar(1024) DEFAULT NULL,
+  `priority` int(11) DEFAULT NULL,
+  `status` varchar(16) DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `project_id` (`project_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`),
+  CONSTRAINT `tasks_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table topic_invitations
+# ------------------------------------------------------------
+
+CREATE TABLE `topic_invitations` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `topic_id` char(36) NOT NULL,
+  `sender_id` char(36) NOT NULL,
+  `recipient_id` char(36) NOT NULL,
+  `message` varchar(1024) DEFAULT NULL,
+  `accepted_at` timestamp NULL DEFAULT NULL,
+  `declined_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `topic_id` (`topic_id`),
+  KEY `sender_id` (`sender_id`),
+  KEY `recipient_id` (`recipient_id`),
+  CONSTRAINT `topic_invitations_ibfk_3` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`),
+  CONSTRAINT `topic_invitations_ibfk_4` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `topic_invitations_ibfk_5` FOREIGN KEY (`recipient_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table topics
+# ------------------------------------------------------------
+
+CREATE TABLE `topics` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `user_id` char(36) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(4096) DEFAULT NULL,
+  `icon_path` varchar(1024) DEFAULT NULL,
+  `keywords` varchar(1024) DEFAULT NULL,
+  `public` tinyint(1) NOT NULL DEFAULT '0',
+  `private` tinyint(1) NOT NULL DEFAULT '0',
+  `required` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `topics_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 # Dump of table user_accounts
@@ -693,6 +1067,25 @@ CREATE TABLE `user_profiles` (
 
 
 
+# Dump of table user_projects
+# ------------------------------------------------------------
+
+CREATE TABLE `user_projects` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `user_id` char(36) NOT NULL,
+  `project_id` char(36) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `user_projects_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `user_projects_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 # Dump of table user_schools
 # ------------------------------------------------------------
 
@@ -761,6 +1154,24 @@ CREATE TABLE `user_storage` (
 
 
 
+# Dump of table user_topics
+# ------------------------------------------------------------
+
+CREATE TABLE `user_topics` (
+  `id` char(36) NOT NULL COMMENT 'primary key',
+  `user_id` char(36) NOT NULL,
+  `topic_id` char(36) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `topic_id` (`topic_id`),
+  CONSTRAINT `user_topics_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `user_topics_ibfk_2` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 # Dump of table user_websites
 # ------------------------------------------------------------
@@ -798,6 +1209,20 @@ CREATE TABLE `users` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table wind_stations
+# ------------------------------------------------------------
+
+CREATE TABLE `wind_stations` (
+  `station_id` varchar(5) NOT NULL COMMENT 'primary key',
+  `latitude` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  PRIMARY KEY (`station_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
