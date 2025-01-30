@@ -17,7 +17,9 @@
 
 import ImageFile from '../../../models/storage/media/image-file.js';
 import Directory from '../../../models/storage/directories/directory.js';
+import ImageGenerator from '../../../models/ai/image-generator.js';
 import Items from '../../../collections/storage/items.js';
+import ImageGenerators from '../../../collections/ai/image-generators.js';
 import AppSplitView from '../../../views/apps/common/app-split-view.js';
 import Loadable from '../../../views/behaviors/effects/loadable.js';
 import ItemShareable from '../../../views/apps/common/behaviors/sharing/item-shareable.js';
@@ -67,6 +69,11 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 			this.directory = this.collection.at(0).getDirectory();
 		}
 
+		// set attributes
+		//
+		this.generators = new ImageGenerators();
+		this.generators.fetch();
+
 		// bind gesture event handlers
 		//
 		this.$el.on('gesturestart', (event) => {
@@ -110,12 +117,6 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 		}
 	},
 
-	hasSelectedItems: function(kind) {
-		if (this.hasChildView('sidebar')) {
-			return this.getChildView('sidebar').hasSelectedItems(kind);
-		}
-	},
-
 	hasImageView: function() {
 		return this.hasChildView('mainbar mainbar');
 	},
@@ -131,6 +132,18 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 	//
 	// getting methods
 	//
+
+	getGenerator: function(name) {
+		let generator = this.generators.getByName(name);
+
+		// for backward compatibility, get by id
+		//
+		if (!generator) {
+			generator = this.generators.getById(name);
+		}
+
+		return generator;
+	},
 
 	getImageView: function() {
 		return this.getChildView('mainbar mainbar');
@@ -232,6 +245,49 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 
 	getStatusBarView: function() {
 		return FooterBarView.prototype.getStatusBarView();
+	},
+
+	getDescription: function() {
+		if (!this.hasSelected()) {
+			return;
+		}
+
+		let item = this.getSelectedModel();
+		return item.has('exif')? item.get('exif')['Description'] : undefined;
+	},
+
+	getMake: function() {
+		if (!this.hasSelected()) {
+			return;
+		}
+
+		let item = this.getSelectedModel();
+		let exif = item.has('exif')? item.get('exif') : null;
+		return exif? exif['Make'] : undefined;
+	},
+
+	getMetadata: function() {
+		if (!this.hasSelected()) {
+			return;
+		}
+
+		let item = this.getSelectedModel();
+		let exif = item.has('exif')? item.get('exif') : [];
+		let metadata = ImageGenerator.getMetadata(exif);
+
+		return metadata;
+	},
+
+	getUnixTimestamp: function() {
+
+		// get time since 1970 in seconds
+		//
+		return Math.floor(Date.now() / 1000);
+	},
+
+	getGalleryUrl: function() {
+		let baseUrl = window.location.origin + window.location.pathname;
+		return baseUrl + '#gallery';
 	},
 
 	//
@@ -407,6 +463,12 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 
 	openDirectory: function(directory) {
 
+		// disable generate bar
+		//
+		if (this.hasChildView('header generate')) {
+			this.getChildView('header generate').setDisabled();
+		}
+
 		// set attributes
 		//
 		this.directory = directory;
@@ -498,6 +560,12 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 		//
 		this.hideMessage();
 
+		// disable generate bar
+		//
+		if (this.hasChildView('header generate')) {
+			this.getChildView('header generate').setDisabled();
+		}
+
 		// set attributes
 		//
 		this.setModel(model);
@@ -520,31 +588,6 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 		if (this.hasChildView('sidebar')) {
 			this.getChildView('sidebar').setModel(model);
 		}
-	},
-
-	//
-	// uploading methods
-	//
-
-	uploadImages: function(items, directory, options) {
-
-		// upload items to home directory
-		//
-		this.uploadItems(items, directory, {
-			show_progress: true,
-			overwrite: true,
-
-			// callbacks
-			//
-			success: (items) => {
-
-				// perform callback
-				//
-				if (options && options.success) {
-					options.success(items);
-				}
-			}
-		});
 	},
 
 	downloadItems: function() {
@@ -664,13 +707,11 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 
 		// request full screen
 		//
-		let imageView = this.getImageView();
-		if (imageView) {
-			if (!imageView.isFullScreen()) {
-				imageView.requestFullScreen();
-			} else {
-				imageView.exitFullScreen();
-			}
+		let imageView = this.getChildView('mainbar mainbar');
+		if (!imageView.isFullScreen()) {
+			imageView.requestFullScreen();
+		} else {
+			imageView.exitFullScreen();
 		}
 	},
 
@@ -717,6 +758,192 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 	},
 
 	//
+	// generating methods
+	//
+
+	generate: function(options) {
+		let generator = this.getGenerator(options.generator);
+
+		// check for generator
+		//
+		if (!generator) {
+			return;
+		}
+
+		// show loading spinner
+		//
+		this.showSpinner();
+
+		// call image generator
+		//
+		generator.generate(_.extend({
+			directory: this.directory.get('path'),
+			name: this.getUnixTimestamp()
+		}, options), {
+
+			// callbacks
+			//
+			success: (data) => {
+
+				// hide loading spinner
+				//
+				this.hideSpinner();
+
+				// check response type
+				//
+				if (typeof(data) == 'string') {
+					let message;
+
+					// parse error data
+					//
+					data = JSON.parse(data);
+					if (data.message) {
+						message = data.message;
+					} else if (data.error && data.error.message) {
+						message = data.error.message;
+					} else if (data.err) {
+						message = data.err;
+					} else {
+						message = 'Could not generate images.';
+					}
+
+					// add trailing period
+					//
+					if (!message.endsWith('.')) {
+						message += '.';
+					}
+
+					// show error dialog
+					//
+					application.error({
+						title: 'Image Generation Error',
+						message: message
+					});
+				} else {
+
+					// add image files
+					//
+					for (let i = 0; i < data.length; i++) {
+						this.collection.add(new ImageFile(data[i]));
+					}
+
+					// show last image
+					//
+					this.select('last');
+				}
+			},
+
+			error: (response) => {
+
+				// hide loading spinner
+				//
+				this.hideSpinner();
+
+				// show error
+				//
+				application.error({
+					message: response && response.responseText? response.responseText : "Your request could not be completed."
+				});
+			}
+		});
+	},
+
+	enhance: function(options) {
+		let generator = this.getGenerator(options.generator);
+
+		/*
+		if (generator.get('name') != 'stability.ai') {
+			application.notify({
+				'message': 'Please use the stability.ai generator for enhancing images.'
+			});
+			this.hideSpinner();
+			return;
+		}
+		*/
+
+		// check for generator
+		//
+		if (!generator) {
+			return;
+		}
+
+		// show loading spinner
+		//
+		this.showSpinner();
+
+		// call image generator
+		//
+		generator.enhance(this.getSelectedModel(), _.extend({
+			directory: this.directory.get('path'),
+			name: this.getUnixTimestamp()
+		}, options), {
+
+			// callbacks
+			//
+			success: (data) => {
+
+				// hide loading spinner
+				//
+				this.hideSpinner();
+
+				// check response type
+				//
+				if (typeof(data) == 'string') {
+					let message;
+
+					// parse error data
+					//
+					data = JSON.parse(data);
+					if (data.message) {
+						message = data.message;
+					} else if (data.error && data.error.message) {
+						message = data.error.message;
+					} else if (data.err) {
+						message = data.err;
+					} else {
+						message = 'Could not generate images.';
+					}
+
+					// show error dialog
+					//
+					application.error({
+						title: 'Image Enhancement Error',
+						message: message
+					});
+				} else {
+
+					// add image files
+					//
+					for (let i = 0; i < data.length; i++) {
+						this.collection.add(new ImageFile(data[i]));
+					}
+
+					// show last image
+					//
+					this.select('last');
+				}
+
+				// show last image
+				//
+				this.select('last');
+			},
+
+			error: () => {
+
+				// hide loading spinner
+				//
+				this.hideSpinner();
+
+				// show error
+				//
+				application.error({
+					message: "Your request could not be completed."
+				});
+			}
+		});
+	},
+
+	//
 	// rendering methods
 	//
 
@@ -726,18 +953,15 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 		//
 		AppSplitView.prototype.onRender.call(this);
 
-		// add tooltip triggers
-		//
-		this.addTooltips();
-	},
-
-	onAttach: function() {
-
 		// load images from home directory
 		//
 		if (this.collection.length == 0) {
 			this.openDirectory(this.getHomeDirectory());
 		}
+
+		// add tooltip triggers
+		//
+		this.addTooltips();
 	},
 
 	update: function() {
@@ -756,7 +980,10 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 	},
 
 	showHelpMessage: function() {
-		this.showMessage("No images.", {
+
+		// show help message
+		//
+		this.showMessage("No images. Click to open.", {
 			icon: '<i class="far fa-file-image"></i>',
 
 			// callbacks
@@ -777,6 +1004,14 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 		this.getChildView('sidebar').clear();
 		this.getChildView('mainbar').clear();
 		this.showHelpMessage();
+	},
+
+	showGallery: function() {
+		application.showUrl(this.getGalleryUrl());
+	},
+
+	showTokens: function() {
+		application.launch('token_manager');
 	},
 
 	//
@@ -828,6 +1063,14 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 		});
 	},
 
+	addCaption: function(caption) {
+		this.getChildView('content mainbar').addCaption(caption);
+	},
+
+	removeCaptions: function() {
+		this.getChildView('content mainbar').removeCaptions();
+	},
+	
 	//
 	// footer bar rendering methods
 	//
@@ -840,35 +1083,89 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 	// dialog rendering methods
 	//
 
-	showOpenDialog: function() {
-		import(
-			'../../../views/apps/file-browser/dialogs/files/open-items-dialog-view.js'
-		).then((OpenItemsDialogView) => {
-			
-			// show open items dialog
-			//
-			this.show(new OpenItemsDialogView.default({
+	showNewImageDialog: function() {
 
-				// start with home directory
-				//
-				model: application.getDirectory(),
+		// check for remaining tokens
+		//
+		if (!this.generators.hasTokens()) {
+			application.notify({
+				message: "You have no more tokens.",
 
 				// callbacks
 				//
-				onopen: (items) => {
-					if (items) {
-						this.openItems(items);
-					}
+				accept: () => {
+					application.launch('token_manager');
+				}
+			});
+			return;
+		}
+
+		import(
+			'../../../views/apps/image-viewer/dialogs/images/new-image-dialog-view.js'
+		).then((NewImageDialogView) => {
+
+			// show new image dialog
+			//
+			this.show(new NewImageDialogView.default({
+				model: this.getGenerator(this.getMake()),
+				collection: this.generators,
+
+				// options
+				//
+				prompt: this.getDescription(),
+				metadata: this.getMetadata(),
+				save_prompt: this.preferences.get('save_prompt'),
+
+				// callbacks
+				//
+				onsubmit: (data) => {
+					this.generate(data);
 				}
 			}));
 		});
 	},
 
-	showOpenImagesDialog: function() {
+	showEnhanceImageDialog: function() {
+
+		// check for remaining tokens
+		//
+		if (!this.generators.hasTokens()) {
+			application.notify({
+				message: "You have no more tokens."
+			});
+			return;
+		}
+
+		import(
+			'../../../views/apps/image-viewer/dialogs/images/enhance-image-dialog-view.js'
+		).then((EnhanceImageDialogView) => {
+
+			// show enhance image dialog
+			//
+			this.show(new EnhanceImageDialogView.default({
+				model: this.getGenerator(this.getMake()),
+				collection: this.generators,
+
+				// options
+				//
+				prompt: this.getDescription(),
+				metadata: this.getMetadata(),
+				save_prompt: this.preferences.get('save_prompt'),
+
+				// callbacks
+				//
+				onsubmit: (data) => {
+					this.enhance(data);
+				}
+			}));
+		});
+	},
+
+	showOpenDialog: function() {
 		import(
 			'../../../views/apps/image-viewer/dialogs/images/open-images-dialog-view.js'
 		).then((OpenImagesDialogView) => {
-
+			
 			// show open images dialog
 			//
 			this.show(new OpenImagesDialogView.default({
@@ -896,7 +1193,7 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 			// show image file info dialog
 			//
 			this.show(new ImageFileInfoDialogView.default(_.extend({
-				model: this.model
+				model: this.model.clone()
 			}, options)));				
 		});	
 	},
@@ -1006,6 +1303,36 @@ export default AppSplitView.extend(_.extend({}, Loadable, ItemShareable, ItemFav
 		//
 		if (image) {
 			this.hideMessage();
+		}
+
+		// add image caption
+		//
+		if (this.model) {
+			this.model.fetchExif({
+
+				// callbacks
+				//
+				success: (exif) => {
+
+					// update model
+					//
+					this.model.set('exif', exif);
+
+					// update main view
+					//
+					if (exif.Description && exif.Description != 'None') {
+						this.addCaption(exif.Description);
+					} else {
+						this.removeCaptions();
+					}
+
+					// update sidebar view
+					//
+					if (this.hasChildView('sidebar parameters')) {
+						this.getChildView('sidebar parameters').update();
+					}
+				}
+			});
 		}
 
 		// perform callback

@@ -1,23 +1,22 @@
 {
 	"general": {
 		"day_theme": {
-			"phone": "auto",
-			"tablet": "auto",
-			"desktop": "auto"
+			"phone": "dark",
+			"tablet": "dark",
+			"desktop": "dark"
 		},
 		"night_theme": {
-			"phone": "auto",
-			"tablet": "auto",
-			"desktop": "auto"
+			"phone": "dark",
+			"tablet": "dark",
+			"desktop": "dark"
 		},
 
 		"color_scheme": "colored",
-		"highlight_color": "blue",
-		"accent_color": "none",
+		"highlight_color": "magenta",
 		"material": "none",
 		"transparency": "translucent",
 
-		"corner_style": "rounded",
+		"corner_style": "round",
 		"sidebar_panels": false,
 		"label_icons": true,
 
@@ -34,10 +33,10 @@
 		"icon_unhighlight_effect": "none",
 		"icon_open_effect": "wobble",
 
-		"system_font": "Proxima Nova",
-		"title_font": null,
-		"label_font":  null,
+		"system_font": "Inter",
 		"heading_font": null,
+		"title_font": null,
+		"label_font": null,
 		"font_size": "normal"
 	},
 
@@ -60,7 +59,7 @@
 
 		"background_image": null,
 		"background_size": "tile",
-		"background_color": "grey",
+		"background_color": "auto",
 		"background_repeats": 5,
 
 		"desktop_sidebar_transparency": "transparent",
@@ -109,16 +108,16 @@
 		"tab_close_buttons": true,
 
 		"slider_material": "auto",
-		"slider_corners": "round",
+		"slider_corners": "auto",
 		"slider_handle_width": "medium",
 
-		"splitter_width": "narrow",
+		"splitter_width": "medium",
 		"splitter_handles": true,
-		"splitter_handle_width": "narrow",
+		"splitter_handle_width": "medium",
 
 		"scrollbar_material": "auto",
 		"scrollbar_width": "medium",
-		"scrollbar_corners": "round"
+		"scrollbar_corners": "auto"
 	},
 
 	"dialogs": {
@@ -153,9 +152,9 @@
 	},
 	
 	"sounds": {
-		"login": "magic",
+		"login": "startup",
 		"launch": null,
-		"logout": "chimes",
+		"logout": "end-transmission",
 
 		"cut": "scissors",
 		"copy": "double-click",
@@ -182,11 +181,11 @@
 		"add": "double-pop",
 		"remove": "pop",	
 		"send": "wiff",
-		"receive": "pling",		
+		"receive": "chimes up",	
 
-		"alert": "ting",	
+		"alert": "tribble",	
 		"notify": "bosuns-whistle",	
-		"warning": "cluck",
+		"warning": "angry-tribble",
 		"error": "pling",
 
 		"zoom-in": "whoosh",

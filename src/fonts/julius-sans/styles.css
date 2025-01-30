@@ -1,0 +1,10 @@
+/***************************************************************\
+|                          font styles                          |
+\***************************************************************/
+
+@font-face {
+	font-family: 'Julius Sans';
+	src: url('JuliusSansOne-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

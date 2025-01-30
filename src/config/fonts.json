@@ -5,6 +5,12 @@
 		"font-weight": "normal",
 		"url": null
 	},
+	"Artcraft": {
+		"font-family": "Artcraft, sans-serif",
+		"font-size": 14,
+		"font-weight": "normal",
+		"url": "fonts/artcraft/styles.css"
+	},
 	"Avant Garde": {
 		"font-family": "Avant Garde, Avantgarde, Century Gothic, CenturyGothic, AppleGothic, sans-serif",
 		"font-size": 13,
@@ -23,11 +29,11 @@
 		"font-weight": "normal",
 		"url": "fonts/bank-gothic/styles.css"
 	},
-	"Bryant": {
-		"font-family": "Bryant, sans-serif",
-		"font-size": 15,
+	"Bruno Ace": {
+		"font-family": "Bruno Ace, sans-serif",
+		"font-size": 13,
 		"font-weight": "normal",
-		"url": "fonts/bryant/styles.css"
+		"url": "fonts/bruno-ace/styles.css"
 	},
 	"Calibri": {
 		"font-family": "Calibri, sans-serif",
@@ -119,11 +125,23 @@
 		"font-weight": "normal",
 		"url": "fonts/inter/styles.css"
 	},
+	"Julius Sans": {
+		"font-family": "Julius Sans, sans-serif",
+		"font-size": 14,
+		"font-weight": "normal",
+		"url": "fonts/julius-sans/styles.css"
+	},
 	"Lato": {
 		"font-family": "Lato, sans-serif",
 		"font-size": 14,
 		"font-weight": "normal",
 		"url": "fonts/lato/styles.css"
+	},
+	"Limelight": {
+		"font-family": "Limelight, sans-serif",
+		"font-size": 14,
+		"font-weight": "normal",
+		"url": "fonts/limelight/styles.css"
 	},
 	"Lucida": {
 		"font-family": "Lucida Sans Unicode, Lucida Grande, Lucida Sans, sans-serif",
@@ -131,11 +149,23 @@
 		"font-weight": "normal",
 		"url": null
 	},
+	"Marcellus": {
+		"font-family": "Marcellus, sans-serif",
+		"font-size": 13,
+		"font-weight": "normal",
+		"url": "fonts/marcellus/styles.css"
+	},
 	"Montserrat": {
 		"font-family": "Montserrat, sans-serif",
 		"font-size": 13,
 		"font-weight": "normal",
 		"url": "fonts/montserrat/styles.css"
+	},
+	"Mysteria": {
+		"font-family": "Mysteria, sans-serif",
+		"font-size": 13,
+		"font-weight": "normal",
+		"url": "fonts/mysteria/styles.css"
 	},
 	"Noto Sans": {
 		"font-family": "Noto Sans, sans-serif",
@@ -145,7 +175,7 @@
 	},
 	"Open Sans": {
 		"font-family": "Open Sans, sans-serif",
-		"font-size": 13,
+		"font-size": 14,
 		"font-weight": "normal",
 		"url": "fonts/open-sans/styles.css"
 	},
@@ -160,12 +190,6 @@
 		"font-size": 14,
 		"font-weight": "normal",
 		"url": "fonts/proxima-nova/styles.css"
-	},
-	"Proxima Soft": {
-		"font-family": "Proxima Soft, sans-serif",
-		"font-size": 14,
-		"font-weight": "normal",
-		"url": "fonts/proxima-soft/styles.css"
 	},
 	"PT Sans": {
 		"font-family": "PT Sans, sans-serif",
@@ -238,11 +262,5 @@
 		"font-size": 14,
 		"font-weight": "normal",
 		"url": "fonts/ubuntu/styles.css"
-	},
-	"Varela Round": {
-		"font-family": "Varela Round, sans-serif",
-		"font-size": 14,
-		"font-weight": "normal",
-		"url": "fonts/varela/styles.css"
 	}
 }

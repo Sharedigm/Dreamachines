@@ -25,10 +25,22 @@ export default FileMenuView.extend({
 
 	items: [
 		{
+			"class": "new-image",
+			"icon": "far fa-image",
+			"name": "New Image",
+			"shortcut": "command-N"
+		},
+		{
+			"class": "new-folder",
+			"icon": "fa fa-folder",
+			"name": "New Folder",
+			"shortcut": "command-enter"
+		},
+		{
 			"class": "new-window",
 			"icon": "far fa-window-maximize",
 			"name": "New Window",
-			"shortcut": "command-enter"
+			"shortcut": "shift-command-enter"
 		},
 		"separator",
 		{
@@ -67,6 +79,12 @@ export default FileMenuView.extend({
 					"shortcut": "down arrow"
 				}
 			]
+		},
+		{
+			"class": "enhance-image",
+			"icon": "far fa-gem",
+			"name": "Enhance Image",
+			"shortcut": "command-E"
 		},
 		"separator",
 		{
@@ -110,6 +128,7 @@ export default FileMenuView.extend({
 			"shortcut": "delete"
 		},
 		"separator",
+		"separator",
 		{
 			"class": "close-window",
 			"icon": "fa fa-circle-xmark",
@@ -119,12 +138,15 @@ export default FileMenuView.extend({
 	],
 	
 	events: {
+		'click .new-image': 'onClickNewImage',
+		'click .new-folder': 'onClickNewFolder',
 		'click .new-window': 'onClickNewWindow',
 		'click .open-item': 'onClickOpenItem',
 		'click .open-first': 'onClickOpenFirst',
 		'click .open-prev': 'onClickOpenPrev',
 		'click .open-next': 'onClickOpenNext',
 		'click .open-last': 'onClickOpenLast',
+		'click .enhance-image': 'onClickEnhanceImage',
 		'click .add-favorites': 'onClickAddFavorites',
 		'click .remove-favorites': 'onClickRemoveFavorites',
 		'click .show-info': 'onClickShowInfo',
@@ -140,25 +162,25 @@ export default FileMenuView.extend({
 	enabled: function() {
 		let isSignedIn = application.isSignedIn();
 		let isOpen = this.parent.app.hasImage();
-		let directory = this.parent.app.directory;
 		let hasImages = this.parent.app.hasImages();
-		let hasSelectedItems = this.parent.app.hasSelectedItems();
-		let isDirectoryWritable = directory? directory.isWritableBy(application.session.user) : isSignedIn;
 		let hasSelectedFavorites = this.parent.app.hasSelectedFavorites();
 
 		return {
+			'new-image': isSignedIn,
+			'new-folder': isSignedIn,
 			'new-window': true,
 			'open-item': isSignedIn,
 			'open-first': hasImages,
 			'open-prev': hasImages,
 			'open-next': hasImages,
 			'open-last': hasImages,
+			'enhance-image': isSignedIn,
 			'favorites': true,
 			'add-favorites': true,
 			'remove-favorites': hasSelectedFavorites,
 			'show-info': isOpen,
 			'download-items': isOpen,
-			'delete-items': hasSelectedItems === true && isDirectoryWritable,
+			'delete-items': isSignedIn && isOpen,
 			'close-window': true
 		};
 	},
@@ -166,6 +188,14 @@ export default FileMenuView.extend({
 	//
 	// mouse event handling methods
 	//
+
+	onClickNewImage: function() {
+		this.parent.app.showNewImageDialog();
+	},
+
+	onClickNewFolder: function() {
+		this.parent.app.newFolder();
+	},
 
 	onClickOpenItem: function() {
 		this.parent.app.showOpenDialog();
@@ -187,12 +217,16 @@ export default FileMenuView.extend({
 		this.parent.app.select('last');
 	},
 
+	onClickEnhanceImage: function() {
+		this.parent.app.showEnhanceImageDialog();
+	},
+
 	onClickAddFavorites: function() {
 		this.parent.app.showAddFavoritesDialog();
 	},
 
 	onClickRemoveFavorites: function() {
-		this.parent.app.removeSelectedFavorites();
+		this.parent.app.removeFavorites(this.parent.app.getSelectedFavorites());
 	},
 
 	onClickShowInfo: function() {

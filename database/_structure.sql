@@ -322,6 +322,59 @@ CREATE TABLE `identity_providers` (
 
 
 
+# Dump of table image_generator_keys
+# ------------------------------------------------------------
+
+CREATE TABLE `image_generator_keys` (
+  `id` char(36) NOT NULL,
+  `user_id` char(36) DEFAULT NULL,
+  `image_generator` varchar(36) DEFAULT NULL,
+  `api_key` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table image_generator_tokens
+# ------------------------------------------------------------
+
+CREATE TABLE `image_generator_tokens` (
+  `id` char(36) NOT NULL,
+  `user_id` char(36) DEFAULT NULL,
+  `image_generator` varchar(36) DEFAULT NULL,
+  `num_used` int(11) DEFAULT NULL,
+  `num_remaining` int(11) DEFAULT NULL,
+  `requested_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table image_generators
+# ------------------------------------------------------------
+
+CREATE TABLE `image_generators` (
+  `id` char(36) NOT NULL,
+  `name` varchar(36) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  `enabled` tinyint(1) DEFAULT NULL,
+  `num_initial_tokens` int(11) DEFAULT NULL,
+  `num_tokens_per_request` int(11) DEFAULT NULL,
+  `requested_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 # Dump of table item_places
 # ------------------------------------------------------------
 

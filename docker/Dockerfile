@@ -16,7 +16,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_mysql zip
 
 # Install Imagemagick
-RUN pecl install imagick
+# RUN pecl install imagick
 
 # Install exif utility
 RUN docker-php-ext-install exif
@@ -31,20 +31,8 @@ RUN a2enmod rewrite
 # and update Apache configuration files
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
-# Copy the application code
-# COPY ./src /var/www/html
-
-# Copy the application data
-# COPY ./data /var/www/data
-
 # Set the working directory
 WORKDIR /var/www/html
-
-# Install composer
-# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Install project dependencies
-# RUN composer install
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www

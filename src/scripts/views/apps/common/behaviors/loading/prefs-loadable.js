@@ -170,6 +170,7 @@ export default {
 				});
 				break;
 
+			/*
 			case 'notification_center':
 				import(
 					'../../../notification-center/forms/preferences/preferences-form-view.js'
@@ -177,6 +178,7 @@ export default {
 					done(PrefsFormView.default);
 				});
 				break;
+			*/
 
 			case 'pdf_viewer':
 				import(
@@ -274,6 +276,7 @@ export default {
 				});
 				break;
 
+			/*
 			case 'theme_picker':
 				import(
 					'../../../theme-picker/forms/preferences/preferences-form-view.js'
@@ -281,10 +284,19 @@ export default {
 					done(PrefsFormView.default);
 				});
 				break;
+			*/
 
 			case 'timer':
 				import(
 					'../../../timer/forms/preferences/preferences-form-view.js'
+				).then((PrefsFormView) => {
+					done(PrefsFormView.default);
+				});
+				break;
+
+			case 'token_manager':
+				import(
+					'../../../token-manager/forms/preferences/preferences-form-view.js'
 				).then((PrefsFormView) => {
 					done(PrefsFormView.default);
 				});

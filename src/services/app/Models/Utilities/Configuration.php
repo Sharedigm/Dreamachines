@@ -21,6 +21,7 @@ namespace App\Models\Utilities;
 
 use Illuminate\Support\Facades\Request;
 use App\Models\BaseModel;
+use App\Models\AI\ImageGenerator;
 use App\Utilities\Translation\Translation;
 
 class Configuration extends BaseModel
@@ -39,7 +40,8 @@ class Configuration extends BaseModel
 		'client_ip',
 		'identity_providers',
 		'notification_channels',
-		'languages'
+		'languages',
+		'image_generators'
 	];
 
 	//
@@ -99,5 +101,14 @@ class Configuration extends BaseModel
 		if (config('services.ibm_translation.enabled')) {
 			return Translation::LANGUAGES;
 		}
+	}
+
+	public function getImageGeneratorsAttribute() {
+		$imageGenerators = ImageGenerator::orderBy('order', 'ASC')->get();
+		$names = [];
+		for ($i = 0; $i < count($imageGenerators); $i++) {
+			$names[] = $imageGenerators[$i]->name;
+		}
+		return $names;
 	}
 }

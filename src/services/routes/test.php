@@ -16,11 +16,11 @@
 |            Copyright (C) 2016-2024, Sharedigm, www.sharedigm.com             |
 \******************************************************************************/
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use Aws\S3\S3Client as S3Client;
-use League\Flysystem\AwsS3v3\AwsS3Adapter as S3Adapter;
-use App\Models\Users\Storage\UserStorage;
+use Spatie\PdfToText\Pdf;
+// use \Probots\Pinecone\Client as Pinecone;
+use App\Utilities\AI\OpenAI;
+use App\Utilities\AI\Pinecone;
 use App\Utilities\Uuids\Guid;
 
 /*
@@ -38,38 +38,151 @@ Route::get('environment', function() {
 	return App::environment();
 });
 
-//
-// file system tests
-//
+Route::get('test-pdf-thumbnail', function() {
+	/*
+	$image = \Image::make('/Users/tribble/Sites/user-data/sharedigm/amegahed/Documents/hypercosm-studio-users-guide.pdf');
+	$image->setIteratorIndex(0);
+	return $image->response('jpg');
+	*/
 
-Route::get('test', function() {
-	$userStorage = new UserStorage([
-		'id' => Guid::create(),
-		'user_id' => 'fd97394f-81a3-8ca0-3a40-db3c155feb72',
-		'host' => 'web.s3.wisc.edu',
-		'key' => 'syRZY2c0F1Ofci4xWxQl',
-		'secret' => 'DR8JjFJoJw4iL6y1nfFPPqHaQnaOjGhZHx9SzsSh',
-		'region' => 'us-east-2',
-		'bucket' => 'fkuusisto-bucket-01'
-	]);
-	$userStorage->save();
+	$imagick = new Imagick('/Users/tribble/Sites/user-data/sharedigm/amegahed/Documents/hypercosm-studio-users-guide.pdf[0]');
+	$imagick->setIteratorIndex(0);
+	$imagick->setImageFormat('jpg');
+	$imagick->setImageCompressionQuality(0);
+	$imagick->setImageBackgroundColor('#ffffff');
+	$imagick->setImageAlphaChannel(Imagick::VIRTUALPIXELMETHOD_WHITE);
+	$imagick->scaleImage(0, 50); 
+	return response($imagick)->header(
+		'Content-Type', 'image/jpg'
+	);
 });
 
-Route::get('test/s3', function() {
+Route::get('pdf-test', function(Request $request) {
+	// Log::info("incoming request: " . print_r($request->all(), 1));
 
-	$s3Client = S3Client::factory(array(
-		'endpoint' => 'https://web.s3.wisc.edu',
-		'version' => 'latest',
-		'credentials' => [
-			'key' => 'syRZY2c0F1Ofci4xWxQl', 
-			'secret' => 'DR8JjFJoJw4iL6y1nfFPPqHaQnaOjGhZHx9SzsSh'
-		],
-		'region' => 'us-east-2'
-	));
+	// get text from file
+	//
+	$text = (new Pdf(config('app.pdftotext_path')))
+		->setPdf('/Users/tribble/Sites/user-data/amegahed/Documents/github-cheat-sheet.pdf')
+		->text();
+	return $text;
+});
 
-	if ($s3Client->doesBucketExist('fkuusisto-bucket-01')) {
-		return 'true';
-	} else {
-		return 'false';
-	}
+Route::get('embedding', function(Request $request) {
+
+	// get text from file
+	//
+	$text = (new Pdf(config('app.pdftotext_path')))
+		->setPdf('/Users/tribble/Sites/user-data/amegahed/Documents/github-cheat-sheet.pdf')
+		->text();
+
+	// get vector from text
+	//
+	$vector = OpenAI::embed($text);
+
+	return $vector;
+});
+
+Route::get('vectors', function(Request $request) {
+
+	// get text from file
+	//
+	$text = (new Pdf(config('app.pdftotext_path')))
+		->setPdf('/Users/tribble/Sites/user-data/amegahed/Documents/github-cheat-sheet.pdf')
+		->text();
+
+	$vector = OpenAI::embed($text);
+});
+
+//
+// pinecone API test
+//
+
+Route::get('list-indices', function(Request $request) {
+	return Pinecone::list();
+});
+
+Route::get('upsert', function(Request $request) {
+	$user_id = 'd320edc7-851f-a9cf-6ef9-e61382bae051';
+	$user_path = '/Users/tribble/Sites/user-data/amegahed';
+	// $path = 'Documents/github-cheat-sheet.pdf';
+	$path = 'Documents/On The Electrodynamics Of Moving Bodies.pdf';
+
+	// get text from file
+	//
+	$text = (new Pdf(config('app.pdftotext_path')))
+		->setPdf($user_path . '/' . $path)
+		->text();
+
+	// get vector from text
+	//
+	$values = OpenAI::embed($text);
+
+	// insert into vector database
+	//
+	$result = Pinecone::upsert(Guid::create(), $values, [
+		"path" => $path,
+		"user_id" => $user_id
+	]);
+
+	return $result;
+});
+
+Route::get('find-file', function(Request $request) {
+	$user_id = 'd320edc7-851f-a9cf-6ef9-e61382bae051';
+	$user_path = '/Users/tribble/Sites/user-data/amegahed';
+	$path = 'Documents/github-cheat-sheet.pdf';
+	// $path = 'Documents/On The Electrodynamics Of Moving Bodies.pdf';
+
+	// get text from file
+	//
+	$text = (new Pdf(config('app.pdftotext_path')))
+		->setPdf($user_path . '/' . $path)
+		->text();
+
+	// lookup vector
+	//
+	$vector = OpenAI::embed($text);
+	$topK = 10;
+	$includeValues = false;
+	$result = Pinecone::query($vector, $topK, $includeValues);
+
+	return $result;
+});
+
+Route::get('remove-file', function(Request $request) {
+	$result = Pinecone::remove([
+		'8cb9d3b1-a709-506a-1bb8-af3ae2c329a6'
+	]);
+
+	return $result;
+});
+
+
+//
+// pinecone interface tests
+//
+
+Route::get('pinecone-stats', function(Request $request) {
+	$apiKey = config('services.pinecone.api_key');
+	$environment = config('services.pinecone.environment');
+	$pinecone = new Pinecone($apiKey, $environment);
+	return $pinecone->index('index1')->vectors()->stats();
+});
+
+Route::get('pinecone-describe', function(Request $request) {
+	$apiKey = config('services.pinecone.api_key');
+	$environment = config('services.pinecone.environment');
+	$pinecone = new Pinecone($apiKey, $environment);
+	return $pinecone->index('index1')->describe();
+});
+
+Route::get('pinecone-query', function(Request $request) {
+	$apiKey = config('services.pinecone.api_key');
+	$environment = config('services.pinecone.environment');
+	$pinecone = new Pinecone($apiKey, $environment);
+	return $pinecone->index('index1')->vectors()->query(
+		vector: [],
+		topK: 1,
+	);
 });

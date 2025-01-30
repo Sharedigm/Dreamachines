@@ -39,6 +39,30 @@ export default PreferencesFormView.extend({
 				<i class="active fa fa-question-circle" data-toggle="popover" title="Background" data-content="This is the color used for the viewer background."></i>
 			</div>
 		</div>
+
+		<div class="show-prompt form-group">
+			<label class="control-label"><i class="fa fa-font"></i>Show Prompt</label>
+			<div class="controls">
+
+				<div class="checkbox-inline">
+					<input type="checkbox"<% if (show_prompt) { %> checked<% } %> />
+				</div>
+
+				<i class="active fa fa-question-circle" data-toggle="popover" title="Show Prompt" data-content="This is whether or not to display the prompt."></i>
+			</div>
+		</div>
+
+		<div class="save-prompt form-group">
+			<label class="control-label"><i class="fa fa-font"></i>Save Prompt</label>
+			<div class="controls">
+
+				<div class="checkbox-inline">
+					<input type="checkbox"<% if (save_prompt) { %> checked<% } %> />
+				</div>
+
+				<i class="active fa fa-question-circle" data-toggle="popover" title="Save Prompt" data-content="This is whether or not to save the prompt with the image."></i>
+			</div>
+		</div>
 		
 		<div class="home-directory form-group">
 			<label class="control-label"><i class="fa fa-folder"></i>Home Folder</label>
@@ -65,6 +89,8 @@ export default PreferencesFormView.extend({
 	events: {
 		'click .background-color input[type="checkbox"]': 'onClickBackgroundColorCheckbox',
 		'change .background-color input': 'onChangeBackgroundColor',
+		'click .show-prompt input[type="checkbox"]': 'onClickShowPromptCheckbox',
+		'click .save-prompt input[type="checkbox"]': 'onClickSavePromptCheckbox',
 		'click .home-directory button.change': 'onClickChangeHomeDirectory',
 		'click .home-directory button.clear': 'onClickClearHomeDirectory'
 	},
@@ -79,6 +105,10 @@ export default PreferencesFormView.extend({
 				return this.$el.find('.background-color input[type="checkbox"]').is(':checked');
 			case 'background_color':
 				return this.getValue('use_custom_color')? this.$el.find('.background-color input[type="color"]').val() : undefined;
+			case 'show_prompt':
+				return this.$el.find('.show-prompt input[type="checkbox"]').is(':checked');
+			case 'save_prompt':
+				return this.$el.find('.save-prompt input[type="checkbox"]').is(':checked');
 			case 'home_directory':
 				return this.$el.find('.home-directory .name').text();
 		}
@@ -87,6 +117,8 @@ export default PreferencesFormView.extend({
 	getValues: function() {
 		return {
 			background_color: this.getValue('background_color'),
+			show_prompt: this.getValue('show_prompt'),
+			save_prompt: this.getValue('save_prompt'),
 			home_directory: this.getValue('home_directory')
 		};
 	},
@@ -178,6 +210,14 @@ export default PreferencesFormView.extend({
 
 	onChangeBackgroundColor: function() {
 		this.onChangeValue('background_color', this.getValue('background_color'));
+	},
+
+	onClickShowPromptCheckbox: function() {
+		this.onChangeValue('show_prompt', this.getValue('show_prompt'));
+	},
+
+	onClickSavePromptCheckbox: function() {
+		this.onChangeValue('save_prompt', this.getValue('save_prompt'));
 	},
 
 	onClickChangeHomeDirectory: function() {

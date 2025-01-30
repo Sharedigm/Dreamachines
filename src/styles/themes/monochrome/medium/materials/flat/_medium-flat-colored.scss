@@ -42,6 +42,10 @@ body:not(.binary) {
 				@include flat.color($color);
 			}
 
+			&.raspberry {
+				@include flat.color($color);
+			}
+
 			&.red-orange {
 				@include flat.color($color);
 			}
@@ -98,10 +102,6 @@ body:not(.binary) {
 				@include flat.color($color);
 			}
 
-			&.raspberry {
-				@include flat.color($color);
-			}
-
 			&.brown {
 				@include flat.color($color);
 			}
@@ -138,6 +138,10 @@ body:not(.binary) {
 		.selected .colored:not(.btn) {
 
 			.red {
+				@include flat.color($selected-color);
+			}
+
+			.raspberry {
 				@include flat.color($selected-color);
 			}
 
@@ -194,10 +198,6 @@ body:not(.binary) {
 			}
 
 			.magenta {
-				@include flat.color($selected-color);
-			}
-
-			.raspberry {
 				@include flat.color($selected-color);
 			}
 

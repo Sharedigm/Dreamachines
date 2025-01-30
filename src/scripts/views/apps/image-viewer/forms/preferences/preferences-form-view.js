@@ -87,7 +87,7 @@ export default PreferencesGroupView.extend({
 			onchange: (key, value) => {
 				this.setOption(key, value);
 			}
-		}));
+		}));		
 	},
 
 	showDisplayPrefs: function() {
@@ -99,7 +99,7 @@ export default PreferencesGroupView.extend({
 			onchange: (key, value) => {
 				this.setOption(key, value);
 			}
-		}));
+		}));	
 	},
 
 	showWindowPrefs: function() {
@@ -123,7 +123,7 @@ export default PreferencesGroupView.extend({
 			onchange: (key, value) => {
 				this.setOption(key, value);
 			}
-		}));
+		}));	
 	},
 
 	showEffectsPrefs: function() {

@@ -47,6 +47,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes('routes/admin.php');
+        $this->mapApiRoutes('routes/ai.php');
         $this->mapApiRoutes('routes/auth.php');
         $this->mapApiRoutes('routes/comments.php');
         $this->mapApiRoutes('routes/connections.php');

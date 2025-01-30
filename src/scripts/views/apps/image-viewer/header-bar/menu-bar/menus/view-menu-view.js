@@ -25,6 +25,12 @@ export default ViewMenuView.extend({
 
 	items: [
 		{
+			"class": "show-gallery",
+			"icon": "fa fa-image",
+			"name": "Gallery"
+		},
+		"separator",
+		{
 			"class": "fit",
 			"icon": "fa fa-expand",
 			"name": "Fit",
@@ -115,71 +121,82 @@ export default ViewMenuView.extend({
 		},
 		"separator",
 		{
-			"class": "show-toolbars",
+			"group": "show-toolbars",
 			"icon": "fa fa-wrench",
 			"name": "Toolbars",
 			"select": true,
 			"menu": [
 				{
 					"class": "show-mouse-mode-bar",
-					"group": "show-toolbar",
+					"group": "option",
 					"icon": "fa fa-mouse-pointer",
 					"name": "Mouse Mode",
 					"select": true
 				},
 				{
 					"class": "show-zoom-mode-bar",
-					"group": "show-toolbar",
+					"group": "option",
 					"icon": "fa fa-expand",
 					"name": "Zoom Mode",
 					"select": true
 				},
 				{
-					"class": "show-image-bar",
-					"group": "show-toolbar",
-					"icon": "fa fa-play",
-					"name": "Image",
-					"select": true
-				},
-				{
 					"class": "show-zoom-bar",
-					"group": "show-toolbar",
+					"group": "option",
 					"icon": "fa fa-search",
 					"name": "Zoom",
 					"select": true
 				},
 				{
 					"class": "show-rotate-bar",
-					"group": "show-toolbar",
+					"group": "option",
 					"icon": "fa fa-rotate-right",
 					"name": "Rotate",
+					"select": true
+				},
+				{
+					"class": "show-generate-bar",
+					"group": "option",
+					"icon": "fa fa-robot",
+					"name": "Generate",
+					"select": true
+				},
+				{
+					"class": "show-image-bar",
+					"group": "option",
+					"icon": "fa fa-play",
+					"name": "Image",
 					"select": true
 				}
 			]
 		},
 		{
 			"class": "show-sidebar",
+			"group": "-xs",
 			"icon": "fa fa-pause",
 			"name": "Sidebar",
 			"select": true,
 			"menu": [
 				{
 					"class": "show-favorites-panel",
-					"group": "show-sidebar-panel",
 					"icon": "fa fa-star",
 					"name": "Favorites",
 					"select": true
 				},
 				{
 					"class": "show-images-panel",
-					"group": "show-sidebar-panel",
 					"icon": "fa fa-image",
 					"name": "Images",
 					"select": true
 				},
 				{
+					"class": "show-parameters-panel",
+					"icon": "fa fa-table",
+					"name": "Parameters",
+					"select": true
+				},
+				{
 					"class": "show-files-panel",
-					"group": "show-sidebar-panel",
 					"icon": "fa fa-folder",
 					"name": "Files",
 					"select": true
@@ -187,7 +204,7 @@ export default ViewMenuView.extend({
 			]
 		},
 		{
-			"class": "sidebar-items",
+			"group": "sidebar-view-kind",
 			"icon": "fa fa-th",
 			"name": "Sidebar Items",
 			"select": true,
@@ -223,33 +240,37 @@ export default ViewMenuView.extend({
 			]
 		},
 		{
-			"class": "sidebar-tile-size",
+			"group": "sidebar-tile-size",
 			"icon": "fa fa-th-large",
 			"name": "Sidebar Tile Size",
 			"select": true,
 			"menu": [
 				{
 					"class": "small-tile-size",
-					"group": "sidebar-tile-size",
 					"icon": "fa fa-th",
 					"name": "Small",
 					"select": true
 				},
 				{
 					"class": "medium-tile-size",
-					"group": "sidebar-tile-size",
 					"icon": "fa fa-th-large",
 					"name": "Medium",
 					"select": true
 				},
 				{
 					"class": "large-tile-size",
-					"group": "sidebar-tile-size",
 					"icon": "fa fa-image",
 					"name": "Large",
 					"select": true
 				}
 			]
+		},
+		{
+			"class": "show-prompt",
+			"icon": "fa fa-font",
+			"name": "Prompt",
+			"shortcut": "shift-command-P",
+			"select": true
 		},
 		{
 			"class": "show-exif-info",
@@ -259,9 +280,16 @@ export default ViewMenuView.extend({
 		},
 		"separator",
 		{
-			"class": "window-size",
+			"class": "expand-window",
+			"icon": "fa fa-expand",
+			"name": "Expand",
+			"platform": "mobile"
+		},
+		{
+			"group": "window-size",
 			"icon": "far fa-window-maximize",
 			"name": "Window Size",
+			"mode": "windowed",
 			"menu": [
 				{
 					"class": "shrink-window",
@@ -283,12 +311,12 @@ export default ViewMenuView.extend({
 				}
 			]
 		},
-		"separator",
 		{
-			"class": "spaces",
+			"group": "spaces",
 			"icon": "far fa-window-maximize",
 			"name": "Spaces",
 			"select": true,
+			"mode": "desktop",
 			"menu": [
 				{
 					"class": "prev-space",
@@ -305,29 +333,12 @@ export default ViewMenuView.extend({
 			]
 		},
 		{
-			"class": "windows",
-			"icon": "far fa-window-restore",
-			"name": "Windows",
-			"select": true,
-			"menu": [
-				{
-					"class": "minimize-all",
-					"icon": "fa fa-window-minimize",
-					"name": "Minimize All"
-				},
-				{
-					"class": "unminimize-all",
-					"icon": "fa fa-window-restore",
-					"name": "Unminimize All"
-				}
-			]
-		},
-		{
 			"class": "view-full-screen",
 			"icon": "fa fa-desktop",
 			"name": "Full Screen",
-			"shortcut": "command-up arrow",
-			"select": true
+			"shortcut": "command-\\",
+			"select": true,
+			"mode": "desktop"
 		},
 		"separator",
 		{
@@ -338,6 +349,7 @@ export default ViewMenuView.extend({
 	],
 
 	events: {
+		'click .show-gallery': 'onClickShowGallery',
 
 		// view options
 		//
@@ -358,19 +370,20 @@ export default ViewMenuView.extend({
 
 		// toolbar options
 		//
-		'click .show-toolbars': 'onClickShowToolbars',
-		'click .show-toolbar > a': 'onClickShowToolbar',
-
-		// sidebar options
-		//
-		'click .show-sidebar': 'onClickShowSidebar',
-		'click .show-sidebar-panel > a': 'onClickShowSideBarPanel',
-		'click .sidebar-view-kind > a': 'onClickSideBarViewKind',
-		'click .sidebar-tile-size > a': 'onClickSideBarTileSize',
+		'click .show-toolbars > a': 'onClickShowToolbars',
+		'click .show-toolbar > li > a': 'onClickShowToolbar',
 
 		// mainbar options
 		//
+		'click .show-prompt': 'onClickOption',
 		'click .show-exif-info': 'onClickOption',
+
+		// sidebar options
+		//
+		'click .show-sidebar': 'onClickOption',
+		'click .show-sidebar-panels a': 'onClickShowSideBarPanel',
+		'click .sidebar-view-kind a': 'onClickSideBarViewKind',
+		'click .sidebar-tile-size a': 'onClickSideBarTileSize',
 
 		// window options
 		//
@@ -395,8 +408,58 @@ export default ViewMenuView.extend({
 	// querying methods
 	//
 
+	enabled: function() {
+		let hasModel = this.parent.app.model != null;
+		let isSignedIn = application.isSignedIn();
+
+		return {
+
+			// options
+			//
+			'show-gallery': true,
+
+			// viewing options
+			//
+			'fit-size': hasModel,
+			'fit-width': hasModel,
+			'fit-height': hasModel,
+			'show-smoothing': hasModel,
+
+			// toolbar options
+			//
+			'show-nav-bar': true,
+			'show-mouse-mode-bar': true,
+			'show-zoom-mode-bar': true,
+			'show-zoom-bar': true,
+			'show-rotate-bar': true,
+			'show-generate-bar': isSignedIn,
+			'show-image-bar': true,
+
+			// mainbar options
+			//
+			'show-prompt': true,
+			'show-exif-info': hasModel,
+
+			// sidebar options
+			//
+			'show-sidebar': true,
+			'show-favorites-panel': true,
+			'show-images-panel': true,
+			'show-parameters-panel': true,
+			'show-files-panel': isSignedIn,
+
+			// sidebar item options
+			//
+			'view-sidebar-icons': true,
+			'view-sidebar-lists': true,
+			'view-sidebar-cards': true,
+			'view-sidebar-tiles': true
+		};
+	},
+
 	selected: function() {
 		let preferences = this.parent.app.preferences;
+		let isSignedIn = application.isSignedIn();
 		let toolbars = preferences.get('toolbars') || [];
 		let sidebarPanels = preferences.get('sidebar_panels') || [];
 		let sidebarViewKind = preferences.get('sidebar_view_kind');
@@ -419,14 +482,21 @@ export default ViewMenuView.extend({
 			'show-zoom-mode-bar': toolbars.includes('zoom_mode'),
 			'show-zoom-bar': toolbars.includes('zoom'),
 			'show-rotate-bar': toolbars.includes('rotate'),
-			'show-image-bar': toolbars.includes('image'),
+			'show-generate-bar': toolbars.includes('generate'),
+			'show-image-bar': toolbars.includes('generate'),
+
+			// mainbar options
+			//
+			'show-prompt': preferences.get('show_prompt'),
+			'show-exif-info': preferences.get('show_exif_info'),
 
 			// sidebar options
 			//
 			'show-sidebar': preferences.get('show_sidebar'),
 			'show-favorites-panel': sidebarPanels.includes('favorites'),
 			'show-images-panel': sidebarPanels.includes('images'),
-			'show-files-panel': sidebarPanels.includes('files'),
+			'show-parameters-panel': sidebarPanels.includes('parameters'),
+			'show-files-panel': sidebarPanels.includes('files') && isSignedIn,
 
 			// sidebar item options
 			//
@@ -439,26 +509,8 @@ export default ViewMenuView.extend({
 			//
 			'small-tile-size': sidebarTileSize == 'small',
 			'medium-tile-size': sidebarTileSize == 'medium',
-			'large-tile-size': sidebarTileSize == 'large',
-
-			// mainbar options
-			//
-			'show-exif-info': preferences.get('show_exif_info')
+			'large-tile-size': sidebarTileSize == 'large'
 		};
-	},
-
-	disabled: function() {
-		if (!this.parent.app.model) {
-			return {
-				'fit': true,
-				'zoom': true,
-				'rotate': true,
-				'show-smoothing': true,
-				'view-slide-show': true
-			};
-		} else {
-			return false;
-		}
 	},
 
 	//
@@ -482,7 +534,15 @@ export default ViewMenuView.extend({
 		};
 	},
 	*/
-	
+
+	//
+	// mouse event handling methods
+	//
+
+	onClickShowGallery: function() {
+		this.parent.app.showGallery();
+	},
+
 	//
 	// fit mouse event handling methods
 	//
@@ -543,9 +603,5 @@ export default ViewMenuView.extend({
 	onClickSlideShow: function() {
 		this.toggleMenuItem('view-slide-show');
 		this.parent.app.toggleSlideShow();
-	},
-
-	onClickViewFullScreen: function() {
-		this.parent.app.toggleFullScreen();
 	}
 });

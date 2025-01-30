@@ -42,6 +42,10 @@ body:not(.binary).monochrome {
 				.plastic($color);
 			}
 
+			&.raspberry {
+				.plastic($color);
+			}
+
 			&.red-orange {
 				.plastic($color);
 			}
@@ -95,10 +99,6 @@ body:not(.binary).monochrome {
 			}
 
 			&.magenta {
-				.plastic($color);
-			}
-
-			&.raspberry {
 				.plastic($color);
 			}
 
@@ -141,6 +141,10 @@ body:not(.binary).monochrome {
 				.plastic($selected-color);
 			}
 
+			&.raspberry {
+				.plastic($selected-color);
+			}
+
 			&.red-orange {
 				.plastic($selected-color);
 			}
@@ -194,10 +198,6 @@ body:not(.binary).monochrome {
 			}
 
 			&.magenta {
-				.plastic($selected-color);
-			}
-
-			&.raspberry {
 				.plastic($selected-color);
 			}
 

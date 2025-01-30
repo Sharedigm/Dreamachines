@@ -97,6 +97,12 @@ export default SideBarPanelView.extend({
 		// show child views
 		//
 		this.showImages();
+
+		// set initial state
+		//
+		if (!application.isSignedIn()) {
+			this.$el.find('.buttons .open-images').prop('disabled', true);
+		}
 	},
 
 	showImages: function() {
@@ -128,14 +134,6 @@ export default SideBarPanelView.extend({
 	},
 
 	//
-	// mouse event handling methods
-	//
-
-	onClickOpenImages: function() {
-		this.parent.app.showOpenDialog();
-	},
-
-	//
 	// selection event handling methods
 	//
 
@@ -153,5 +151,13 @@ export default SideBarPanelView.extend({
 		if (this.app.hasChildView('header nav')) {
 			this.app.getChildView('header nav').pause();
 		}
+	},
+
+	//
+	// mouse event handling methods
+	//
+
+	onClickOpenImages: function() {
+		this.parent.app.showOpenDialog();
 	}
 });

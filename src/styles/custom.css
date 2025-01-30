@@ -1,0 +1,50 @@
+/******************************************************************************\
+|                                                                              |
+|                                  custom.scss                                 |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+
+@keyframes animated-background {
+	0% {
+		background-position-x: 0;
+	}
+
+	100% {
+		background-position-x: 2688px;
+	}
+}
+
+.page {
+	.masthead, 
+	.footer .info {
+		background-image: url(../images/backgrounds/background-repeat.jpg) !important;
+		background-size: auto !important;
+		animation-name: animated-background;
+		animation-duration: 300s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+
+	.footer .info {
+		background-size: 200% !important;	
+	}
+}
+
+@media (max-width: 640px) {
+	.page {
+		.footer .info {
+			background-size: cover !important;	
+		}	
+	}
+}

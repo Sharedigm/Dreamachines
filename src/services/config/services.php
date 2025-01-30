@@ -76,14 +76,5 @@ return [
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
         'redirect' => env('APP_URL') . '/public/api/providers/github/callback',
         'enabled' => env('GITHUB_ENABLED')
-    ],
-
-    //
-    // vector database services
-    //
-
-    'pinecone' => [
-        'api_key' => env('PINECONE_API_KEY', ''),
-        'environment' => env('PINECONE_ENVIRONMENT', ''),
     ]
 ];

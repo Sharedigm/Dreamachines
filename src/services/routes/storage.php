@@ -23,7 +23,6 @@ use App\Http\Controllers\Storage\VolumeController;
 use App\Http\Controllers\Storage\FileIndexController;
 use App\Http\Controllers\Storage\Archives\ArchiveFileController;
 use App\Http\Controllers\Storage\Attachments\AttachmentController;
-use App\Http\Controllers\Users\Storage\UserStorageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +41,6 @@ use App\Http\Controllers\Users\Storage\UserStorageController;
 
 Route::get('files/search', [FileIndexController::class, 'getSearch']);
 Route::get('files/search/num', [FileIndexController::class, 'getSearchNum']);
-Route::get('storage/exists', [VolumeController::class, 'getExists']);
 
 //
 // protected routes
@@ -153,9 +151,4 @@ Route::group(['middleware' => 'verify.storage_access'], function() {
 	Route::post('file/index', [FileIndexController::class, 'postCreate']);
 	Route::delete('file/indices/{id}', [FileIndexController::class, 'deleteIndex']);
 	Route::delete('directory/indices', [FileIndexController::class, 'deleteIndices']);
-
-	// user storage
-	//
-	Route::get('storage', [UserStorageController::class, 'getCurrent']);
-	Route::put('storage/{id}', [UserStorageController::class, 'updateIndex']);
 });

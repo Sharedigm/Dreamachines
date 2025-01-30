@@ -5,7 +5,7 @@
 |                                                                              |
 |******************************************************************************|
 |                                                                              |
-|        This defines an interface to the OpenAI API                           |
+|        This defines a utility for generating images.                         |
 |                                                                              |
 |        Author(s): Abe Megahed                                                |
 |                                                                              |
@@ -19,19 +19,27 @@
 namespace App\Utilities\AI;
 
 use Illuminate\Support\Facades\Http;
+use App\Utilities\Storage\UserStorage;
 
 abstract class OpenAI
 {
-	const MAXLENGTH = 8192;
-
 	/**
 	 * Generate an image.
 	 *
-	 * @param $text - The text string to embed.
-	 * @return scalar[] - The vector that was generated.
+	 * @param $options - The image generation options.
+	 * @return array - The images that were generated.
 	 */
-	static function embed($text) {
-		$token = env('OPENAI_API_KEY');
+	static function generate($options) {
+
+		// parse options
+		//
+		$prompt = $options['prompt'] ?? '';
+		$model = $options['model'] ?? 'dall-e-3';
+		$n = intval($options['n'] ?? 1);
+		$quality = $options['quality'] ?? 'standard';
+		$size = $options['size'] ?? '1024x1024';
+		$style = $options['style'] ?? 'vivid';
+		$token = $options['token'] ?? null;
 
 		// check for token
 		//
@@ -41,21 +49,92 @@ abstract class OpenAI
 
 		// get request endpoint
 		//
-		$url = env('OPENAI_API_ENDPOINT') . '/v1/embeddings';
-
-		// clamp text
-		//
-		if (strlen($text) > self::MAXLENGTH) {
-			$text = substr($text, 0, self::MAXLENGTH);
-		}
+		$url = env('OPENAI_API_ENDPOINT') . '/generations';
 
 		// make request
 		//
 		$response = Http::withToken($token)
 			->timeout(60)
 			->post($url, [
-				"input" => $text,
-				"model" => "text-embedding-3-small"
+			'prompt' => $prompt,
+			'model' => $model,
+			'n' => $n,
+			'quality' => $quality,
+			'size' => $size,
+			'style' => $style
+		]);
+
+		// check response code
+		//
+		if ($response->status() != 200) {
+			return $response;
+		}
+
+		// get image data from response
+		//
+		$images = [];
+		for ($i = 0; $i < count($response['data']); $i++) {
+			$data = $response['data'][$i];
+			$images[] = [
+				'image' => file_get_contents($data['url']),
+				'metadata' => [
+					'model' => $model,
+					'n' => $n,
+					'quality' => $quality,
+					'size' => $size,
+					'style' => $style
+				]
+			];
+
+			// add ChatGPT input
+			//
+			if (array_key_exists('revised_prompt', $data)) {
+				$images[$i]['metadata']['revised_prompt'] = $data['revised_prompt'];
+			}
+		}
+
+		return $images;
+	}
+
+	/**
+	 * Enhance an image.
+	 *
+	 * @param $image - The image to enhance.
+	 * @param $options - The image enhancement options.
+	 * @return array - The enhanced images that were generated.
+	 */
+	static function enhance($image, $options) {
+
+		// parse options
+		//
+		$prompt = $options['prompt'] ?? '';
+		$model = $options['model'] ?? 'dall-e-3';
+		$n = intval($options['n'] ?? 1);
+		$quality = $options['quality'] ?? 'standard';
+		$size = $options['size'] ?? '1024x1024';
+		$style = $options['style'] ?? 'vivid';
+		$mask = $options['mask'] ?? UserStorage::root() . '/Shared/Pictures/Masks/circular.png';
+
+		// get request options
+		//
+		$url = env('OPENAI_API_ENDPOINT') . '/edits';
+		$token = env('OPENAI_API_KEY');
+
+		// get mask data
+		//
+		$mask = file_get_contents($mask);
+
+		// make request
+		//
+		$response = Http::attach('image', $image, 'image.png')
+			->attach('mask', $mask, 'mask.png')
+			->withToken($token)
+			->timeout(60)
+			->post($url, [
+				'prompt' => $prompt,
+				// 'model' => $model,
+				'n' => $n,
+				'size' => $size
 			]);
 
 		// check response code
@@ -64,6 +143,21 @@ abstract class OpenAI
 			return $response;
 		}
 
-		return $response["data"][0]["embedding"];
+		// get image data from response
+		//
+		$images = [];
+		for ($i = 0; $i < count($response['data']); $i++) {
+			$data = $response['data'][$i];
+			$images[] = [
+				'image' => file_get_contents($data['url']),
+				'metadata' => [
+					'model' => $model,
+					'n' => $n,
+					'size' => $size
+				]
+			];
+		}
+
+		return $images;
 	}
 }

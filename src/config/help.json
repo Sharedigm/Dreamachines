@@ -450,7 +450,7 @@
 					"icon": "fa fa-key"
 				},
 				"deleting-account": {
-					"name": "Deleting Your Account",
+					"name": "Deleting your Account",
 					"icon": "fa fa-trash-alt"
 				}
 			}

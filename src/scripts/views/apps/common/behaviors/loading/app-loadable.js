@@ -288,6 +288,14 @@ export default {
 				});
 				break;
 
+			case 'token_manager':
+				import(
+					'../../../token-manager/token-manager-view.js'
+				).then((AppView) => {
+					options.success(AppView.default);
+				});
+				break;
+
 			case 'topic_browser':
 				import(
 					'../../../topic-browser/topic-browser-view.js'
@@ -333,7 +341,7 @@ export default {
 	}
 
 	/*
-	loadApp: function(appName, options.success() {
+	loadApp: function(appName, done) {
 		let dirname = appName.replace('_', '-');
 		let filename = dirname + '-view.js';
 

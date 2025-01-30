@@ -864,11 +864,6 @@
 				"icon": ["news-empty.svg", "news-full.svg"]
 			},
 
-			"Aerial": {
-				"font": "fa fa-helicopter",
-				"icon": ["aerial-empty.svg", "aerial-full.svg"]
-			},
-
 			"Albums": {
 				"font": "fa fa-record-vinyl",
 				"icon": ["albums-empty.svg", "albums-full.svg"]
@@ -892,16 +887,6 @@
 			"Archives": {
 				"font": "fa fa-file-zipper",
 				"icon": ["archives-empty.svg", "archives-full.svg"]
-			},
-
-			"Astro": {
-				"font": "fa fa-moon",
-				"icon": ["astro-empty.svg", "astro-full.svg"]
-			},
-
-			"Astronomy": {
-				"font": "fa fa-moon",
-				"icon": ["astro-empty.svg", "astro-full.svg"]
 			},
 
 			"Audio": {
@@ -984,23 +969,13 @@
 				"icon": ["facebook-empty.svg", "facebook-full.svg"]
 			},
 
-			"Fashion": {
-				"font": "fa fa-person-dress",
-				"icon": ["fashion-empty.svg", "fashion-full.svg"]
-			},
-
 			"Favorites": {
 				"font": "fa fa-star",
 				"icon": ["favorites-empty.svg", "favorites-full.svg"]
 			},
 
-			"Flowers": {
-				"font": "fa fa-gear",
-				"icon": ["flowers-empty.svg", "flowers-full.svg"]
-			},
-
 			"Fonts": {
-				"font": "fa fa-font",
+				"font": "fa-font",
 				"icon": ["fonts-empty.svg", "fonts-full.svg"]
 			},
 
@@ -1069,11 +1044,6 @@
 				"icon": ["scripts-empty.svg", "scripts-full.svg"]
 			},
 
-			"Landscapes": {
-				"font": "fa fa-image",
-				"icon": ["images-empty.svg", "images-full.svg"]
-			},
-
 			"Library": {
 				"font": "fa fa-book",
 				"icon": ["books-empty.svg", "books-full.svg"]
@@ -1084,19 +1054,9 @@
 				"icon": ["apple-empty.svg", "apple-full.svg"]
 			},
 
-			"Macro": {
-				"font": "fa fa-microscope",
-				"icon": ["macro-empty.svg", "macro-full.svg"]
-			},
-
 			"Maps": {
 				"font": "fa fa-map",
 				"icon": ["maps-empty.svg", "maps-full.svg"]
-			},
-
-			"Messages": {
-				"font": "fa fa-comment",
-				"icon": ["messages-empty.svg", "messages-full.svg"]
 			},
 
 			"Microsoft": {
@@ -1119,16 +1079,6 @@
 				"icon": ["music-empty.svg", "music-full.svg"]
 			},
 
-			"Nature": {
-				"font": "fa fa-tree",
-				"icon": ["trees-empty.svg", "trees-full.svg"]
-			},
-
-			"News": {
-				"font": "fa fa-newspaper",
-				"icon": ["news-empty.svg", "news-full.svg"]
-			},
-
 			"Notes": {
 				"font": "fa fa-sticky-note",
 				"icon": ["notes-empty.svg", "notes-full.svg"]
@@ -1142,11 +1092,6 @@
 			"People": {
 				"font": "fa fa-users",
 				"icon": ["people-empty.svg", "people-full.svg"]
-			},
-
-			"Pets": {
-				"font": "fa fa-dog",
-				"icon": ["pets-empty.svg", "pets-full.svg"]
 			},
 
 			"Photos": {
@@ -1167,11 +1112,6 @@
 			"Podcasts": {
 				"font": "fa fa-microphone",
 				"icon": ["podcasts-empty.svg", "podcasts-full.svg"]
-			},
-
-			"Portraits": {
-				"font": "fa fa-user",
-				"icon": ["portraits-empty.svg", "portraits-full.svg"]
 			},
 
 			"Posts": {
@@ -1254,19 +1194,9 @@
 				"icon": ["soundtracks-empty.svg", "soundtracks-full.svg"]
 			},
 
-			"Sports": {
-				"font": "fa fa-football",
-				"icon": ["football-empty.svg", "football-full.svg"]
-			},
-
 			"Spreadsheets": {
 				"font": "fa fa-calculator",
 				"icon": ["calculations-empty.svg", "calculations-full.svg"]
-			},
-
-			"Travel": {
-				"font": "fa fa-suitcase",
-				"icon": ["suitcase-empty.svg", "suitcase-full.svg"]
 			},
 
 			"Styles": {
@@ -1310,7 +1240,7 @@
 			},
 
 			"Uploads": {
-				"font": "fa fa-upload",
+				"font": ["fa fa-upload", "fa fa-upload"],
 				"icon": ["uploads-empty.svg", "uploads-full.svg"]
 			},
 
@@ -1337,11 +1267,6 @@
 			"Websites": {
 				"font": "fa fa-cloud",
 				"icon": ["websites-empty.svg", "websites-full.svg"]
-			},
-
-			"Wildlife": {
-				"font": "fa fa-horse",
-				"icon": ["deer-empty.svg", "deer-full.svg"]
 			},
 
 			"Windows": {

@@ -1648,10 +1648,10 @@ body:not(.binary) .item .meter i:nth-child(4).active {
 body:not(.binary) .item .meter i:nth-child(5).active {
   color: red !important;
 }
-body:not(.binary) .icon-grid .icon > img + i, body:not(.binary) .card-grid .icon > img + i {
+body:not(.binary) .icon-grid .icon > img + i {
   display: none;
 }
-body:not(.binary) .icon-grid .icon.colored, body:not(.binary) .card-grid .icon.colored {
+body:not(.binary) .icon-grid .icon.colored {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25);
 }
 body:not(.binary):not(.flat) .file-body {
@@ -2650,6 +2650,14 @@ hr {
 }
 .user-profile-header hr {
   margin: 10px auto;
+}
+
+body.icon-spinning .profile.photo .buttons {
+  display: none;
+}
+
+body:not(.icon-spinning) .user-profile-header .alternate.buttons {
+  display: none;
 }
 
 .scrollable {

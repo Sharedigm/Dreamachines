@@ -46,4 +46,18 @@ MAIL_FROM_NAME="${APP_NAME}"
 MAIL_CONTACT_ADDRESS=
 MAIL_CONTACT_NAME="${APP_NAME}"
 	</div>
+
+	<h2><i class="fa fa-robot"></i>Configure Image Generators</h2>
+	<p>In order to use the image generators, you will need to supply your API tokens. To do so, open the file <span class="code">services/.env</span> and enter your API tokens as shown below: </p>
+
+	<div class="code well">
+STABILITY_AI_API_ENDPOINT="https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0"
+STABILITY_AI_API_TOKEN=&lt;YOUR API TOKEN HERE&gt;
+STABLE_DIFFUSION_API_ENDPOINT="https://stablediffusionapi.com/api/v3/text2img"
+STABLE_DIFFUSION_API_KEY=&lt;YOUR API TOKEN HERE&gt;
+OPENAI_API_ENDPOINT="https://api.openai.com/v1/images"
+OPENAI_API_KEY=&lt;YOUR API TOKEN HERE&gt;
+DEEPAI_API_ENDPOINT="https://api.deepai.org/api/text2img"
+DEEPAI_API_KEY=&lt;YOUR API TOKEN HERE&gt;
+	</div>
 </div>

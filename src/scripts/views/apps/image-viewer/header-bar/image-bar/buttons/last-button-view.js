@@ -23,7 +23,6 @@ export default ButtonView.extend({
 	// attributes
 	//
 	
-	className: 'desktop-only button',
 	template: '<i class="fa fa-fast-forward"></i>',
 
 	//

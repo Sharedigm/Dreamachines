@@ -11,99 +11,12 @@
 	<div class="section">
 		<div class="row">
 			<div class="col-sm-6">
-				<a class="unstyled" href="#uses/file-sharing">
-					<h2><i class="fa fa-share"></i>File Sharing</h2>
-					<p>The easy to use file sharing capability makes it easy for you to share files, photos, and folders with your friends and colleagues. </p>
-				</a>
-			</div>
-			<div class="col-sm-6">
-				<div class="icon-grid figure">
-					<div class="file item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/files/text.svg" /></div>
-						</div>
-						<div class="row">
-							<div class="name">File</div>
-						</div>
-					</div>
-					<div class="file item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/files/text.svg" /></div>
-							<div class="badges">
-								<div class="links badge tooltip-trigger" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="has 1 link">
-									<i class="fa fa-link"></i>
-									<span class="num-links">3</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">Linked File</div>
-						</div>
-					</div>
-					<div class="file item">
-						<div class="row">
-							<div class="icon">
-								<img src="images/icons/files/text.svg" />
-								<div class="owner small tile">
-									<div class="thumbnail" style="background-image:url(images/logos/kitty-logo.svg"></div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">Shared File</div>
-						</div>
-					</div>
-					<div class="directory item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/folders/folder-full.svg" /></div>
-						</div>
-						<div class="row">
-							<div class="name">Folder</div>
-						</div>
-					</div>
-					<div class="directory item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/folders/folder-full.svg" /></div>
-							<div class="badges">
-								<div class="links badge tooltip-trigger" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="has 1 link">
-									<i class="fa fa-link"></i>
-									<span class="num-links">5</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">Linked Folder</div>
-						</div>
-					</div>
-					<div class="directory item">
-						<div class="row">
-							<div class="icon">
-								<img src="images/icons/folders/folder-full.svg" />
-								<div class="owner small tile">
-									<div class="thumbnail" style="background-image:url(images/logos/kitty-logo.svg"></div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">Shared Folder</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="section">
-		<div class="row">
-			<div class="col-sm-6">
-				<a class="unstyled" href="#uses/photo-sharing">
-					<h2><i class="fa fa-camera"></i>Photo Sharing</h2>
-					<p>The photo viewing and managing capabilities make it easy to view, organize, search, and share your photos. </p>
-				</a>
+				<h2><i class="fa fa-lightbulb"></i>For Imagination</h2>
+				<p><%= application.name %> can help you to imagine things as they could be, which is the first step towards making those dreams a reality.  </p>
 			</div>
 			<div class="col-sm-6">
 				<div class="figure">
-					<a href="#uses/photo-sharing"><img src="images/info/uses/photo-viewing.png" /></a>
+					<a href="images/info/uses/large/imagination.png" target="_blank" class="lightbox"><img src="images/info/uses/small/imagination.png" /></a>
 				</div>
 			</div>
 		</div>
@@ -112,14 +25,12 @@
 	<div class="section">
 		<div class="row">
 			<div class="col-sm-6">
-				<a class="unstyled" href="#uses/media-management">
-					<h2><i class="fa fa-music"></i>Media Management</h2>
-					<p>The media management capabilities make it easy for you to play, organize, and share your music, podcasts, audio books, and videos. </p>
-				</a>
+				<h2><i class="fa fa-paint-brush"></i>For Inspiration</h2>
+				<p>Brainstorming, conceptualization, visualization.  Whatever you choose to call it, AI image generation is a useful tool for engaing your creativity.  </p>
 			</div>
 			<div class="col-sm-6">
 				<div class="figure">
-					<a href="#uses/media-management"><img src="images/info/uses/media-management.png" /></a>
+					<a href="images/info/uses/large/inspiration.png" target="_blank" class="lightbox"><img src="images/info/uses/small/inspiration.png" /></a>
 				</div>
 			</div>
 		</div>
@@ -128,14 +39,12 @@
 	<div class="section">
 		<div class="row">
 			<div class="col-sm-6">
-				<a class="unstyled" href="#uses/social-networking">
-					<h2><i class="fa fa-comments"></i>Social Networking</h2>
-					<p>The Social Networking capabilities allow you to connect with friends and colleagues to share news, files, and direct messages. </p>
-				</a>
+				<h2><i class="fa fa-dice"></i>For Fun</h2>
+				<p>It's undeniable that AI image generation is just plain fun.  Sometimes it's funny, sometimes it's surprising, sometimes it's magical.  Either way, it's always fun. </p>
 			</div>
 			<div class="col-sm-6">
 				<div class="figure">
-					<a href="#uses/social-networking"><img src="images/info/uses/social-networking.png" /></a>
+					<a href="images/info/uses/large/fun.png" target="_blank" class="lightbox"><img src="images/info/uses/small/fun.png" /></a>
 				</div>
 			</div>
 		</div>
@@ -144,14 +53,12 @@
 	<div class="section">
 		<div class="row">
 			<div class="col-sm-6">
-				<a class="unstyled" href="#uses/workplace-collaboration">
-					<h2><i class="fa fa-briefcase"></i>Workplace Collaboration</h2>
-					<p>The workplace collaboration features allow you to exchange messages, files, and folders with your co-workers. </p>
-				</a>
+				<h2><i class="fa fa-cube"></i>For Prototyping</h2>
+				<p>AI image generation is a useful tool early in the design phase of a project.  It allows you to quickly generate drafts of ideas that can be refined later on.</p>
 			</div>
 			<div class="col-sm-6">
 				<div class="figure">
-					<a href="#uses/workplace-collaboration"><img src="images/info/uses/workplace-collaboration.png" /></a>
+					<a href="images/info/uses/large/prototyping.png" target="_blank" class="lightbox"><img src="images/info/uses/small/prototyping.png" /></a>
 				</div>
 			</div>
 		</div>
@@ -160,14 +67,12 @@
 	<div class="section">
 		<div class="row">
 			<div class="col-sm-6">
-				<a class="unstyled" href="#uses/project-management">
-					<h2><i class="fa fa-check"></i>Project Management</h2>
-					<p>The project management features help to you more effectively manage and track your projects and tasks. </p>
-				</a>
+				<h2><i class="fa fa-ruler"></i>For Design</h2>
+				<p>Whether you're desiging conceptual items like logos or more concrete objects like houses, AI image generation can help you to visualize your design ideas.</p>
 			</div>
 			<div class="col-sm-6">
 				<div class="figure">
-					<a href="#uses/project-management"><img src="images/info/uses/project-management.png" /></a>
+					<a href="images/info/uses/large/design.png" target="_blank" class="lightbox"><img src="images/info/uses/small/design.png" /></a>
 				</div>
 			</div>
 		</div>
@@ -176,97 +81,40 @@
 	<div class="section">
 		<div class="row">
 			<div class="col-sm-6">
-				<a class="unstyled" href="#uses/code-sharing">
-					<h2><i class="fa fa-code"></i>Code Sharing</h2>
-					<p>The code editing and sharing features make it easy to view, edit, and share code files and packages. </p>
-				</a>
+				<h2><i class="fa fa-star"></i>For Branding</h2>
+				<p>Whether you're desiging your company branding or your own personal brand, <%= application.name %> can help you to stand out.</p>
 			</div>
 			<div class="col-sm-6">
-				<div class="icon-grid figure">
-					<div class="file item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/files/sql.svg" /></div>
-							<div class="badges">
-								<div class="links badge tooltip-trigger" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="has 1 link">
-									<i class="fa fa-link"></i>
-									<span class="num-links">1</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">Authentication</div>
-						</div>
-					</div>
-					<div class="file item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/files/pas.svg" /></div>
-							<div class="badges">
-								<div class="links badge tooltip-trigger" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="has 3 links">
-									<i class="fa fa-link"></i>
-									<span class="num-links">3</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">parser.pas</div>
-						</div>
-					</div>
-					<div class="file item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/files/make.svg" /></div>
-							<div class="badges">
-								<div class="links badge tooltip-trigger" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="has 5 links">
-									<i class="fa fa-link"></i>
-									<span class="num-links">5</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">Makefile</div>
-						</div>
-					</div>
-					<div class="file item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/files/h.svg" /></div>
-							<div class="badges">
-								<div class="links badge tooltip-trigger" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="has 2 links">
-									<i class="fa fa-link"></i>
-									<span class="num-links">2</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">metar.h</div>
-						</div>
-					</div>
-					<div class="file item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/files/py.svg" /></div>
-							<div class="badges">
-								<div class="links badge tooltip-trigger" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="has 1 link">
-									<i class="fa fa-link"></i>
-									<span class="num-links">1</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">number-game.py</div>
-						</div>
-					</div>
-					<div class="file item">
-						<div class="row">
-							<div class="icon"><img src="images/icons/files/rb.svg" /></div>
-							<div class="badges">
-								<div class="links badge tooltip-trigger" data-toggle="tooltip" title="" data-placement="bottom" data-original-title="has 2 links">
-									<i class="fa fa-link"></i>
-									<span class="num-links">2</span>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="name">polynomial.rb</div>
-						</div>
-					</div>
+				<div class="figure">
+					<a href="images/info/uses/large/branding.png" target="_blank" class="lightbox"><img src="images/info/uses/small/branding.png" /></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="row">
+			<div class="col-sm-6">
+				<h2><i class="fa fa-person-dress"></i>For Fashion</h2>
+				<p>AI image generation is a super tool for virtually trying out different looks and garments in a way that's lightning fast and infinitely variable.  It's like having an infinite closet and wardrobe.</p>
+			</div>
+			<div class="col-sm-6">
+				<div class="figure">
+					<a href="images/info/uses/large/fashion.png" target="_blank" class="lightbox"><img src="images/info/uses/small/fashion.png" /></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="row">
+			<div class="col-sm-6">
+				<h2><i class="fa fa-users"></i>For Community</h2>
+				<p>Dreamachines provides a community forum for sharing your images and for appreciating and learning from the ideas of others.   </p>
+			</div>
+			<div class="col-sm-6">
+				<div class="figure">
+					<a href="images/info/uses/large/community.png" target="_blank" class="lightbox"><img src="images/info/uses/small/community.png" /></a>
 				</div>
 			</div>
 		</div>

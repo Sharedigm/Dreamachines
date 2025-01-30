@@ -4,6 +4,9 @@
 log/
 private/
 backups/
+documents/
+links/
 electron/
-presentations/
+pricing/
 *.swp
+.env

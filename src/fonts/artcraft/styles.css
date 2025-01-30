@@ -1,0 +1,10 @@
+/***************************************************************\
+|                          font styles                          |
+\***************************************************************/
+
+@font-face {
+	font-family: 'Artcraft';
+	src: url('Artcraft-Light.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}

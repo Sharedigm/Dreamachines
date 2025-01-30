@@ -1,8 +1,10 @@
-<div class="primary colored section">
+<div class="section colored magenta">
 	<div class="row">
 		<div class="col-sm-6">
-			<h2><img class="icon" src="images/logos/logo.svg" />Sharing Made Simple</h2>
-			<p><%= application.name %> is a self-hostable cloud based operating system that brings together file management, file sharing, and collaboration / social networking all in one easy to use platform. </p>
+			<a class="unstyled" href="#features/easy-to-use">
+				<h2><img class="icon" src="images/logos/logo-white.svg" />Share Your AI Dreams</h2>
+				<p>Explore your dreams using AI image generation technology. Using simple text prompts, you can visualize virtually anything that you can think of. <%= application.name %> makes this easier by allowing you to access a variety of image generation engines and a variety of sharing mechanisms all from a single, easy to use user interface. Let <%= application.name %> help to you explore and share your dreams. </p>
+			</a>
 		</div>
 		<div class="col-sm-6">
 			<div class="figure">
@@ -16,8 +18,34 @@
 <div class="section">
 	<div class="row">
 		<div class="col-sm-6">
-			<h2><i class="fa fa-dollar-sign"></i>It's Free To Use!</h2>
-			<p><%= application.name %> is <a href="#policies/terms-of-use">free to use</a> for non-commmercial applications. </p>
+			<h2><i class="fa fa-robot"></i>Choose From A Variety of AI Image Generators</h2>
+			<p><%= application.name %> allows you to access a variety of image generation engines. Currently supported image generators include: </p>
+			<ul>
+				<% if (application.session.has('config')) { %>
+				<% let image_generators = application.session.get('config').image_generators; %>
+				<% if (image_generators) { %>
+				<% for (let i = 0; i < image_generators.length; i++) { %>
+				<% let name = image_generators[i]; %>
+				<% let generator = config.defaults.image_generators[name]; %>
+				<li><a href="<%= generator.url %>" target="_blank"><%= name %></a></li>
+				<% } %>
+				<% } %>
+				<% } %>
+			</ul>
+		</div>
+		<div class="col-sm-6 center aligned" style="display:flex">
+			<div class="logos" style="margin:auto">
+				<% if (application.session.has('config')) { %>
+				<% let image_generators = application.session.get('config').image_generators; %>
+				<% if (image_generators) { %>
+				<% for (let i = 0; i < image_generators.length; i++) { %>
+				<% let name = image_generators[i]; %>
+				<% let generator = config.defaults.image_generators[name]; %>
+				<a href="<%= generator.url %>" target="_blank"><img height="50px" style="margin:25px; max-width:200px" src="<%= generator.logo %>" /></a>
+				<% } %>
+				<% } %>
+				<% } %>
+			</div>
 		</div>
 	</div>
 </div>
@@ -25,14 +53,77 @@
 <div class="section">
 	<div class="row">
 		<div class="col-sm-6">
-			<h2><i class="fa fa-smile"></i>It's Easy to Use!</h2>
-			<p><%= application.name %> has the <a href="#features/easy-to-use">familiar look and feel</a> of your desktop or mobile OS.  It's so familiar that you'll be comfortable with it right from the start.  It's like your computer but in the cloud. </p>
+			<h2><i class="fa fa-image"></i>Generate Amazing Images</h2>
+			<p>Use <%= application.name %> to create amazing images. Simply by typing in a text prompt / description of what you'd like to see, you can explore a universe of possibilities. </p>
 		</div>
 		<div class="col-sm-6">
 			<div class="figure">
-				<a href="images/info/desktop/desktop-photos.png" target="_blank" class="lightbox" title="<%= application.name %>"><img src="images/info/desktop/desktop-photos.png" /></a>
-				<div class="caption"><%= application.name %></div>
+				<a href="images/info/features/large/generation.png" target="_blank" class="lightbox" title="Generate Amazing Images"><img src="images/info/features/small/generation.png" /></a>
 			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="row">
+		<div class="col-sm-6">
+			<h2><i class="fa fa-gem"></i>Enhance Your Images</h2>
+			<p>Use <%= application.name %> to enhance your existing images. Take a generated image or a photograph and apply prompts and styles to transform it into something new. </p>
+		</div>
+		<div class="col-sm-6">
+			<div class="center aligned">
+				<a href="images/info/features/large/1698557519.png" target="_blank" class="lightbox" rel="enhancement"><img width="128" src="images/info/features/small/1698557519.png" /></a>
+
+				<a href="images/info/features/large/1699321241.png" target="_blank" class="lightbox" rel="enhancement"><img width="128" src="images/info/features/small/1699321241.png" /></a>
+
+				<a href="images/info/features/large/1699321348.png" target="_blank" class="lightbox" rel="enhancement"><img width="128" src="images/info/features/small/1699321348.png" /></a>
+
+				<a href="images/info/features/large/1699321590.png" target="_blank" class="lightbox" rel="enhancement"><img width="128" src="images/info/features/small/1699321590.png" /></a>
+
+				<a href="images/info/features/large/1699321823.png" target="_blank" class="lightbox" rel="enhancement"><img width="128" src="images/info/features/small/1699321823.png" /></a>
+
+				<a href="images/info/features/large/1699321991.png" target="_blank" class="lightbox" rel="enhancement"><img width="128" src="images/info/features/small/1699321991.png" /></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="row">
+		<div class="col-sm-6">
+			<h2><i class="fa fa-share"></i>Share Your AI Images</h2>
+			<p><%= application.name %> includes a wide range of sharing mechanisms for sharing your AI generated dream images: Sharing methods include: </p>
+			<ul>
+				<li>Share by Discussion Topic</li>
+				<li>Share by Chat Message</li>
+				<li><a href="https://www.dreamachines.org/#links/7ac49ddb-8d9c-a1e1-2b9c-003bbbdfb9f2" target="_blank">Share by Link</a></li>
+				<li>Share by Email</li>
+			</ul>
+		</div>
+		<div class="col-sm-6">
+			<div class="figure">
+				<a href="images/info/desktop/topic-viewer.png" target="_blank" class="lightbox" title="Share by Discussion Topic"><img src="images/info/desktop/topic-viewer.png" /></a>
+				<div class="caption">Share by Discussion Topic</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="row">
+		<div class="col-sm-6">
+			<a class="unstyled" href="#features/platform-independent">
+				<h2><i class="fa fa-mobile"></i>Dream Anywhere</h2>
+				<p>You never know when or where or inspiration may strike.  With <%= application.name %>, you can create dream images from anywhere on any internet connected device. </p>
+			</a>
+		</div>
+		<div class="col-sm-6">
+			<a class="unstyled" href="#features/platform-independent">
+				<div class="figure">
+					<a href="images/info/desktop/iphone-desktop.png" target="_blank" class="lightbox" title="<%= application.name %> Mobile"><img src="images/info/desktop/iphone-desktop.png" /></a>
+					<div class="caption"><%= application.name %> Mobile</div>
+				</div>
+			</a>
 		</div>
 	</div>
 </div>
@@ -57,169 +148,6 @@
 					</button>
 				</div>
 				<br />
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="section">
-	<div class="row">
-		<div class="col-sm-6">
-			<h2><i class="fa fa-mobile"></i>It's Accessible Anywhere</h2>
-			<p>Access your digital world from anywhere on <a href="#features/platform-independent">any internet connected device.</a> </p>
-		</div>
-		<div class="col-sm-6">
-			<a href="#features/platform-independent">
-				<div class="figure">
-					<a href="images/info/desktop/iphone-desktop.png" target="_blank" class="lightbox" title="<%= application.name %> Mobile"><img src="images/info/desktop/iphone-desktop.png" /></a>
-					<div class="caption"><%= application.name %> Mobile</div>
-				</div>
-			</a>
-		</div>
-	</div>
-</div>
-
-<div class="section">
-	<div class="row">
-		<div class="col-sm-6">
-			<h2><i class="fa fa-rocket"></i>It's Got Apps!</h2>
-			<p><%= application.name %> has a collection of <a href="#apps">apps</a> for viewing, managing and sharing your data.</p>
-		</div>
-		<div class="col-sm-6">
-			<div class="icons carousel">
-				<% let apps = config.apps; %>
-				<% let keys = Object.keys(apps); %>
-				<% for (let i = 0; i < keys.length; i++) { %>
-				<% let app = apps[keys[i]]; %>
-
-				<% if (!app.disabled) { %>
-				<div class="carousel-cell">
-					<div class="app-icons large icon-grid items">
-						<a href="#apps/<%= app.app %>">
-						<div class="item" href="#apps/profile-browser" style="text-decoration:none">	
-							<div class="row">
-								<div class="icon colored <%= app.color %>">
-									<img src="images/icons/apps/<%= app.image || app.app + '.svg' %>" />
-									<i class="<%= app.icon %>"></i>
-								</div>
-							</div>
-							<div class="row">
-								<div class="name"><%= app.name %></div>
-							</div>
-						</div>
-						</a>
-					</div>
-				</div>
-				<% } %>
-
-				<% } %>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="section">
-	<div class="row">
-		<div class="col-sm-6">
-			<h2><i class="fa fa-tools"></i>It's Self-Hostable!</h2>
-			<p>Are you a DIY type person?  You can <a href="#features/self-hostable">run <%= application.name %> on your own server</a>! Join the host it yourself (HIY) movement to retake control over your data! </p>
-		</div>
-		<div class="col-sm-6">
-			<div class="figure">
-				<a href="#welcome/we-can-do-it">
-					<img class="vertical" src="images/welcome/we-can-do-it.jpg" />
-				</a>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="section">
-	<div class="row">
-		<div class="col-sm-6">
-			<h2><i class="fa fa-heart"></i>You Might Also Like</h2>
-			<p>You might also like these other websites built upon the Sharedigm <a href="#platform">platform</a>. </p>
-		</div>
-		<div class="col-sm-6">
-			<div class="icons large icon-grid items">
-
-				<div class="item">	
-					<div class="row">
-						<a href="http://www.dreamachines.ai" target="_blank">
-							<div class="icon">
-								<img src="images/logos/dreamachines.png" />
-							</div>
-						</a>
-					</div>
-					<div class="row">
-						<div class="name">Dreamachines</div>
-					</div>
-				</div>
-
-				<div class="item">	
-					<div class="row">
-						<a href="http://www.opticexplorer.com" target="_blank">
-							<div class="icon">
-								<img src="images/logos/opticexplorer.png" />
-							</div>
-						</a>
-					</div>
-					<div class="row">
-						<div class="name">OpticExplorer</div>
-					</div>
-				</div>
-
-				<div class="item">	
-					<div class="row">
-						<a href="http://www.easybucket.org" target="_blank">
-							<div class="icon">
-								<img src="images/logos/easybucket.png" />
-							</div>
-						</a>
-					</div>
-					<div class="row">
-						<div class="name">EasyBucket</div>
-					</div>
-				</div>
-
-				<div class="item">	
-					<div class="row">
-						<a href="http://www.rocketkitty.org" target="_blank">
-							<div class="icon">
-								<img src="images/logos/rocketkitty.png" />
-							</div>
-						</a>
-					</div>
-					<div class="row">
-						<div class="name">RocketKitty</div>
-					</div>
-				</div>
-
-				<div class="item">
-					<div class="row">
-						<a href="http://www.cloudintosh.com" target="_blank">
-							<div class="icon">
-								<img src="images/logos/cloudintosh.png" />
-							</div>
-						</a>
-					</div>
-					<div class="row">
-						<div class="name">Cloudintosh</div>
-					</div>
-				</div>
-
-				<div class="item">	
-					<div class="row">
-						<a href="http://www.windows3000.com" target="_blank">
-							<div class="icon">
-								<img src="images/logos/windows3000.png" />
-							</div>
-						</a>
-					</div>
-					<div class="row">
-						<div class="name">Windows3000</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

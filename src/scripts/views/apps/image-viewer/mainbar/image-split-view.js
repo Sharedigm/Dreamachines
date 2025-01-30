@@ -4,7 +4,7 @@
 |                                                                              |
 |******************************************************************************|
 |                                                                              |
-|        This defines a view used for displaying image files and info.         |
+|        This defines a view used for displaying image files.                  |
 |                                                                              |
 |        Author(s): Abe Megahed                                                |
 |                                                                              |

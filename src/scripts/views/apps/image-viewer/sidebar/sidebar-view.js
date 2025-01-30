@@ -18,6 +18,7 @@
 import SideBarView from '../../../../views/apps/common/sidebar/sidebar-view.js';
 import FavoritesPanelView from '../../../../views/apps/image-viewer/sidebar/panels/favorites-panel-view.js';
 import ImagesPanelView from '../../../../views/apps/image-viewer/sidebar/panels/images-panel-view.js';
+import ParametersPanelView from '../../../../views/apps/image-viewer/sidebar/panels/parameters-panel-view.js';
 import FilesPanelView from '../../../../views/apps/image-viewer/sidebar/panels/files-panel-view.js';
 
 export default SideBarView.extend({
@@ -26,7 +27,7 @@ export default SideBarView.extend({
 	// attributes
 	//
 
-	panels: ['favorites', 'images', 'files'],
+	panels: ['favorites', 'images', 'parameters', 'files'],
 
 	//
 	// attribute methods
@@ -38,6 +39,7 @@ export default SideBarView.extend({
 		return {
 			'favorites': isSignedIn,
 			'images': true,
+			'parameters': true,
 			'files': isSignedIn
 		};
 	},
@@ -98,9 +100,7 @@ export default SideBarView.extend({
 
 		// update panels
 		//
-		if (this.hasChildView('exif_info')) {
-			this.showImageInfo();
-		}
+		this.showPanel('parameters');
 	},
 
 	setSelected: function(model, options) {
@@ -139,6 +139,9 @@ export default SideBarView.extend({
 			case 'images':
 				this.showImagesPanel();
 				break;
+			case 'parameters':
+				this.showParametersPanel();
+				break;
 			case 'files':
 				this.showFilesPanel();
 				break;
@@ -172,6 +175,16 @@ export default SideBarView.extend({
 		}));		
 	},
 
+	showParametersPanel: function() {
+		this.showChildView('parameters', new ParametersPanelView({
+			model: this.model,
+
+			// options
+			//
+			view_kind: this.options.view_kind
+		}));
+	},
+
 	showFilesPanel: function() {
 		this.showChildView('files', new FilesPanelView({
 			model: application.getDirectory(),
@@ -179,6 +192,7 @@ export default SideBarView.extend({
 			// options
 			//
 			view_kind: this.options.view_kind,
+			selected: [this.app.directory],
 
 			// callbacks
 			//
@@ -195,6 +209,9 @@ export default SideBarView.extend({
 
 		// update panels
 		//
+		if (this.hasChildView('parameters')) {
+			this.getChildView('parameters').update();
+		}
 		if (this.hasChildView('files')) {
 			this.getChildView('files').update();
 		}
