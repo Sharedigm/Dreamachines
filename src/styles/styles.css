@@ -5839,10 +5839,6 @@ body.red {
   --primary-color: hsl(0, 80%, 60%);
 }
 
-body.raspberry {
-  --primary-color: hsl(330, 80%, 60%);
-}
-
 body.red-orange {
   --primary-color: hsl(15, 80%, 60%);
 }
@@ -5864,7 +5860,7 @@ body.yellow {
 }
 
 body.lime {
-  --primary-color: hsl(90, 50%, 50%);
+  --primary-color: hsl(135, 50%, 50%);
 }
 
 body.green {
@@ -5907,6 +5903,10 @@ body.magenta {
   --primary-color: hsl(280, 33%, 50%);
 }
 
+body.raspberry {
+  --primary-color: hsl(330, 80%, 60%);
+}
+
 body.grey {
   --primary-color: #6060a0;
 }
@@ -5917,10 +5917,6 @@ body.brown {
 
 .red-accented {
   --secondary-color: hsl(0, 80%, 60%);
-}
-
-.raspberry-accented {
-  --secondary-color: hsl(330, 80%, 60%);
 }
 
 .red-orange-accented {
@@ -5944,7 +5940,7 @@ body.brown {
 }
 
 .lime-accented {
-  --secondary-color: hsl(90, 50%, 50%);
+  --secondary-color: hsl(135, 50%, 50%);
 }
 
 .green-accented {
@@ -5985,6 +5981,10 @@ body.brown {
 
 .magenta-accented {
   --secondary-color: hsl(280, 33%, 50%);
+}
+
+.raspberry-accented {
+  --secondary-color: hsl(330, 80%, 60%);
 }
 
 .grey-accented {
