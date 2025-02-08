@@ -63,4 +63,4 @@ Distributed under the <a href="https://indiesource.org/">IndieSource License</a>
 
 ## Contact
 
-mailto:admin@sharedigm.com
+mailto:admin@dreamachines.ai
