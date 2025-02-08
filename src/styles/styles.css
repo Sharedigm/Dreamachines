@@ -869,6 +869,7 @@ h1 .icon i {
   height: 100%;
 }
 .app.fixed-size .body {
+  height: 100%;
   flex-grow: 0 !important;
   margin: auto;
 }
@@ -4369,6 +4370,171 @@ body[device=desktop] .help-viewer.app .footer-bar > div:last-child {
 \******************************************************************************/
 /******************************************************************************\
 |                                                                              |
+|                             _image-generator.scss                            |
+|                                                                              |
+|******************************************************************************|
+|                                                                              |
+|        This defines various CSS styles used in this application.             |
+|                                                                              |
+|        Author(s): Abe Megahed                                                |
+|                                                                              |
+|        This file is subject to the terms and conditions defined in           |
+|        'LICENSE.txt', which is part of this source code distribution.        |
+|                                                                              |
+|******************************************************************************|
+|        Copyright (C) 2016-2024, Megahed Labs LLC, www.sharedigm.com          |
+\******************************************************************************/
+.image-generator.app .body > .contents .sidebar .image-info.panel > .info {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 300px;
+}
+.image-generator.app .body > .contents .mainbar {
+  position: relative;
+}
+.image-generator.app .body > .contents .mainbar .image {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.image-generator.app .body > .contents .mainbar .image > img:not(.loading) {
+  margin: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+}
+.image-generator.app .body > .contents .mainbar .image > img:not(.loading)[width="100%"][height="100%"] {
+  object-fit: contain;
+}
+.image-generator.app .body > .contents .mainbar .image .caption {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  padding: 10px;
+  width: 100%;
+}
+.image-generator.app .body > .contents .mainbar .image .caption .text {
+  background: black;
+  font-size: 125%;
+  padding: 5px 10px;
+  margin: auto;
+  border-radius: 1em;
+  border: 2px solid white;
+  color: white;
+}
+.image-generator.app .body > .contents .mainbar .image.hide-caption .caption {
+  display: none;
+}
+.image-generator.app .body > .contents .mainbar .annotation.fineprint {
+  display: inline-block;
+  position: absolute;
+  color: #272740;
+  background: white;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+.image-generator.app .body > .contents .mainbar .image:fullscreen {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: black;
+}
+.image-generator.app .body > .contents .mainbar .image:fullscreen .caption {
+  position: fixed;
+}
+.image-generator.app .body > .contents .mainbar .image:-webkit-full-screen {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: black;
+}
+.image-generator.app .body > .contents .mainbar .image:-webkit-full-screen .caption {
+  position: fixed;
+}
+.image-generator.app .body > .contents .mainbar .image:-moz-full-screen {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: black;
+}
+.image-generator.app .body > .contents .mainbar .image:-moz-full-screen .caption {
+  position: fixed;
+}
+.image-generator.app .body > .contents .mainbar .image:-ms-fullscreen {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background: black;
+}
+.image-generator.app .body > .contents .mainbar .image:-ms-fullscreen .caption {
+  position: fixed;
+}
+.image-generator.app .footer-bar .file-info {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.resolution.items .item .preview {
+  background-color: #6060a0;
+  display: flex;
+  pointer-events: auto;
+}
+.resolution.items .item .preview .aspect-ratio {
+  color: #c0c0d9;
+  margin: auto;
+}
+.resolution.items .item.selected .preview {
+  border-width: 1px;
+  border-style: solid;
+}
+
+/*
+.colored {
+	.image-generator.app {
+		.body > .contents {
+			.sidebar {
+				.panels {
+					background: $very-very-very-dark-grey;
+				}
+			}
+		}
+	}
+}
+*/
+@media (max-width: 480px) {
+  .image-generator.app .header-bar .zoom-bar .input input[type=range] {
+    display: none;
+  }
+  .image-generator.app .body > .contents .mainbar .image {
+    overflow: auto;
+  }
+}
+body[device=desktop] .image-generator.app .mainbar .image {
+  overflow: hidden;
+}
+
+body[device=phone] .image-generator.app .mainbar .image, body[device=tablet] .image-generator.app .mainbar .image {
+  overflow: auto;
+}
+
+[browser=safari] .image-generator.app .image img.pixelated {
+  transform: none !important;
+  filter: none !important;
+}
+
+@-moz-document url-prefix() {
+  .image-generator.app .image img.pixelated {
+    image-rendering: optimizeSpeed;
+  }
+}
+/******************************************************************************\
+|                                                                              |
 |                               _image-viewer.scss                             |
 |                                                                              |
 |******************************************************************************|
@@ -5839,6 +6005,10 @@ body.red {
   --primary-color: hsl(0, 80%, 60%);
 }
 
+body.raspberry {
+  --primary-color: hsl(330, 80%, 60%);
+}
+
 body.red-orange {
   --primary-color: hsl(15, 80%, 60%);
 }
@@ -5860,7 +6030,7 @@ body.yellow {
 }
 
 body.lime {
-  --primary-color: hsl(135, 50%, 50%);
+  --primary-color: hsl(90, 50%, 50%);
 }
 
 body.green {
@@ -5903,10 +6073,6 @@ body.magenta {
   --primary-color: hsl(280, 33%, 50%);
 }
 
-body.raspberry {
-  --primary-color: hsl(330, 80%, 60%);
-}
-
 body.grey {
   --primary-color: #6060a0;
 }
@@ -5917,6 +6083,10 @@ body.brown {
 
 .red-accented {
   --secondary-color: hsl(0, 80%, 60%);
+}
+
+.raspberry-accented {
+  --secondary-color: hsl(330, 80%, 60%);
 }
 
 .red-orange-accented {
@@ -5940,7 +6110,7 @@ body.brown {
 }
 
 .lime-accented {
-  --secondary-color: hsl(135, 50%, 50%);
+  --secondary-color: hsl(90, 50%, 50%);
 }
 
 .green-accented {
@@ -5981,10 +6151,6 @@ body.brown {
 
 .magenta-accented {
   --secondary-color: hsl(280, 33%, 50%);
-}
-
-.raspberry-accented {
-  --secondary-color: hsl(330, 80%, 60%);
 }
 
 .grey-accented {
@@ -10207,6 +10373,9 @@ body[device=phone] .item-tree .expander button.btn-sm, body[device=tablet] .item
   height: 36px;
 }
 
+.extra-large.tile-grid .item {
+  width: 256px;
+}
 .extra-large.tile-grid .item > .tile {
   width: 256px;
   height: 256px;
@@ -17554,7 +17723,7 @@ a.unstyled {
   margin: 5px 0;
   background: none;
 }
-.menu li.divider:last-child, .dropdown-menu li.divider:last-child {
+.menu li.divider:first-child, .menu li.divider:last-child, .dropdown-menu li.divider:first-child, .dropdown-menu li.divider:last-child {
   display: none;
 }
 .menu li.divider:hover, .dropdown-menu li.divider:hover {
@@ -17944,10 +18113,14 @@ body:not(.binary):not(.flat-menus):not(.flat.auto-menus) .menu-bar > ul.nav-menu
 }
 
 @media (max-width: 480px) {
-  .menu-bar > ul.nav-menus > li > a i {
-    display: none;
+  .menu-bar > ul.nav-menus > li {
+    /*
+    &.help {
+    	display: none;
+    }
+    */
   }
-  .menu-bar > ul.nav-menus > li.help {
+  .menu-bar > ul.nav-menus > li > a i {
     display: none;
   }
 }

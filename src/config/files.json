@@ -307,13 +307,13 @@
 				"icon": "jpg.svg",
 				"font": "fa fa-file-image",
 				"color": "#14a045",
-				"app": "image_viewer"
+				"app": "image_generator"
 			},
 			"jpeg": {
 				"icon": "jpeg.svg",
 				"font": "fa fa-file-image",
 				"color": "#14a045",
-				"app": "image_viewer"
+				"app": "image_generator"
 			},
 			"jl": {
 				"icon": "jl.svg",
@@ -487,7 +487,7 @@
 				"icon": "png.svg",
 				"font": "fa fa-file-image",
 				"color": "#359c8a",
-				"app": "image_viewer"
+				"app": "image_generator"
 			},
 			"ppt": {
 				"icon": "ppt.svg",

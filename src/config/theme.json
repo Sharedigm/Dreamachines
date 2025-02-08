@@ -111,9 +111,9 @@
 		"slider_corners": "auto",
 		"slider_handle_width": "medium",
 
-		"splitter_width": "medium",
+		"splitter_width": "narrow",
 		"splitter_handles": true,
-		"splitter_handle_width": "medium",
+		"splitter_handle_width": "narrow",
 
 		"scrollbar_material": "auto",
 		"scrollbar_width": "medium",

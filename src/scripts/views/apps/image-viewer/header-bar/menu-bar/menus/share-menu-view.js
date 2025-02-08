@@ -36,7 +36,7 @@ export default ShareMenuView.extend({
 	//
 
 	enabled: function() {
-		return application.session.user && this.parent.app.model != undefined &&
+		return application.session.user && this.parent.app.model != undefined && 
 			this.parent.app.model.isSaved() && !this.parent.app.model.hasBeenShared();
 	},
 

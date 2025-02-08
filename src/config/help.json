@@ -1,8 +1,7 @@
 {
 	"name": "User Guide & Reference",
 	"logo": {
-		"src": "images/logos/logo.png",
-		"background": "var(--primary-color)"
+		"src": "images/logos/logo.png"
 	},
 	"version": "2.0",
 	"items": {
@@ -450,7 +449,7 @@
 					"icon": "fa fa-key"
 				},
 				"deleting-account": {
-					"name": "Deleting your Account",
+					"name": "Deleting Your Account",
 					"icon": "fa fa-trash-alt"
 				}
 			}

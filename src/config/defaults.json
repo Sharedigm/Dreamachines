@@ -1,7 +1,7 @@
 {
 	"colors": [
 		"red", "orange", "gold", "yellow", "green", "teal", "aqua", "cyan", "blue", "violet",
-		"magenta", "brown", "grey"
+		"magenta", "raspberry", "brown", "grey"
 	],
 
 	"contact": {
@@ -20,9 +20,14 @@
 		"show_app_launcher": true,
 		"preferences": {
 			"desktop_apps": {
-				"phone": ["image_viewer"],
-				"tablet": ["image_viewer", "topic_viewer"],
-				"desktop": ["image_viewer", "topic_viewer"]
+				"phone": ["image_generator"],
+				"tablet": ["image_generator", "topic_viewer"],
+				"desktop": ["image_generator", "topic_viewer"]
+			},
+			"admin_apps": {
+				"phone": ["app_launcher"],
+				"tablet": ["app_launcher"],
+				"desktop": ["account_manager", "file_browser"]
 			},
 			"pinned_apps": []
 		}
@@ -65,7 +70,13 @@
 		}
 	},
 
-	"releases": {
+	"downloads": {
+		"production": {
+			"2025-02-07": "downloads/Dreamachines_2025-02-07.zip"
+		},
+		"development": {
+			"GitHub": "https://github.com/Sharedigm/Dreamachines"
+		}
 	},
 
 	"search (disabled)": {
@@ -77,6 +88,18 @@
 		"enable_notifications": true,
 		"mute_sounds": false,
 		"volume": 5
+	},
+
+	"sharing": {
+		"emoji": true,
+		"files": {
+			"Files": {
+				"icon": "fa fa-file",
+				"directory": ""
+			}
+		},
+		"uploads": true,
+		"locations": true
 	},
 
 	"text": {
@@ -108,6 +131,10 @@
 
 		"headings": [
 			"h1", "h2", "h3"
+		],
+
+		"content": [
+			"p", ".section li"
 		]
 	}
 }

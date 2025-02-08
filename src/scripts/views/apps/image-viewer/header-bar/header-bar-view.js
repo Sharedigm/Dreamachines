@@ -21,7 +21,6 @@ import MouseModeBarView from '../../../../views/apps/image-viewer/header-bar/mou
 import ZoomModeBarView from '../../../../views/apps/image-viewer/header-bar/zoom-mode-bar/zoom-mode-bar-view.js';
 import ZoomBarView from '../../../../views/apps/image-viewer/header-bar/zoom-bar/zoom-bar-view.js';
 import RotateBarView from '../../../../views/apps/image-viewer/header-bar/rotate-bar/rotate-bar-view.js';
-import GenerateBarView from '../../../../views/apps/image-viewer/header-bar/generate-bar/generate-bar-view.js';
 import ImageBarView from '../../../../views/apps/image-viewer/header-bar/image-bar/image-bar-view.js';
 
 export default HeaderBarView.extend({
@@ -30,7 +29,7 @@ export default HeaderBarView.extend({
 	// attributes
 	//
 
-	toolbars: ['menu', 'mouse_mode', 'zoom_mode', 'zoom', 'rotate', 'generate', 'image'],
+	toolbars: ['menu', 'mouse_mode', 'zoom_mode', 'image', 'zoom', 'rotate'],
 
 	//
 	// rendering methods
@@ -45,6 +44,7 @@ export default HeaderBarView.extend({
 		// hide items for mobile
 		//
 		this.$el.find('.mouse-mode-bar').addClass('desktop-only');
+		this.$el.find('.image-bar').addClass('desktop-app-only');
 	},
 
 	showToolbar: function(kind) {
@@ -58,17 +58,14 @@ export default HeaderBarView.extend({
 			case 'zoom_mode':
 				this.showZoomModeBar();
 				break;
+			case 'image':
+				this.showImageBar();
+				break;
 			case 'zoom':
 				this.showZoomBar();
 				break;
 			case 'rotate':
 				this.showRotateBar();
-				break;
-			case 'generate':
-				this.showGenerateBar();
-				break;
-			case 'image':
-				this.showImageBar();
 				break;
 		}
 	},
@@ -106,10 +103,6 @@ export default HeaderBarView.extend({
 		this.showChildView('rotate', new RotateBarView({
 			rotation: this.app.options.rotation
 		}));
-	},
-
-	showGenerateBar: function() {
-		this.showChildView('generate', new GenerateBarView());
 	},
 
 	showImageBar: function() {

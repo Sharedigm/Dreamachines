@@ -135,7 +135,7 @@
 		}
 	},
 
-	"page":{
+	"page": {
 		"background": "null",
 		"theme": "",
 
@@ -148,67 +148,94 @@
 				"background": "linear-gradient(hsla(250, 25%, 33%, 0) 0%, hsla(250, 25%, 15%, 1.0) 100%)"
 			},
 
-			"logo": {
-				"src": "images/logos/logo.svg",
-				"height": "100px"
+			"brand": {
+				"logo": {
+					"src": "images/logos/logo.svg",
+					"height": "100px"
+				},
+				"logotype": {
+					"font_variant": "small-caps",
+					"text_shadow": "5px 5px 10px black, 10px 10px 20px black",
+					"font": "Julius Sans",
+
+					"names": {
+						"Drea": {
+							"color": "white",
+							"font_size": "125%"
+						}, 
+						"mach": {
+							"color": "khaki",
+							"font_size": "125%"
+						}, 
+						"ines": {
+							"color": "gold",
+							"font_size": "125%"
+						}, 
+						".ai": {
+							"color": "hsl(280, 50%, 60%)",
+							"font_size": "75%"
+						}
+					}
+				}
 			},
 
-			"links": {
-				"About": {
-					"icon": "fa fa-info-circle",
-					"href": "#about"
+			"info": {
+				"Explore": {
+					"icon": "fa fa-search",
+					"links": {
+						"About": {
+							"icon": "fa fa-info-circle",
+							"href": "#about"
+						},
+						"Uses": {
+							"icon": "fa fa-user-circle",
+							"href": "#uses"
+						},
+						"Features": {
+							"icon": "fa fa-lightbulb",
+							"href": "#features"
+						},
+						"Apps": {
+							"icon": "fa fa-rocket",
+							"href": "#apps"
+						}
+					}
 				},
-				"Uses": {
-					"icon": "fa fa-user-circle",
-					"href": "#uses"
-				},
-				"Features": {
-					"icon": "fa fa-lightbulb",
-					"href": "#features"
-				},
-				"Tutorial": {
-					"icon": "fa fa-chalkboard",
-					"href": "#tutorial"
-				},
-				"Tokens": {
-					"icon": "fa fa-coins",
-					"href": "#tokens"
-				},
-				"Gallery": {
-					"icon": "fa fa-image",
-					"href": "#gallery"
-				},
-				"Apps": {
-					"icon": "fa fa-rocket",
-					"href": "#apps"
-				},
-				"Help": {
-					"icon": "fa fa-question-circle",
-					"href": "#help"
-				},
+
 				"Policies": {
 					"icon": "fa fa-gavel",
-					"href": "#policies"
+					"links": {
+						"Privacy": {
+							"icon": "fa fa-file-alt",
+							"href": "#policies/privacy-policy"
+						},
+						"User Data": {
+							"icon": "fa fa-file-alt",
+							"href": "#policies/user-data-policy"
+						},
+						"Terms of Use": {
+							"icon": "fa fa-file-alt",
+							"href": "#policies/terms-of-use"
+						},
+						"Code of Conduct": {
+							"icon": "fa fa-file-alt",
+							"href": "#policies/code-of-conduct"
+						}
+					}
 				},
-				"Privacy": {
-					"icon": "fa fa-file-alt",
-					"href": "#policies/privacy-policy"
-				},
-				"User Data": {
-					"icon": "fa fa-file-alt",
-					"href": "#policies/user-data-policy"
-				},
-				"Terms of Use": {
-					"icon": "fa fa-file-alt",
-					"href": "#policies/terms-of-use"
-				},
-				"Code of Conduct": {
-					"icon": "fa fa-file-alt",
-					"href": "#policies/code-of-conduct"
-				},
-				"Contact Us": {
-					"icon": "fa fa-envelope",
-					"href": "#contact"
+
+				"Help": {
+					"icon": "fa fa-question-circle",
+					"links": {
+						"User Guide": {
+							"icon": "fa fa-book",
+							"href": "#help"
+						},
+						"Contact Us": {
+							"icon": "fa fa-envelope",
+							"href": "#contact"
+						}
+					}
 				}
 			}
 		}

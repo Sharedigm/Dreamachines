@@ -38,7 +38,7 @@ export default SideBarPanelView.extend({
 				</button>
 			</div>
 		</div>
-
+		
 		<div class="items"></div>
 	`),
 
@@ -109,7 +109,14 @@ export default SideBarPanelView.extend({
 
 		// show child views
 		//
-		this.showFiles();
+		this.request = this.model.load({
+
+			// callbacks
+			//
+			success: () => {
+				this.showFiles();
+			}
+		});
 
 		// set initial state
 		//
@@ -134,8 +141,11 @@ export default SideBarPanelView.extend({
 			filter: (view) => {
 				return !view.isHidden();
 			},
-			selected: this.options.selected,
 			show_root: true,
+
+			// state
+			//
+			selected: this.options.selected,
 
 			// capabilities
 			//
@@ -202,7 +212,7 @@ export default SideBarPanelView.extend({
 	//
 
 	onDropInItems: function(items, child, options) {
-		this.app.uploadItems(items, child.model, {
+		this.app.uploadImages(items, child.model, {
 
 			// callbacks
 			//

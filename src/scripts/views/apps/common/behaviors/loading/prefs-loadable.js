@@ -154,6 +154,14 @@ export default {
 				});
 				break;
 
+			case 'image_generator':
+				import(
+					'../../../image-generator/forms/preferences/preferences-form-view.js'
+				).then((PrefsFormView) => {
+					done(PrefsFormView.default);
+				});
+				break;
+
 			case 'image_viewer':
 				import(
 					'../../../image-viewer/forms/preferences/preferences-form-view.js'

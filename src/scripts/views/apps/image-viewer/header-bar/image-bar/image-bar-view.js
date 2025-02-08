@@ -18,7 +18,6 @@
 import ToolbarView from '../../../../../views/apps/common/toolbars/toolbar-view.js';
 import Timeable from '../../../../../views/behaviors/effects/timeable.js';
 import NumberInputView from '../../../../../views/forms/inputs/number-input-view.js';
-import FullScreenButtonView from '../../../../../views/apps/image-viewer/header-bar/image-bar/buttons/full-screen-button-view.js';
 import FirstButtonView from '../../../../../views/apps/image-viewer/header-bar/image-bar/buttons/first-button-view.js';
 import PrevButtonView from '../../../../../views/apps/image-viewer/header-bar/image-bar/buttons/prev-button-view.js';
 import NextButtonView from '../../../../../views/apps/image-viewer/header-bar/image-bar/buttons/next-button-view.js';
@@ -32,14 +31,13 @@ export default ToolbarView.extend(_.extend({}, Timeable, {
 	//
 
 	template: template(`
-		<div class="full hidden-xxs" data-toggle="tooltip" title="Full Screen"></div>
-		<div class="first desktop-app-only" data-toggle="tooltip" title="First"></div>
-		<div class="prev desktop-app-only" data-toggle="tooltip" title="Prev"></div>
-		<div class="current desktop-app-only" data-toggle="tooltip" title="Current"></div>
-		<div class="num-items info-bar desktop-app-only">/ <span class="total"><%= total %></span></div>
-		<div class="next desktop-app-only" data-toggle="tooltip" title="Next"></div>
-		<div class="last desktop-app-only" data-toggle="tooltip" title="Last"></div>
-		<div class="play hidden-xxs desktop-app-only" data-toggle="tooltip" title="Play"></div>
+		<div class="first" data-toggle="tooltip" title="First"></div>
+		<div class="prev" data-toggle="tooltip" title="Prev"></div>
+		<div class="current" data-toggle="tooltip" title="Current"></div>
+		<div class="num-items info-bar">/ <span class="total"><%= total %></span></div>
+		<div class="next" data-toggle="tooltip" title="Next"></div>
+		<div class="last" data-toggle="tooltip" title="Last"></div>
+		<div class="play" data-toggle="tooltip" title="Play"></div>
 	`),
 
 	regions: {
@@ -114,9 +112,6 @@ export default ToolbarView.extend(_.extend({}, Timeable, {
 
 		// show child views
 		//
-		this.showChildView('full', new FullScreenButtonView({
-			model: this.model
-		}));
 		this.showChildView('first', new FirstButtonView({
 			model: this.model
 		}));
@@ -151,7 +146,6 @@ export default ToolbarView.extend(_.extend({}, Timeable, {
 
 		// update child views
 		//
-		this.getChildView('full').onRender();
 		this.getChildView('first').onRender();
 		this.getChildView('prev').onRender();
 		this.getChildView('next').onRender();

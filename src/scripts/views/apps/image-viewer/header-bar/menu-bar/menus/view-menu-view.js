@@ -23,333 +23,7 @@ export default ViewMenuView.extend({
 	// attributes
 	//
 
-	items: [
-		{
-			"class": "show-gallery",
-			"icon": "fa fa-image",
-			"name": "Gallery"
-		},
-		"separator",
-		{
-			"class": "fit",
-			"icon": "fa fa-expand",
-			"name": "Fit",
-			"menu": [
-				{
-					"class": "fit-size",
-					"icon": "fa fa-expand",
-					"name": "Fit Size",
-					"shortcut": "shift-command-F"
-				},
-				{
-					"class": "fit-width",
-					"icon": "fa fa-arrows-left-right-to-line",
-					"name": "Fit Width",
-					"shortcut": "shift-command-D"
-				},
-				{
-					"class": "fit-height",
-					"icon": "fa fa-arrows-left-right-to-line rotated",
-					"name": "Fit Height",
-					"shortcut": "shift-command-H"
-				}
-			]
-		},
-		{
-			"class": "zoom",
-			"icon": "fa fa-search",
-			"name": "Zoom",
-			"menu": [
-				{
-					"class": "zoom-in",
-					"icon": "fa fa-search-plus",
-					"name": "Zoom In",
-					"shortcut": "="
-				},
-				{
-					"class": "zoom-out",
-					"icon": "fa fa-search-minus",
-					"name": "Zoom Out",
-					"shortcut": "-"
-				},
-				{
-					"class": "zoom-to-actual",
-					"name": "Zoom to Actual Size",
-					"shortcut": "command-1"
-				}
-			]
-		},
-		{
-			"class": "rotate",
-			"icon": "fa fa-redo",
-			"name": "Rotate",
-			"menu": [
-				{
-					"class": "rotate-left",
-					"icon": "fa fa-undo",
-					"name": "Rotate Left",
-					"shortcut": "command-8"
-				},
-				{
-					"class": "rotate-right",
-					"icon": "fa fa-redo",
-					"name": "Rotate Right",
-					"shortcut": "command-9"
-				},
-				{
-					"class": "rotate-reset",
-					"icon": "fa fa-undo",
-					"name": "Rotate Reset",
-					"shortcut": "command-0"
-				}
-			]
-		},
-		"separator",
-		{
-			"class": "view-slide-show",
-			"icon": "fa fa-play",
-			"name": "Slide Show",
-			"shortcut": "command-S",
-			"select": true
-		},
-		{
-			"class": "show-smoothing",
-			"icon": "fa fa-wave-square",
-			"name": "Smoothing",
-			"shortcut": "command-M",
-			"select": true
-		},
-		"separator",
-		{
-			"group": "show-toolbars",
-			"icon": "fa fa-wrench",
-			"name": "Toolbars",
-			"select": true,
-			"menu": [
-				{
-					"class": "show-mouse-mode-bar",
-					"group": "option",
-					"icon": "fa fa-mouse-pointer",
-					"name": "Mouse Mode",
-					"select": true
-				},
-				{
-					"class": "show-zoom-mode-bar",
-					"group": "option",
-					"icon": "fa fa-expand",
-					"name": "Zoom Mode",
-					"select": true
-				},
-				{
-					"class": "show-zoom-bar",
-					"group": "option",
-					"icon": "fa fa-search",
-					"name": "Zoom",
-					"select": true
-				},
-				{
-					"class": "show-rotate-bar",
-					"group": "option",
-					"icon": "fa fa-rotate-right",
-					"name": "Rotate",
-					"select": true
-				},
-				{
-					"class": "show-generate-bar",
-					"group": "option",
-					"icon": "fa fa-robot",
-					"name": "Generate",
-					"select": true
-				},
-				{
-					"class": "show-image-bar",
-					"group": "option",
-					"icon": "fa fa-play",
-					"name": "Image",
-					"select": true
-				}
-			]
-		},
-		{
-			"class": "show-sidebar",
-			"group": "-xs",
-			"icon": "fa fa-pause",
-			"name": "Sidebar",
-			"select": true,
-			"menu": [
-				{
-					"class": "show-favorites-panel",
-					"icon": "fa fa-star",
-					"name": "Favorites",
-					"select": true
-				},
-				{
-					"class": "show-images-panel",
-					"icon": "fa fa-image",
-					"name": "Images",
-					"select": true
-				},
-				{
-					"class": "show-parameters-panel",
-					"icon": "fa fa-table",
-					"name": "Parameters",
-					"select": true
-				},
-				{
-					"class": "show-files-panel",
-					"icon": "fa fa-folder",
-					"name": "Files",
-					"select": true
-				}
-			]
-		},
-		{
-			"group": "sidebar-view-kind",
-			"icon": "fa fa-th",
-			"name": "Sidebar Items",
-			"select": true,
-			"menu": [
-				{
-					"class": "view-sidebar-icons",
-					"group": "sidebar-view-kind",
-					"icon": "fa fa-th",
-					"name": "Icons",
-					"select": true
-				},
-				{
-					"class": "view-sidebar-lists",
-					"group": "sidebar-view-kind",
-					"icon": "fa fa-list",
-					"name": "Lists",
-					"select": true
-				},
-				{
-					"class": "view-sidebar-cards",
-					"group": "sidebar-view-kind",
-					"icon": "fa fa-id-card",
-					"name": "Cards",
-					"select": true
-				},
-				{
-					"class": "view-sidebar-tiles",
-					"group": "sidebar-view-kind",
-					"icon": "fa fa-th-large",
-					"name": "Tiles",
-					"select": true
-				}
-			]
-		},
-		{
-			"group": "sidebar-tile-size",
-			"icon": "fa fa-th-large",
-			"name": "Sidebar Tile Size",
-			"select": true,
-			"menu": [
-				{
-					"class": "small-tile-size",
-					"icon": "fa fa-th",
-					"name": "Small",
-					"select": true
-				},
-				{
-					"class": "medium-tile-size",
-					"icon": "fa fa-th-large",
-					"name": "Medium",
-					"select": true
-				},
-				{
-					"class": "large-tile-size",
-					"icon": "fa fa-image",
-					"name": "Large",
-					"select": true
-				}
-			]
-		},
-		{
-			"class": "show-prompt",
-			"icon": "fa fa-font",
-			"name": "Prompt",
-			"shortcut": "shift-command-P",
-			"select": true
-		},
-		{
-			"class": "show-exif-info",
-			"icon": "fa fa-table",
-			"name": "Exif Info",
-			"select": true
-		},
-		"separator",
-		{
-			"class": "expand-window",
-			"icon": "fa fa-expand",
-			"name": "Expand",
-			"platform": "mobile"
-		},
-		{
-			"group": "window-size",
-			"icon": "far fa-window-maximize",
-			"name": "Window Size",
-			"mode": "windowed",
-			"menu": [
-				{
-					"class": "shrink-window",
-					"icon": "fa fa-minus",
-					"name": "Shrink",
-					"shortcut": "command-["
-				},
-				{
-					"class": "grow-window",
-					"icon": "fa fa-plus",
-					"name": "Grow",
-					"shortcut": "command-]"
-				},
-				{
-					"class": "expand-window",
-					"icon": "fa fa-expand",
-					"name": "Expand",
-					"shortcut": "command-\\"
-				}
-			]
-		},
-		{
-			"group": "spaces",
-			"icon": "far fa-window-maximize",
-			"name": "Spaces",
-			"select": true,
-			"mode": "desktop",
-			"menu": [
-				{
-					"class": "prev-space",
-					"icon": "fa fa-chevron-left",
-					"name": "Prev",
-					"shortcut": "command-left arrow"
-				},
-				{
-					"class": "next-space",
-					"icon": "fa fa-chevron-right",
-					"name": "Next",
-					"shortcut": "command-right arrow"
-				}
-			]
-		},
-		{
-			"class": "view-full-screen",
-			"icon": "fa fa-desktop",
-			"name": "Full Screen",
-			"shortcut": "command-\\",
-			"select": true,
-			"mode": "desktop"
-		},
-		"separator",
-		{
-			"class": "view-preferences",
-			"icon": "fa fa-snowflake",
-			"name": "Preferences"
-		}
-	],
-
 	events: {
-		'click .show-gallery': 'onClickShowGallery',
 
 		// view options
 		//
@@ -370,20 +44,19 @@ export default ViewMenuView.extend({
 
 		// toolbar options
 		//
-		'click .show-toolbars > a': 'onClickShowToolbars',
-		'click .show-toolbar > li > a': 'onClickShowToolbar',
-
-		// mainbar options
-		//
-		'click .show-prompt': 'onClickOption',
-		'click .show-exif-info': 'onClickOption',
+		'click .show-toolbars': 'onClickShowToolbars',
+		'click .show-toolbar > a': 'onClickShowToolbar',
 
 		// sidebar options
 		//
-		'click .show-sidebar': 'onClickOption',
-		'click .show-sidebar-panels a': 'onClickShowSideBarPanel',
-		'click .sidebar-view-kind a': 'onClickSideBarViewKind',
-		'click .sidebar-tile-size a': 'onClickSideBarTileSize',
+		'click .show-sidebar': 'onClickShowSidebar',
+		'click .show-sidebar-panel > a': 'onClickShowSideBarPanel',
+		'click .sidebar-view-kind > a': 'onClickSideBarViewKind',
+		'click .sidebar-tile-size > a': 'onClickSideBarTileSize',
+
+		// mainbar options
+		//
+		'click .show-exif-info': 'onClickOption',
 
 		// window options
 		//
@@ -408,58 +81,8 @@ export default ViewMenuView.extend({
 	// querying methods
 	//
 
-	enabled: function() {
-		let hasModel = this.parent.app.model != null;
-		let isSignedIn = application.isSignedIn();
-
-		return {
-
-			// options
-			//
-			'show-gallery': true,
-
-			// viewing options
-			//
-			'fit-size': hasModel,
-			'fit-width': hasModel,
-			'fit-height': hasModel,
-			'show-smoothing': hasModel,
-
-			// toolbar options
-			//
-			'show-nav-bar': true,
-			'show-mouse-mode-bar': true,
-			'show-zoom-mode-bar': true,
-			'show-zoom-bar': true,
-			'show-rotate-bar': true,
-			'show-generate-bar': isSignedIn,
-			'show-image-bar': true,
-
-			// mainbar options
-			//
-			'show-prompt': true,
-			'show-exif-info': hasModel,
-
-			// sidebar options
-			//
-			'show-sidebar': true,
-			'show-favorites-panel': true,
-			'show-images-panel': true,
-			'show-parameters-panel': true,
-			'show-files-panel': isSignedIn,
-
-			// sidebar item options
-			//
-			'view-sidebar-icons': true,
-			'view-sidebar-lists': true,
-			'view-sidebar-cards': true,
-			'view-sidebar-tiles': true
-		};
-	},
-
 	selected: function() {
 		let preferences = this.parent.app.preferences;
-		let isSignedIn = application.isSignedIn();
 		let toolbars = preferences.get('toolbars') || [];
 		let sidebarPanels = preferences.get('sidebar_panels') || [];
 		let sidebarViewKind = preferences.get('sidebar_view_kind');
@@ -482,21 +105,14 @@ export default ViewMenuView.extend({
 			'show-zoom-mode-bar': toolbars.includes('zoom_mode'),
 			'show-zoom-bar': toolbars.includes('zoom'),
 			'show-rotate-bar': toolbars.includes('rotate'),
-			'show-generate-bar': toolbars.includes('generate'),
-			'show-image-bar': toolbars.includes('generate'),
-
-			// mainbar options
-			//
-			'show-prompt': preferences.get('show_prompt'),
-			'show-exif-info': preferences.get('show_exif_info'),
+			'show-image-bar': toolbars.includes('image'),
 
 			// sidebar options
 			//
 			'show-sidebar': preferences.get('show_sidebar'),
 			'show-favorites-panel': sidebarPanels.includes('favorites'),
 			'show-images-panel': sidebarPanels.includes('images'),
-			'show-parameters-panel': sidebarPanels.includes('parameters'),
-			'show-files-panel': sidebarPanels.includes('files') && isSignedIn,
+			'show-files-panel': sidebarPanels.includes('files'),
 
 			// sidebar item options
 			//
@@ -509,8 +125,26 @@ export default ViewMenuView.extend({
 			//
 			'small-tile-size': sidebarTileSize == 'small',
 			'medium-tile-size': sidebarTileSize == 'medium',
-			'large-tile-size': sidebarTileSize == 'large'
+			'large-tile-size': sidebarTileSize == 'large',
+
+			// mainbar options
+			//
+			'show-exif-info': preferences.get('show_exif_info')
 		};
+	},
+
+	disabled: function() {
+		if (!this.parent.app.model) {
+			return {
+				'fit': true,
+				'zoom': true,
+				'rotate': true,
+				'show-smoothing': true,
+				'view-slide-show': true
+			};
+		} else {
+			return false;
+		}
 	},
 
 	//
@@ -534,15 +168,7 @@ export default ViewMenuView.extend({
 		};
 	},
 	*/
-
-	//
-	// mouse event handling methods
-	//
-
-	onClickShowGallery: function() {
-		this.parent.app.showGallery();
-	},
-
+	
 	//
 	// fit mouse event handling methods
 	//
@@ -603,5 +229,9 @@ export default ViewMenuView.extend({
 	onClickSlideShow: function() {
 		this.toggleMenuItem('view-slide-show');
 		this.parent.app.toggleSlideShow();
+	},
+
+	onClickViewFullScreen: function() {
+		this.parent.app.toggleFullScreen();
 	}
 });

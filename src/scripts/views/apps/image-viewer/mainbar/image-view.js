@@ -210,9 +210,6 @@ export default BaseView.extend(_.extend({}, ScrollableContainable, FullScreenabl
 			case 'show_smoothing':
 				this.setSmoothing(value);
 				break;
-			case 'show_prompt':
-				this.setShowPrompt(value);
-				break;
 		}
 	},
 
@@ -221,14 +218,6 @@ export default BaseView.extend(_.extend({}, ScrollableContainable, FullScreenabl
 			this.$el.removeClass('pixelated');
 		} else {
 			this.$el.addClass('pixelated');
-		}
-	},
-
-	setShowPrompt: function(showPrompt) {
-		if (showPrompt) {
-			this.$el.removeClass('hide-caption');
-		} else {
-			this.$el.addClass('hide-caption');
 		}
 	},
 
@@ -242,6 +231,15 @@ export default BaseView.extend(_.extend({}, ScrollableContainable, FullScreenabl
 		// set attributes
 		//
 		this.model = model;
+		this.loaded = false;
+
+		// remove any previous image
+		//
+		this.$el.find('img').remove();
+
+		// remove any previous message
+		//
+		this.hideMessage();
 
 		// create new image
 		//
@@ -309,25 +307,6 @@ export default BaseView.extend(_.extend({}, ScrollableContainable, FullScreenabl
 		}
 	},
 
-	addCaption: function(caption) {
-
-		// remove previous captions
-		//
-		this.removeCaptions();
-
-		// add new caption
-		//
-		let $el = $('<div>').addClass('caption');
-		let child = $('<span>').addClass('text');
-		$(child).text(caption);
-		$($el).append(child);
-		this.$el.append($el);
-	},
-
-	removeCaptions: function() {
-		this.$el.find('.caption').remove();
-	},
-
 	clear: function() {
 		this.model = null;
 		this.loaded = false;
@@ -335,10 +314,6 @@ export default BaseView.extend(_.extend({}, ScrollableContainable, FullScreenabl
 		// remove any previous image
 		//
 		this.$el.find('img').remove();
-
-		// remove previous caption
-		//
-		this.removeCaptions();
 
 		// remove any previous message
 		//

@@ -30,14 +30,14 @@ export default SideBarPanelView.extend({
 	template: template(`
 		<div class="header">
 			<label><i class="fa fa-star"></i>Favorites</label>
-
+		
 			<div class="buttons">
 				<button type="button" class="add-favorites success btn btn-sm" data-toggle="tooltip" title="Add Favorites">
 					<i class="fa fa-plus"></i>
 				</button>
 			</div>
 		</div>
-
+		
 		<div class="items"></div>
 	`),
 

@@ -52,6 +52,8 @@ export default PreferencesFormView.extend({
 				<div class="use-full-screen checkbox-inline">
 					<label><input type="checkbox"<% if (full_screen) { %> checked<% } %>>Full Screen</label>
 				</div>
+
+				<i class="active fa fa-question-circle" data-toggle="popover" title="Window State" data-content="This is the initial state of the application window."></i>
 			</div>
 		</div>
 	`),
