@@ -34,7 +34,7 @@ Desktop
 
 ## Live Demo
 
-You can create an account and explore the features and benefits of the platform at [www.dreamachines.ai](https://www.dreamachines.ai).
+You can create an account and explore the features and benefits of the platform at [dreamachines.ai](https://dreamachines.ai).
 
 ## Image Generators
 
@@ -47,19 +47,19 @@ Dreamachines uses a number of different image generators to create generative im
 
 ## Installation
 
-Please follow the instructions in [www.dreamachines.ai/#installation](https://www.dreamachines.ai/#installation) to install the software on your computer or web server.
+Please follow the instructions in [dreamachines.ai/#installation](https://dreamachines.ai/#installation) to install the software on your computer or web server.
 
 ## Instructions
 
-See the [Sharedigm User Guide](https://www.sharedigm.com/#help) for instructions on how to use the platform.
+See the [Dreamachines User Guide](https://dreamachines.ai/#help) for instructions on how to use the platform.
 
 ## Installation
 
-Please follow the instructions in [www.dreamachines.ai/#installation](https://www.dreamachines.ai/#installation) to install the software on your computer or web server.
+Please follow the instructions in [dreamachines.ai/#installation](https://dreamachines.ai/#installation) to install the software on your computer or web server.
 
 ## License
 
-Distributed under the Sustainable Use License which allows urestricted use of the software but does not allow you to commercialize it. See [LICENSE.md](LICENSE.md) for more information.
+Distributed under the <a href="https://indiesource.org/">IndieSource License</a> which allows unrestricted use of the software except by very large corporations. See [LICENSE.md](LICENSE.md) for more information.
 
 ## Contact
 
